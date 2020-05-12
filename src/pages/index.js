@@ -8,47 +8,6 @@ import { useTheme } from 'components/Theming'
 import Container from 'components/Container'
 import { rhythm } from '../lib/typography'
 
-const Hero = () => {
-  const theme = useTheme()
-  return (
-    <section
-      css={css`
-        color: ${theme.colors.white};
-        width: 100%;
-        background: ${theme.colors.primary};
-        padding: 20px 0 30px 0;
-        display: flex;
-      `}
-    >
-      <Container
-        css={css`
-          display: flex;
-          flex-direction: column;
-        `}
-      >
-        <h1
-          css={css`
-            color: ${theme.colors.white};
-            position: relative;
-            z-index: 5;
-            line-height: 1.5;
-            margin: 0;
-            max-width: ${rhythm(15)};
-          `}
-        >
-          Your blog says the things you want to say.
-        </h1>
-      </Container>
-      <div
-        css={css`
-          height: 150px;
-          overflow: hidden;
-        `}
-      />
-    </section>
-  )
-}
-
 const Description = styled.p`
   margin-bottom: 10px;
   display: inline-block;
@@ -58,7 +17,6 @@ export default function Index({ data: { site, allMdx } }) {
   const theme = useTheme()
   return (
     <Layout site={site}>
-      <Hero />
       <Container
         css={css`
           padding-bottom: 0;
