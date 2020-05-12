@@ -18,6 +18,22 @@ const Header = ({ siteTitle }) => {
         background: ${theme.colors.headerBg};
       `}
     >
+      <Container noVerticalPadding css={css`margin-bottom: 16px`}>
+        <Link
+          to="/"
+          aria-label="go to homepage"
+          css={css`
+            font-size: 30px;
+            color: white;
+            &:hover {
+              color: white;
+              text-decoration: none;
+            }
+          `}
+        >
+          {siteTitle}
+        </Link>
+      </Container>
       <Container noVerticalPadding>
         <nav
           css={css`
@@ -27,19 +43,6 @@ const Header = ({ siteTitle }) => {
             align-items: center;
           `}
         >
-          <Link
-            to="/"
-            aria-label="go to homepage"
-            css={css`
-              color: white;
-              &:hover {
-                color: white;
-                text-decoration: none;
-              }
-            `}
-          >
-            {siteTitle}
-          </Link>
           <div
             css={css`
               font-size: 16px;
@@ -49,8 +52,6 @@ const Header = ({ siteTitle }) => {
               a {
                 text-decoration: none;
                 color: ${theme.colors.white};
-                margin-left: 16px;
-                margin-right: 16px;
               }
               .active {
                 display: none;
@@ -60,7 +61,9 @@ const Header = ({ siteTitle }) => {
           >
             <div
               css={css`
+                width: 200px;
                 display: flex;
+                justify-content: space-between;
                 align-items: center;
               `}
             >
