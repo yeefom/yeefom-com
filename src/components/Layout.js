@@ -136,7 +136,6 @@ export default ({
   frontmatter = {},
   children,
   noFooter,
-  noSubscribeForm,
 }) => {
   const initializeTheme = () => {
     if (typeof window !== 'undefined') {
@@ -200,7 +199,6 @@ export default ({
           {!noFooter && (
             <Footer
               author={site.siteMetadata.author.name}
-              noSubscribeForm={noSubscribeForm}
             />
           )}
         </div>
