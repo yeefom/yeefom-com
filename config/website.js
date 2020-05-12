@@ -14,7 +14,6 @@ module.exports = {
   userTwitter: '@eggheadio', // Twitter Username
   ogSiteName: 'egghead.io Gatsby Starter Blog', // Facebook Site Name
   ogLanguage: 'en_US',
-  googleAnalyticsID: '',
 
   // Manifest and Progress color
   themeColor: '#5348FF',
