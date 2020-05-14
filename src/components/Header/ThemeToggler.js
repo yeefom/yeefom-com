@@ -33,14 +33,13 @@ const ThemeToggler = ({ toggleTheme, themeName }) => {
         margin: 0,
         borderStyle: 'solid',
         borderWidth: '1px',
-        color: theme.colors.white,
+        color: theme.colors.text,
         background: theme.colors.headerBg,
         '@media (hover: hover)': {
           ':hover': {
-            background:
-              theme.themeName === 'default'
-                ? theme.colors.text
-                : theme.colors.primary,
+            background: 'none',
+            borderColor: theme.colors.text,
+            color: theme.colors.text
           },
         },
       }}

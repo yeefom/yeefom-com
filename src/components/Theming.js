@@ -8,8 +8,8 @@ const themes = {
     colors: {
       primary: colors.blue,
       text: colors.black,
-      bodyBg: colors.gray,
-      headerBg: colors.blue,
+      bodyBg: colors.white,
+      headerBg: colors.offWhite,
       link: colors.blue,
       ...colors,
     },

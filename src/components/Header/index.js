@@ -24,9 +24,9 @@ const Header = ({ siteTitle }) => {
           aria-label="go to homepage"
           css={css`
             font-size: 30px;
-            color: white;
+            color: ${theme.colors.text};
             &:hover {
-              color: white;
+              color: ${theme.colors.text};
               text-decoration: none;
             }
           `}
@@ -50,8 +50,8 @@ const Header = ({ siteTitle }) => {
               display: flex;
               align-items: center;
               a {
-                text-decoration: none;
-                color: ${theme.colors.white};
+                text-decoration: underline;
+                color: ${theme.colors.text};
               }
               .active {
                 display: none;
