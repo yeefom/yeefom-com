@@ -1,7 +1,7 @@
 import React from 'react'
 import { css } from '@emotion/core'
 import { bpMaxSM } from '../lib/breakpoints'
-import { Twitter, GitHub } from './Social'
+import {Twitter, GitHub, Feed, Email} from './Social'
 import Container from './Container'
 
 const Footer = ({ author }) => (
@@ -32,6 +32,8 @@ const Footer = ({ author }) => (
         <div>
           <Twitter />
           <GitHub />
+          <Email />
+          <Feed />
         </div>
       </div>
     </Container>
