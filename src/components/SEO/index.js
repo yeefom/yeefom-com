@@ -19,11 +19,6 @@ const SEO = ({ postData, frontmatter = {}, postImage, isBlogPost }) => (
             author {
               name
             }
-            organization {
-              name
-              url
-              logo
-            }
             social {
               twitter
               fbAppID
@@ -57,7 +52,6 @@ const SEO = ({ postData, frontmatter = {}, postImage, isBlogPost }) => (
             <meta property="og:title" content={title} />
             <meta property="og:description" content={description} />
             <meta property="og:image" content={image} />
-            <meta property="fb:app_id" content={seo.social.fbAppID} />
 
             {/* Twitter Card tags */}
             <meta name="twitter:card" content="summary_large_image" />
@@ -75,7 +69,6 @@ const SEO = ({ postData, frontmatter = {}, postImage, isBlogPost }) => (
             datePublished={datePublished}
             canonicalUrl={seo.canonicalUrl}
             author={seo.author}
-            organization={seo.organization}
             defaultTitle={seo.title}
           />
         </React.Fragment>

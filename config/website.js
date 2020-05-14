@@ -8,7 +8,6 @@ module.exports = {
   siteLogo: 'images/logo.png', // Used for SEO and manifest, path to your image you placed in the 'static' folder
   siteDescription: 'Personal site of Yifeng Wang',
   author: 'Yifeng Wang', // Author for schemaORGJSONLD
-  organization: 'yeefom.com',
   copyRightYears: '2012–2020',
 
   // Manifest and Progress color
