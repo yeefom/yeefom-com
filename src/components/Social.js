@@ -3,6 +3,7 @@ import Link from './Link'
 import { useTheme } from './Theming'
 import { css } from '@emotion/core'
 import config from '../../config/website'
+import i18n from '../i18n'
 
 export const Twitter = ({ url = `${config.twitter}` }) => {
   const theme = useTheme()
@@ -15,7 +16,7 @@ export const Twitter = ({ url = `${config.twitter}` }) => {
           color: ${theme.colors.primary};
         }
       `}
-      aria-label="Visit my Twitter"
+      aria-label={i18n.twitterAria}
     >
       <svg
         css={css`transform: translateY(-2px)`}
@@ -46,7 +47,7 @@ export const GitHub = ({ url = `${config.github}` }) => {
           color: ${theme.colors.primary};
         }
       `}
-      aria-label="Visit my GitHub"
+      aria-label={i18n.githubAria}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -76,7 +77,7 @@ export const Feed = ({ url = `${config.feed}` }) => {
           color: ${theme.colors.primary};
         }
       `}
-      aria-label="Subscribe RSS feed"
+      aria-label={i18n.feedAria}
     >
       <svg
         css={css`transform: translateY(-1px)`}
@@ -107,7 +108,7 @@ export const Email = ({ url = `${config.email}` }) => {
           color: ${theme.colors.primary};
         }
       `}
-      aria-label="Email me"
+      aria-label={i18n.emailAria}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

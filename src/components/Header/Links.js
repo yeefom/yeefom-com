@@ -3,17 +3,17 @@ import { Link } from 'gatsby'
 import { css } from '@emotion/core'
 import { useTheme } from '../Theming'
 import ThemeToggler from './ThemeToggler'
+import i18n from '../../i18n'
 
 export default () => {
   const theme = useTheme()
   return (
     <React.Fragment>
-      <Link to="#" activeClassName="active" aria-label="View archive page"
-            css={css`margin-left: 0`}>
-        Archive
+      <Link to="#" activeClassName="active" aria-label={i18n.archiveAria} css={css`margin-left: 0`}>
+        {i18n.archive}
       </Link>
-      <Link to="#" activeClassName="active" aria-label="View blog page">
-        About
+      <Link to="#" activeClassName="active" aria-label={i18n.aboutAria}>
+        {i18n.about}
       </Link>
 
       <ThemeToggler
