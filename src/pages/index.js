@@ -59,7 +59,7 @@ export default function Index({ data: { site, allMdx } }) {
         <Link to="/blog" aria-label="Visit blog page">
           View all articles
         </Link>
-        <hr />
+        <hr css={css`border-top: 3px solid ${theme.colors.headerBg}`}/>
       </Container>
     </Layout>
   )

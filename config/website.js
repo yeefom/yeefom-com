@@ -9,6 +9,7 @@ module.exports = {
   siteDescription: 'Personal site of Yifeng Wang',
   author: 'Yifeng Wang', // Author for schemaORGJSONLD
   organization: 'yeefom.com',
+  copyRightYears: '2012–2020',
 
   // Manifest and Progress color
   themeColor: '#5348FF',
@@ -17,5 +18,7 @@ module.exports = {
   // Social component
   twitter: 'https://twitter.com/yeefom/',
   twitterHandle: '@yeefom',
-  github: 'https://github.com/yeefom/'
+  github: 'https://github.com/yeefom/',
+  email: 'mailto:yifeng@yeefom.com',
+  feed: '/rss.xml'
 }

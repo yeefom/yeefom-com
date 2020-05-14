@@ -19,9 +19,10 @@ export const Twitter = ({ url = `${config.twitter}` }) => {
       aria-label="Visit my Twitter"
     >
       <svg
+        css={css`transform: translateY(-2px)`}
         xmlns="http://www.w3.org/2000/svg"
-        width="26"
-        height="26"
+        width="27"
+        height="27"
         viewBox="0 0 24 20"
       >
         <path
@@ -76,7 +77,7 @@ export const Feed = ({ url = `${config.feed}` }) => {
           color: ${theme.colors.primary};
         }
       `}
-      aria-label="Visit my GitHub"
+      aria-label="Subscribe RSS feed"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -106,12 +107,12 @@ export const Email = ({ url = `${config.email}` }) => {
           color: ${theme.colors.primary};
         }
       `}
-      aria-label="Visit my GitHub"
+      aria-label="Email me"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="27"
-        height="27"
+        width="29"
+        height="29"
         viewBox="0 0 23 23"
       >
         <path

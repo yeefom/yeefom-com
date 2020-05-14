@@ -183,7 +183,7 @@ export default ({
           `}
         >
           <Helmet
-            title={config.siteTitle}
+            title={site.siteMetadata.title}
             meta={[
               { name: 'description', content: description },
               { name: 'keywords', content: keywords },
@@ -199,6 +199,7 @@ export default ({
           {!noFooter && (
             <Footer
               author={site.siteMetadata.author.name}
+              copyRightYears={config.copyRightYears}
             />
           )}
         </div>

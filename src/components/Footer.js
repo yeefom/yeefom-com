@@ -4,7 +4,7 @@ import { bpMaxSM } from '../lib/breakpoints'
 import {Twitter, GitHub, Feed, Email} from './Social'
 import Container from './Container'
 
-const Footer = ({ author }) => (
+const Footer = ({ author, copyRightYears }) => (
   <footer>
     <Container
       css={css`
@@ -23,11 +23,11 @@ const Footer = ({ author }) => (
       >
         <div
           css={css`
-            font-size: 90%;
+            font-size: 93%;
             opacity: 0.7;
           `}
         >
-          {author && `${author} \u00A9 ${new Date().getFullYear()}`}
+          {author && `${author} \u00A9 ${copyRightYears}`}
         </div>
         <div>
           <Twitter />
