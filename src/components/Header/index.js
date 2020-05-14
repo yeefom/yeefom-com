@@ -25,6 +25,7 @@ const Header = ({ siteTitle }) => {
           css={css`
             text-decoration: none;
             font-size: 40px;
+            font-weight: 600;
             color: ${theme.colors.text};
             &:hover {
               color: ${theme.colors.text};

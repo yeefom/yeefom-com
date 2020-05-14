@@ -6,7 +6,7 @@ import SEO from 'components/SEO'
 import { css } from '@emotion/core'
 import Container from 'components/Container'
 import Layout from '../components/Layout'
-import { fonts } from '../lib/typography'
+import { fontFamily } from '../lib/typography'
 import config from '../../config/website'
 import { bpMaxSM } from '../lib/breakpoints'
 
@@ -47,7 +47,7 @@ export default function Post({
                 text-align: center;
                 font-size: 15px;
                 opacity: 0.6;
-                font-family: ${fonts.regular}, sans-serif;
+                font-family: ${fontFamily};
                 font-weight: normal;
                 margin: 0 5px;
               }

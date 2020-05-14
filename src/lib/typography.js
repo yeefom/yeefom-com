@@ -1,5 +1,4 @@
 import Typography from 'typography'
-import '../fonts/fonts.css'
 
 export const fonts = {
   regular: 'Inter UI Regular',
@@ -10,12 +9,19 @@ export const fonts = {
   boldItalic: 'Inter UI Bold Italic',
 }
 
+const fontArray = [
+  'system-ui', '-apple-system', 'BlinkMacSystemFont', "Segoe UI", 'Roboto',
+  'Oxygen', 'Ubuntu', 'Cantarell', "Fira Sans", "Droid Sans", "Helvetica Neue", 'sans-serif'
+]
+
+export const fontFamily = fontArray.join(' ,');
+
 const typography = new Typography({
   baseFontSize: '18px',
   baseLineHeight: 1.55,
   headerLineHeight: 1.4,
-  headerFontFamily: [fonts.bold, 'sans-serif'],
-  bodyFontFamily: [fonts.regular, 'sans-serif'],
+  headerFontFamily: fontArray,
+  bodyFontFamily: fontArray,
   headerColor: 'hsla(0,0%,0%,0.9)',
   bodyColor: 'hsla(0,0%,0%,0.8)',
 

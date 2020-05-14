@@ -1,6 +1,6 @@
 import { css } from '@emotion/core'
 import { useTheme } from '../components/Theming'
-import typography, { fonts } from '../lib/typography'
+import typography, { fontFamily } from '../lib/typography'
 
 const ResetStyles = () => {
   const theme = useTheme()
@@ -20,7 +20,7 @@ const ResetStyles = () => {
   }
   html,
   body {
-    font-family: ${fonts.regular}, sans-serif;
+    font-family: ${fontFamily};
     font-style: normal;
     padding: 0;
     margin: 0;
