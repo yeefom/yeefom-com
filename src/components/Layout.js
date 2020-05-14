@@ -19,13 +19,9 @@ const getGlobalStyles = theme => {
       background: ${theme.colors.bodyBg};
       color: ${theme.colors.text};
     }
-    &::selection {
-      color: ${theme.colors.white};
-      background-color: ${theme.colors.primary};
-    }
     a {
       color: ${theme.colors.link};
-      text-decoration: none;
+      text-decoration: underline;
       &:hover,
       &:focus {
         color: ${theme.colors.link};
@@ -42,6 +38,7 @@ const getGlobalStyles = theme => {
     h6 {
       color: ${theme.colors.text};
       a {
+        text-decoration: none;
         color: ${theme.colors.text};
         &:hover,
         &:focus {

@@ -23,6 +23,7 @@ const Header = ({ siteTitle }) => {
           to="/"
           aria-label="go to homepage"
           css={css`
+            text-decoration: none;
             font-size: 40px;
             color: ${theme.colors.text};
             &:hover {
