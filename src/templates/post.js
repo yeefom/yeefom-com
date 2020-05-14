@@ -7,7 +7,6 @@ import { css } from '@emotion/core'
 import Container from 'components/Container'
 import Layout from '../components/Layout'
 import { fonts } from '../lib/typography'
-import Share from '../components/Share'
 import config from '../../config/website'
 import { bpMaxSM } from '../lib/breakpoints'
 
@@ -77,14 +76,6 @@ export default function Post({
           <MDXRenderer>{mdx.body}</MDXRenderer>
         </Container>
       </article>
-      <Container noVerticalPadding>
-        <Share
-          url={`${config.siteUrl}/${mdx.frontmatter.slug}/`}
-          title={title}
-          twitterHandle={config.twitterHandle}
-        />
-        <br />
-      </Container>
     </Layout>
   )
 }
