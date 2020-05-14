@@ -15,25 +15,21 @@ const Footer = ({ author, copyRightYears }) => (
       `}
     >
       <div
-        css={css`
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-        `}
       >
+        <div css={css`opacity: 0.7`}>
+          <Twitter />
+          <GitHub />
+          <Email />
+          <Feed />
+        </div>
         <div
           css={css`
+            margin-top: 16px;
             font-size: 93%;
             opacity: 0.7;
           `}
         >
           {author && `${author} \u00A9 ${copyRightYears}`}
-        </div>
-        <div>
-          <Twitter />
-          <GitHub />
-          <Email />
-          <Feed />
         </div>
       </div>
     </Container>

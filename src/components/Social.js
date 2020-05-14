@@ -11,7 +11,6 @@ export const Twitter = ({ url = `${config.twitter}` }) => {
       to={url}
       css={css`
         color: ${theme.colors.text};
-        margin-left: 10px;
         :hover {
           color: ${theme.colors.primary};
         }
@@ -80,6 +79,7 @@ export const Feed = ({ url = `${config.feed}` }) => {
       aria-label="Subscribe RSS feed"
     >
       <svg
+        css={css`transform: translateY(-1px)`}
         xmlns="http://www.w3.org/2000/svg"
         width="22"
         height="22"
