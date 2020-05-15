@@ -21,7 +21,6 @@ const SEO = ({ postData, frontmatter = {}, postImage, isBlogPost }) => (
             }
             social {
               twitter
-              fbAppID
             }
           }
         }

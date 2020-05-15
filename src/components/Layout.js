@@ -136,7 +136,7 @@ export default ({
   site,
   frontmatter = {},
   children,
-  noFooter,
+  pageTitle
 }) => {
   const initializeTheme = () => {
     if (typeof window !== 'undefined') {
@@ -170,6 +170,8 @@ export default ({
   const keywords = (frontmatterKeywords || siteKeywords).join(', ')
   const description = frontmatterDescription || siteDescription
 
+  const siteTitle = pageTitle ? `${pageTitle} — ${site.siteMetadata.title}` : site.siteMetadata.title
+
   return (
     <ThemeProvider theme={theme}>
       <Fragment>
@@ -184,7 +186,8 @@ export default ({
           `}
         >
           <Helmet
-            title={site.siteMetadata.title}
+            title={siteTitle}
+            titleTemplate={siteTitle}
             meta={[
               { name: 'description', content: description },
               { name: 'keywords', content: keywords },
@@ -197,12 +200,10 @@ export default ({
           <MDXProvider components={mdxComponents}>
             <Fragment>{children}</Fragment>
           </MDXProvider>
-          {!noFooter && (
-            <Footer
-              author={site.siteMetadata.author.name}
-              copyRightYears={config.copyRightYears}
-            />
-          )}
+          <Footer
+            author={site.siteMetadata.author.name}
+            copyRightYears={config.copyRightYears}
+          />
         </div>
       </Fragment>
     </ThemeProvider>

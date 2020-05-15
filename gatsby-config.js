@@ -12,7 +12,7 @@ module.exports = {
     title: config.siteTitle,
     twitterHandle: config.twitterHandle,
     description: config.siteDescription,
-    keywords: ['Personal site'],
+    keywords: [''],
     canonicalUrl: config.siteUrl,
     image: config.siteLogo,
     author: {
@@ -125,7 +125,7 @@ module.exports = {
               }
             `,
             output: '/rss.xml',
-            title: 'Blog RSS Feed',
+            title: 'Yifeng Wang RSS Feed',
           },
         ],
       },
