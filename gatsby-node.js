@@ -39,6 +39,48 @@ const createArchivePage = (createPage) => {
   })
 }
 
+const createAboutPage = (createPage) => {
+  createPage({
+    path: '/about',
+    component: path.resolve(`src/templates/about.js`)
+  })
+}
+
+const createPaginatedPages = (createPage, edges, pathPrefix, context) => {
+  const pages = edges.reduce((acc, value, index) => {
+    const pageIndex = Math.floor(index / PAGINATION_OFFSET)
+
+    if (!acc[pageIndex]) {
+      acc[pageIndex] = []
+    }
+
+    acc[pageIndex].push(value.node.id)
+
+    return acc
+  }, [])
+
+  pages.forEach((page, index) => {
+    const previousPagePath = `${pathPrefix}/${index + 1}`
+    const nextPagePath = index === 1 ? pathPrefix : `${pathPrefix}/${index - 1}`
+
+    createPage({
+      path: index > 0 ? `${pathPrefix}/${index}` : `${pathPrefix}`,
+      component: path.resolve(`src/templates/blog.js`),
+      context: {
+        pagination: {
+          page,
+          nextPagePath: index === 0 ? null : nextPagePath,
+          previousPagePath:
+            index === pages.length - 1 ? null : previousPagePath,
+          pageCount: pages.length,
+          pathPrefix,
+        },
+        ...context,
+      },
+    })
+  })
+}
+
 exports.createPages = ({ actions, graphql }) =>
   graphql(`
     query {
@@ -81,6 +123,7 @@ exports.createPages = ({ actions, graphql }) =>
       categories: [],
     })
     createArchivePage(createPage)
+    createAboutPage(createPage)
   })
 
 exports.onCreateWebpackConfig = ({ actions }) => {
@@ -95,54 +138,15 @@ exports.onCreateWebpackConfig = ({ actions }) => {
   })
 }
 
-const createPaginatedPages = (createPage, edges, pathPrefix, context) => {
-  const pages = edges.reduce((acc, value, index) => {
-    const pageIndex = Math.floor(index / PAGINATION_OFFSET)
-
-    if (!acc[pageIndex]) {
-      acc[pageIndex] = []
-    }
-
-    acc[pageIndex].push(value.node.id)
-
-    return acc
-  }, [])
-
-  pages.forEach((page, index) => {
-    const previousPagePath = `${pathPrefix}/${index + 1}`
-    const nextPagePath = index === 1 ? pathPrefix : `${pathPrefix}/${index - 1}`
-
-    createPage({
-      path: index > 0 ? `${pathPrefix}/${index}` : `${pathPrefix}`,
-      component: path.resolve(`src/templates/blog.js`),
-      context: {
-        pagination: {
-          page,
-          nextPagePath: index === 0 ? null : nextPagePath,
-          previousPagePath:
-            index === pages.length - 1 ? null : previousPagePath,
-          pageCount: pages.length,
-          pathPrefix,
-        },
-        ...context,
-      },
-    })
-  })
-}
-
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
 
   if (node.internal.type === `Mdx`) {
     const parent = getNode(node.parent)
-    const titleSlugged = _.join(_.drop(parent.name.split('-'), 3), '-')
-
-    const slug =
-      parent.sourceInstanceName === 'legacy'
-        ? `blog/${node.frontmatter.date
-            .split('T')[0]
-            .replace(/-/g, '/')}/${titleSlugged}`
-        : node.frontmatter.slug || titleSlugged
+    const isPost = parent.sourceInstanceName === 'blog';
+    const slug = isPost
+      ? `blog/${node.frontmatter.slug}`
+      : node.frontmatter.slug
 
     createNodeField({
       name: 'id',
@@ -207,7 +211,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     createNodeField({
       name: 'isPost',
       node,
-      value: true,
+      value: isPost,
     })
   }
 }
