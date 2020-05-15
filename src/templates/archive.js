@@ -9,7 +9,7 @@ import { useTheme } from '../components/Theming'
 import { bpMaxSM, bpMaxMD } from '../lib/breakpoints'
 import i18n from '../i18n'
 
-const Blog = ({
+export default ({
   data: { site, allMdx }
 }) => {
   const theme = useTheme()
@@ -20,7 +20,7 @@ const Blog = ({
   return (
     <Layout site={site} pageTitle={i18n.archive}>
       <SEO />
-      <Container noVerticalPadding>
+      <Container>
         <h1 css={css`margin-bottom: 40px;`}>
           {i18n.archive}
         </h1>
@@ -71,8 +71,6 @@ const Blog = ({
     </Layout>
   )
 }
-
-export default Blog
 
 export const pageQuery = graphql`
   query {
