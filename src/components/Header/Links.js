@@ -9,10 +9,10 @@ export default () => {
   const theme = useTheme()
   return (
     <React.Fragment>
-      <Link to="#" activeClassName="active" aria-label={i18n.archiveAria} css={css`margin-left: 0`}>
+      <Link to="/archive" activeClassName="active" aria-label={i18n.archiveAria} css={css`margin-left: 0`}>
         {i18n.archive}
       </Link>
-      <Link to="#" activeClassName="active" aria-label={i18n.aboutAria}>
+      <Link to="/about" activeClassName="active" aria-label={i18n.aboutAria}>
         {i18n.about}
       </Link>
 

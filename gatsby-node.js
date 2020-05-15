@@ -32,6 +32,13 @@ const createPosts = (createPage, createRedirect, edges) => {
   })
 }
 
+const createArchivePage = (createPage) => {
+  createPage({
+    path: '/archive',
+    component: path.resolve(`src/templates/archive.js`)
+  })
+}
+
 exports.createPages = ({ actions, graphql }) =>
   graphql(`
     query {
@@ -70,9 +77,10 @@ exports.createPages = ({ actions, graphql }) =>
     const { edges } = data.allMdx
     const { createRedirect, createPage } = actions
     createPosts(createPage, createRedirect, edges)
-    createPaginatedPages(actions.createPage, edges, '/blog', {
+    createPaginatedPages(createPage, edges, '/blog', {
       categories: [],
     })
+    createArchivePage(createPage)
   })
 
 exports.onCreateWebpackConfig = ({ actions }) => {

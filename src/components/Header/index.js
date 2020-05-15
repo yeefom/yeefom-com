@@ -56,8 +56,7 @@ const Header = ({ siteTitle }) => {
                 color: ${theme.colors.text};
               }
               .active {
-                display: none;
-                visibility: hidden;
+                font-weight: 600;
               }
             `}
           >
