@@ -142,8 +142,8 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 
   if (node.internal.type === `Mdx`) {
     const parent = getNode(node.parent)
-    const isPost = parent.sourceInstanceName === 'blog';
-    const slug = isPost
+    const type = parent.sourceInstanceName
+    const slug = type === 'blog'
       ? `blog/${node.frontmatter.slug}`
       : node.frontmatter.slug
 
@@ -190,9 +190,9 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     })
 
     createNodeField({
-      name: 'isPost',
+      name: 'type',
       node,
-      value: isPost,
+      value: type,
     })
   }
 }

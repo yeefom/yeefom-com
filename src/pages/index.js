@@ -75,7 +75,7 @@ export const pageQuery = graphql`
     }
     allMdx(
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: { fields: { isPost: { eq: true } } }
+      filter: { fields: { type: { eq: "blog" } } }
     ) {
       edges {
         node {
@@ -85,7 +85,7 @@ export const pageQuery = graphql`
             title
             slug
             date
-            isPost
+            type
           }
           parent {
             ... on File {

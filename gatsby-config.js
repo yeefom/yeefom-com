@@ -35,7 +35,7 @@ module.exports = {
       resolve: 'gatsby-source-filesystem',
       options: {
         path: `${__dirname}/content/pages`,
-        name: 'pages',
+        name: 'page',
       },
     },
     {
@@ -113,7 +113,7 @@ module.exports = {
               {
                 allMdx(
                   limit: 1000,
-                  filter: { fields: { isPost: { eq: true } } }
+                  filter: { fields: { type: { eq: "blog" } } }
                   sort: { order: DESC, fields: [frontmatter___date] }
                 ) {
                   edges {
