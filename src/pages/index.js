@@ -74,9 +74,8 @@ export const pageQuery = graphql`
       }
     }
     allMdx(
-      limit: 5
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { published: { ne: false } } }
+      filter: { fields: { isPost: { eq: true } } }
     ) {
       edges {
         node {
@@ -86,6 +85,7 @@ export const pageQuery = graphql`
             title
             slug
             date
+            isPost
           }
           parent {
             ... on File {
@@ -96,13 +96,6 @@ export const pageQuery = graphql`
             title
             date(formatString: "MMMM DD, YYYY")
             description
-            banner {
-              childImageSharp {
-                sizes(maxWidth: 720) {
-                  ...GatsbyImageSharpSizes
-                }
-              }
-            }
             slug
             keywords
           }

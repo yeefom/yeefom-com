@@ -1,6 +1,5 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import Img from 'gatsby-image'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import SEO from 'components/SEO'
 import { css } from '@emotion/core'
@@ -8,7 +7,6 @@ import Container from 'components/Container'
 import Layout from '../components/Layout'
 import { fontFamily } from '../lib/typography'
 import config from '../../config/website'
-import { bpMaxSM } from '../lib/breakpoints'
 
 export default function Post({
   data: { site, mdx },
@@ -17,7 +15,6 @@ export default function Post({
   const author = mdx.frontmatter.author || config.author
   const date = mdx.frontmatter.date
   const title = mdx.frontmatter.title
-  const banner = mdx.frontmatter.banner
 
   return (
     <Layout site={site} frontmatter={mdx.frontmatter}>
@@ -57,21 +54,6 @@ export default function Post({
             {author && <span>—</span>}
             {date && <h3>{date}</h3>}
           </div>
-          {banner && (
-            <div
-              css={css`
-                padding: 30px;
-                ${bpMaxSM} {
-                  padding: 0;
-                }
-              `}
-            >
-              <Img
-                sizes={banner.childImageSharp.fluid}
-                alt={site.siteMetadata.keywords.join(', ')}
-              />
-            </div>
-          )}
           <br />
           <MDXRenderer>{mdx.body}</MDXRenderer>
         </Container>
@@ -90,13 +72,6 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         author
-        banner {
-          childImageSharp {
-            fluid(maxWidth: 900) {
-              ...GatsbyImageSharpFluid_withWebp_tracedSVG
-            }
-          }
-        }
         slug
         keywords
       }

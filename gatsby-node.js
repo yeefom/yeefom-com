@@ -85,7 +85,6 @@ exports.createPages = ({ actions, graphql }) =>
   graphql(`
     query {
       allMdx(
-        filter: { frontmatter: { published: { ne: false } } }
         sort: { order: DESC, fields: [frontmatter___date] }
       ) {
         edges {
@@ -155,12 +154,6 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     })
 
     createNodeField({
-      name: 'published',
-      node,
-      value: node.frontmatter.published,
-    })
-
-    createNodeField({
       name: 'title',
       node,
       value: node.frontmatter.title,
@@ -182,18 +175,6 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       name: 'date',
       node,
       value: node.frontmatter.date ? node.frontmatter.date.split(' ')[0] : '',
-    })
-
-    createNodeField({
-      name: 'banner',
-      node,
-      value: node.frontmatter.banner,
-    })
-
-    createNodeField({
-      name: 'categories',
-      node,
-      value: node.frontmatter.categories || [],
     })
 
     createNodeField({
