@@ -1,20 +1,20 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { css } from '@emotion/core'
-import styled from '@emotion/styled'
 import Layout from '../components/Layout'
 import Link from '../components/Link'
 import { useTheme } from '../components/Theming'
 import Container from '../components/Container'
-import { rhythm } from '../lib/typography'
+import { MDXRenderer } from 'gatsby-plugin-mdx'
+import i18n from '../i18n'
 
-const Description = styled.p`
-  margin-bottom: 10px;
-  display: inline-block;
-`
-
-export default function Index({ data: { site, allMdx } }) {
+export default function Index({ data: { site, allMdx }, pageContext: { pagination } }) {
   const theme = useTheme()
+  const { page, nextPagePath, previousPagePath } = pagination
+  const posts = page
+    .map(id => allMdx.edges.find(edge => edge.node.id === id))
+    .filter(post => post !== undefined)
+
   return (
     <Layout site={site}>
       <Container
@@ -22,16 +22,17 @@ export default function Index({ data: { site, allMdx } }) {
           padding-bottom: 0;
         `}
       >
-        {allMdx.edges.map(({ node: post }) => (
+        {posts.map(({ node: post }) => (
           <div
             key={post.id}
             css={css`
-              margin-bottom: 40px;
+              :not(:first-of-type) {
+                margin-top: 140px;
+              }
             `}
           >
-            <h2
+            <h1
               css={css({
-                marginBottom: rhythm(0.3),
                 transition: 'all 150ms ease',
                 ':hover': {
                   color: theme.colors.primary,
@@ -39,27 +40,34 @@ export default function Index({ data: { site, allMdx } }) {
               })}
             >
               <Link
-                to={post.frontmatter.slug}
+                to={'/blog/' + post.frontmatter.slug}
                 aria-label={`View ${post.frontmatter.title}`}
               >
                 {post.frontmatter.title}
               </Link>
-            </h2>
-            <Description>
-              {post.excerpt}{' '}
-              <Link
-                to={post.frontmatter.slug}
-                aria-label={`View ${post.frontmatter.title}`}
-              >
-                Read Article →
-              </Link>
-            </Description>
+            </h1>
+            <small css={css`display: inline-block; margin-bottom: 60px;`}>{post.frontmatter.date}</small>
+            <br />
+            <MDXRenderer>{post.body}</MDXRenderer>
           </div>
         ))}
-        <Link to="/blog" aria-label="Visit blog page">
-          View all articles
-        </Link>
-        <hr css={css`border-top: 3px solid ${theme.colors.headerBg}`}/>
+        <div css={css({ marginTop: '80px', marginBottom: '80px', display: 'flex', justifyContent: 'space-between'})}>
+          {previousPagePath === null ? <div></div> : (
+            <Link to={previousPagePath} aria-label={i18n.previousPageAria}>
+              {i18n.previousPage}
+            </Link>
+          )}
+          {nextPagePath && (
+            <Link to={nextPagePath} aria-label={i18n.nextPageAria}>
+              {i18n.nextPage}
+            </Link>
+          )}
+        </div>
+        <hr
+          css={css`
+            border-top: 3px solid ${theme.colors.headerBg};
+          `}
+        />
       </Container>
     </Layout>
   )
@@ -79,18 +87,12 @@ export const pageQuery = graphql`
     ) {
       edges {
         node {
-          excerpt(pruneLength: 190)
           id
           fields {
             title
             slug
             date
             type
-          }
-          parent {
-            ... on File {
-              sourceInstanceName
-            }
           }
           frontmatter {
             title
@@ -99,6 +101,7 @@ export const pageQuery = graphql`
             slug
             keywords
           }
+          body
         }
       }
     }

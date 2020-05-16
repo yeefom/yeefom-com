@@ -8,5 +8,9 @@ export default {
   feedAria: 'Subscribe RSS feed',
   emailAria: 'Email me',
   switchToLightAria: 'Switch to light mode',
-  switchToDarkAria: 'Switch to dark mode'
+  switchToDarkAria: 'Switch to dark mode',
+  previousPage: '← Previous Page',
+  previousPageAria: 'View previous page',
+  nextPage: 'Next Page →',
+  nextPageAria: 'View next page'
 }

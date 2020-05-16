@@ -46,36 +46,32 @@ const createAboutPage = (createPage) => {
   })
 }
 
-const createPaginatedPages = (createPage, edges, pathPrefix, context) => {
-  const pages = edges.reduce((acc, value, index) => {
-    const pageIndex = Math.floor(index / PAGINATION_OFFSET)
+const createIndexPages = (createPage, edges) => {
+  const pages = edges.filter(edge => edge.node.fields.type === 'blog')
+    .reduce((acc, value, index) => {
+      const pageIndex = Math.floor(index / PAGINATION_OFFSET)
 
-    if (!acc[pageIndex]) {
-      acc[pageIndex] = []
-    }
+      if (!acc[pageIndex]) {
+        acc[pageIndex] = []
+      }
 
-    acc[pageIndex].push(value.node.id)
+      acc[pageIndex].push(value.node.id)
 
-    return acc
-  }, [])
+      return acc
+    }, [])
 
   pages.forEach((page, index) => {
-    const previousPagePath = `${pathPrefix}/${index + 1}`
-    const nextPagePath = index === 1 ? pathPrefix : `${pathPrefix}/${index - 1}`
-
     createPage({
-      path: index > 0 ? `${pathPrefix}/${index}` : `${pathPrefix}`,
-      component: path.resolve(`src/templates/blog.js`),
+      path: index === 0 ? '/' : `/${index}`,
+      component: path.resolve(`src/templates/index.js`),
       context: {
         pagination: {
           page,
-          nextPagePath: index === 0 ? null : nextPagePath,
-          previousPagePath:
-            index === pages.length - 1 ? null : previousPagePath,
+          nextPagePath: index === pages.length - 1 ? null : `/${index + 1}`,
+          previousPagePath: index === 0 ? null : `/${index - 1 === 0 ? '' : index - 1}`,
           pageCount: pages.length,
-          pathPrefix,
         },
-        ...context,
+        categories: []
       },
     })
   })
@@ -101,6 +97,7 @@ exports.createPages = ({ actions, graphql }) =>
               title
               slug
               date
+              type
             }
           }
         }
@@ -118,9 +115,7 @@ exports.createPages = ({ actions, graphql }) =>
     const { edges } = data.allMdx
     const { createRedirect, createPage } = actions
     createPosts(createPage, createRedirect, edges)
-    createPaginatedPages(createPage, edges, '/blog', {
-      categories: [],
-    })
+    createIndexPages(createPage, edges, {})
     createArchivePage(createPage)
     createAboutPage(createPage)
   })
