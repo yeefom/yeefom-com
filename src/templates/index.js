@@ -17,11 +17,7 @@ export default function Index({ data: { site, allMdx }, pageContext: { paginatio
 
   return (
     <Layout site={site}>
-      <Container
-        css={css`
-          padding-bottom: 0;
-        `}
-      >
+      <Container>
         {posts.map(({ node: post }) => (
           <article
             key={post.id}
@@ -51,7 +47,7 @@ export default function Index({ data: { site, allMdx }, pageContext: { paginatio
             <MDXRenderer>{post.body}</MDXRenderer>
           </article>
         ))}
-        <div css={css({ marginTop: '80px', marginBottom: '80px', display: 'flex', justifyContent: 'space-between'})}>
+        <div css={css({ marginTop: '77px', display: 'flex', justifyContent: 'space-between'})}>
           {previousPagePath === null ? <div>{''}</div> : (
             <Link to={previousPagePath} aria-label={i18n.previousPageAria}>
               {i18n.previousPage}

@@ -29,9 +29,6 @@ export default ({
               :not(:first-of-type) {
                 margin-top: 20px;
               }
-              ${bpMaxSM} {
-                padding: 20px;
-              }
               display: flex;
               flex-direction: column;
             `}

@@ -18,7 +18,7 @@ const Header = ({ siteTitle }) => {
         background: ${theme.colors.headerBg};
       `}
     >
-      <Container noDivider noVerticalPadding css={css`margin-bottom: 16px`}>
+      <Container noVerticalPadding css={css`margin-bottom: 16px`}>
         <Link
           to="/"
           aria-label="go to homepage"

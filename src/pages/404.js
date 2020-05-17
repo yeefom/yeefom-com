@@ -8,7 +8,7 @@ import i18n from '../i18n'
 export default ({ data: { site } }) => {
   return (
     <Layout site={site} pageTitle='404'>
-      <Container css={css`padding-bottom: 0`}>
+      <Container>
           <span css={css`margin-bottom: 40px;`}>
             {i18n.notFound}
           </span>

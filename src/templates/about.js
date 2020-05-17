@@ -10,11 +10,11 @@ export default ({ data: { site, mdx } }) => {
 
   return (
     <Layout site={site} frontmatter={mdx.frontmatter} pageTitle={title}>
-      <Container
-        css={css`
-          padding-bottom: 0;
-        `}
-      >
+      <Container css={css`
+        p:last-of-type {
+          margin-bottom: 0;
+        }
+      `}>
         <article>
           <h1
             css={css`

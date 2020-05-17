@@ -18,7 +18,7 @@ export default function Post({
   return (
     <Layout site={site} frontmatter={mdx.frontmatter} pageTitle={title}>
       <SEO frontmatter={mdx.frontmatter} isBlogPost />
-      <Container css={css`padding-bottom: 0`}>
+      <Container>
         <article>
           <h1 css={css`margin-bottom: 5px;`}>
             {title}
@@ -27,7 +27,7 @@ export default function Post({
           <br />
           <MDXRenderer>{mdx.body}</MDXRenderer>
         </article>
-        <div css={css({ marginTop: '80px', marginBottom: '80px', display: 'flex', justifyContent: 'space-between'})}>
+        <div css={css({ marginTop: '77px', display: 'flex', justifyContent: 'space-between'})}>
           {prev === null ? <div>{''}</div> : (
             <Link to={`/${prev.fields.slug}`} aria-label={i18n.previousArticleAria}>
               {`${i18n.previous} ${prev.fields.title}`}

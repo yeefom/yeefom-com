@@ -3,38 +3,40 @@ import { css } from '@emotion/core'
 import { bpMaxSM } from '../lib/breakpoints'
 import {Twitter, GitHub, Feed, Email} from './Social'
 import Container from './Container'
+import { useTheme } from './Theming'
 
-const Footer = ({ author, copyRightYears }) => (
-  <footer>
-    <Container
-      noDivider
-      css={css`
-        padding-top: 0;
-        ${bpMaxSM} {
-          padding-top: 0;
-        }
-      `}
-    >
-      <div
-      >
-        <div css={css`opacity: 0.7`}>
-          <Twitter />
-          <GitHub />
-          <Email />
-          <Feed />
-        </div>
+const Footer = ({ author, copyRightYears }) => {
+  const theme = useTheme()
+
+  return (
+    <footer>
+      <Container noVerticalPadding>
         <div
           css={css`
-            margin-top: 16px;
-            font-size: 93%;
-            opacity: 0.7;
-          `}
+          border-top: 3px solid ${theme.colors.divider};
+          padding: 50px 0;
+          margin-top: 40px;
+        `}
         >
-          {author && `${author} \u00A9 ${copyRightYears}`}
+          <div css={css`opacity: 0.7`}>
+            <Twitter/>
+            <GitHub/>
+            <Email/>
+            <Feed/>
+          </div>
+          <div
+            css={css`
+              margin-top: 16px;
+              font-size: 93%;
+              opacity: 0.7;
+            `}
+          >
+            {author && `${author} \u00A9 ${copyRightYears}`}
+          </div>
         </div>
-      </div>
-    </Container>
-  </footer>
-)
+      </Container>
+    </footer>
+  );
+}
 
 export default Footer
