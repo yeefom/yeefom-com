@@ -35,14 +35,13 @@ const Header = ({ siteTitle }) => {
         >
           {siteTitle}
         </Link>
-      </Container>
-      <Container noDivider noVerticalPadding>
         <nav
           css={css`
             width: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            margin-top: 10px;
           `}
         >
           <div
