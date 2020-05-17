@@ -1,20 +1,12 @@
 import Typography from 'typography'
 
-export const fonts = {
-  regular: 'Inter UI Regular',
-  regularItalic: 'Inter UI Regular Italic',
-  semibold: 'Inter UI Semibold',
-  semiboldItalic: 'Inter UI Semibold Italic',
-  bold: 'Inter UI Bold',
-  boldItalic: 'Inter UI Bold Italic',
-}
-
 const fontArray = [
-  'system-ui', '-apple-system', 'BlinkMacSystemFont', "Segoe UI", 'Roboto',
-  'Oxygen', 'Ubuntu', 'Cantarell', "Fira Sans", "Droid Sans", "Helvetica Neue", 'sans-serif'
+  'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto',
+  'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'sans-serif'
 ]
 
-export const fontFamily = fontArray.join(' ,');
+export const fontFamily = "'system-ui',-apple-system,'BlinkMacSystemFont','Segoe UI','Roboto'," +
+  "'Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue',sans-serif"
 
 const typography = new Typography({
   baseFontSize: '18px',

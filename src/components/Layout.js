@@ -9,7 +9,6 @@ import { bpMaxSM } from '../lib/breakpoints'
 import mdxComponents from './mdx'
 import Header from './Header'
 import reset from '../lib/reset'
-import { fontFamily } from '../lib/typography'
 import config from '../../config/website'
 import Footer from '../components/Footer'
 
@@ -66,13 +65,11 @@ const getGlobalStyles = theme => {
       background: none;
     }
     em {
-      font-family: ${fontFamily};
       font-style: italic;
       font-weight: 400;
     }
     strong {
       em {
-        font-family: ${fontFamily};
         font-style: normal;
         font-weight: 600;
       }
@@ -82,7 +79,6 @@ const getGlobalStyles = theme => {
       border: 1px solid ${theme.colors.gray};
       padding: 5px 10px;
       box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
-      font-family: ${fontFamily};
       margin-top: 5px;
       ::placeholder {
         opacity: 0.4;
