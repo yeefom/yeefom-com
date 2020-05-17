@@ -6,7 +6,7 @@ import SEO from '../components/SEO'
 import Layout from '../components/Layout'
 import Link from '../components/Link'
 import { useTheme } from '../components/Theming'
-import { bpMaxSM, bpMaxMD } from '../lib/breakpoints'
+import { bpMaxSM } from '../lib/breakpoints'
 import i18n from '../i18n'
 
 export default ({
@@ -24,24 +24,13 @@ export default ({
         <h1 css={css`margin-bottom: 40px;`}>
           {i18n.archive}
         </h1>
+        <br />
         {posts.map(({ node: post }) => (
           <div
             key={post.id}
             css={css`
               :not(:first-of-type) {
                 margin-top: 20px;
-                ${bpMaxMD} {
-                  margin-top: 40px;
-                }
-                ${bpMaxSM} {
-                  margin-top: 20px;
-                }
-              }
-              :first-of-type {
-                margin-top: 20px;
-                ${bpMaxSM} {
-                  margin-top: 20px;
-                }
               }
               ${bpMaxSM} {
                 padding: 20px;

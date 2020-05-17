@@ -34,6 +34,7 @@ export default function Index({ data: { site, allMdx }, pageContext: { paginatio
             <h1
               css={css({
                 transition: 'all 150ms ease',
+                marginBottom: '5px',
                 ':hover': {
                   color: theme.colors.primary,
                 },
