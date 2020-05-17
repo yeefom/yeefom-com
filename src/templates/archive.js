@@ -5,7 +5,6 @@ import Container from '../components/Container'
 import SEO from '../components/SEO'
 import Layout from '../components/Layout'
 import Link from '../components/Link'
-import { bpMaxSM } from '../lib/breakpoints'
 import i18n from '../i18n'
 
 export default ({

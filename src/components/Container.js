@@ -1,7 +1,6 @@
 import React from 'react'
 import { css } from '@emotion/core'
 import { bpMaxSM } from '../lib/breakpoints'
-import { useTheme } from './Theming'
 
 const Container = props => {
   const {
@@ -10,8 +9,6 @@ const Container = props => {
     noVerticalPadding = false,
     ...restProps
   } = props
-  const theme = useTheme()
-
   return (
     <div
       css={css`

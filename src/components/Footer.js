@@ -1,6 +1,5 @@
 import React from 'react'
 import { css } from '@emotion/core'
-import { bpMaxSM } from '../lib/breakpoints'
 import {Twitter, GitHub, Feed, Email} from './Social'
 import Container from './Container'
 import { useTheme } from './Theming'
