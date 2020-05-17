@@ -23,7 +23,7 @@ export default function Index({ data: { site, allMdx }, pageContext: { paginatio
         `}
       >
         {posts.map(({ node: post }) => (
-          <div
+          <article
             key={post.id}
             css={css`
               :not(:first-of-type) {
@@ -33,7 +33,6 @@ export default function Index({ data: { site, allMdx }, pageContext: { paginatio
           >
             <h1
               css={css({
-                transition: 'all 150ms ease',
                 marginBottom: '5px',
                 ':hover': {
                   color: theme.colors.primary,
@@ -50,7 +49,7 @@ export default function Index({ data: { site, allMdx }, pageContext: { paginatio
             <small css={css`display: inline-block; margin-bottom: 60px;`}>{post.frontmatter.date}</small>
             <br />
             <MDXRenderer>{post.body}</MDXRenderer>
-          </div>
+          </article>
         ))}
         <div css={css({ marginTop: '80px', marginBottom: '80px', display: 'flex', justifyContent: 'space-between'})}>
           {previousPagePath === null ? <div></div> : (

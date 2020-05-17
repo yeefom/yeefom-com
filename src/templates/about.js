@@ -13,22 +13,16 @@ export default ({ data: { site, mdx } }) => {
 
   return (
     <Layout site={site} frontmatter={mdx.frontmatter} pageTitle={title}>
-      <SEO frontmatter={mdx.frontmatter} />
-      <article
-        css={css`
-          width: 100%;
-          display: flex;
-        `}
-      >
-        <Container>
+      <Container css={css`padding-bottom: 0`}>
+        <article>
           <h1 css={css`margin-bottom: 40px;`}>
             {title}
           </h1>
           <br />
           <MDXRenderer>{mdx.body}</MDXRenderer>
-          <hr css={css`border-top: 3px solid ${theme.colors.headerBg}`}/>
-        </Container>
-      </article>
+          <hr css={css`border-top: 3px solid ${theme.colors.headerBg}; margin-top: 80px`}/>
+        </article>
+      </Container>
     </Layout>
   )
 }
