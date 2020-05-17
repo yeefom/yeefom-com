@@ -52,7 +52,7 @@ export default function Index({ data: { site, allMdx }, pageContext: { paginatio
           </article>
         ))}
         <div css={css({ marginTop: '80px', marginBottom: '80px', display: 'flex', justifyContent: 'space-between'})}>
-          {previousPagePath === null ? <div></div> : (
+          {previousPagePath === null ? <div>{''}</div> : (
             <Link to={previousPagePath} aria-label={i18n.previousPageAria}>
               {i18n.previousPage}
             </Link>
@@ -63,11 +63,6 @@ export default function Index({ data: { site, allMdx }, pageContext: { paginatio
             </Link>
           )}
         </div>
-        <hr
-          css={css`
-            border-top: 3px solid ${theme.colors.headerBg};
-          `}
-        />
       </Container>
     </Layout>
   )

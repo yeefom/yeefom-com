@@ -4,10 +4,8 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { css } from '@emotion/core'
 import Container from '../components/Container'
 import Layout from '../components/Layout'
-import { useTheme } from '../components/Theming'
 
 export default ({ data: { site, mdx } }) => {
-  const theme = useTheme()
   const title = mdx.frontmatter.title
 
   return (
@@ -27,12 +25,6 @@ export default ({ data: { site, mdx } }) => {
           </h1>
           <br />
           <MDXRenderer>{mdx.body}</MDXRenderer>
-          <hr
-            css={css`
-              border-top: 3px solid ${theme.colors.headerBg};
-              margin-top: 80px;
-            `}
-          />
         </article>
       </Container>
     </Layout>

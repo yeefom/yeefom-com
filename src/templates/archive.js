@@ -5,15 +5,12 @@ import Container from '../components/Container'
 import SEO from '../components/SEO'
 import Layout from '../components/Layout'
 import Link from '../components/Link'
-import { useTheme } from '../components/Theming'
 import { bpMaxSM } from '../lib/breakpoints'
 import i18n from '../i18n'
 
 export default ({
   data: { site, allMdx }
 }) => {
-  const theme = useTheme()
-
   const posts = allMdx.edges
     .filter(post => post !== undefined)
 
@@ -55,7 +52,6 @@ export default ({
             </h2>
           </div>
         ))}
-        <hr css={css`border-top: 3px solid ${theme.colors.headerBg}`}/>
       </Container>
     </Layout>
   )

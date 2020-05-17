@@ -7,6 +7,7 @@ import Container from './Container'
 const Footer = ({ author, copyRightYears }) => (
   <footer>
     <Container
+      noDivider
       css={css`
         padding-top: 0;
         ${bpMaxSM} {

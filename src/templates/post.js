@@ -5,7 +5,6 @@ import { css } from '@emotion/core'
 import SEO from '../components/SEO'
 import Container from '../components/Container'
 import Layout from '../components/Layout'
-import { useTheme } from '../components/Theming'
 import Link from "../components/Link";
 import i18n from "../i18n";
 
@@ -13,7 +12,6 @@ export default function Post({
   data: { site, mdx },
   pageContext: { next, prev },
 }) {
-  const theme = useTheme()
   const date = mdx.frontmatter.date
   const title = mdx.frontmatter.title
 
@@ -30,7 +28,7 @@ export default function Post({
           <MDXRenderer>{mdx.body}</MDXRenderer>
         </article>
         <div css={css({ marginTop: '80px', marginBottom: '80px', display: 'flex', justifyContent: 'space-between'})}>
-          {prev === null ? <div></div> : (
+          {prev === null ? <div>{''}</div> : (
             <Link to={`/${prev.fields.slug}`} aria-label={i18n.previousArticleAria}>
               {`${i18n.previous} ${prev.fields.title}`}
             </Link>
@@ -41,7 +39,6 @@ export default function Post({
             </Link>
           )}
         </div>
-        <hr css={css`border-top: 3px solid ${theme.colors.headerBg}`} />
       </Container>
     </Layout>
   )

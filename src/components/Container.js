@@ -1,14 +1,29 @@
 import React from 'react'
 import { css } from '@emotion/core'
-import { bpMaxSM } from 'lib/breakpoints'
+import { bpMaxSM } from '../lib/breakpoints'
+import { useTheme } from './Theming'
+
+const divider = (headerBg) => (
+  <div css={css`
+    border-top: 3px solid ${headerBg};
+    margin-top: 50px;
+    margin-bottom: 50px;
+    `}
+  >
+    {''}
+  </div>
+)
 
 const Container = props => {
   const {
     maxWidth = 700,
     noHorizontalPadding = false,
     noVerticalPadding = false,
+    noDivider = false,
     ...restProps
   } = props
+  const theme = useTheme()
+
   return (
     <div
       css={css`
@@ -25,6 +40,7 @@ const Container = props => {
       {...restProps}
     >
       {props.children}
+      {!noDivider && divider(theme.colors.divider)}
     </div>
   )
 }

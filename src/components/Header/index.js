@@ -18,7 +18,7 @@ const Header = ({ siteTitle }) => {
         background: ${theme.colors.headerBg};
       `}
     >
-      <Container noVerticalPadding css={css`margin-bottom: 16px`}>
+      <Container noDivider noVerticalPadding css={css`margin-bottom: 16px`}>
         <Link
           to="/"
           aria-label="go to homepage"
@@ -36,7 +36,7 @@ const Header = ({ siteTitle }) => {
           {siteTitle}
         </Link>
       </Container>
-      <Container noVerticalPadding>
+      <Container noDivider noVerticalPadding>
         <nav
           css={css`
             width: 100%;
