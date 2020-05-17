@@ -61,7 +61,7 @@ const getGlobalStyles = theme => {
     hr {
       margin: 50px 0;
       border: none;
-      border-top: 1px solid ${theme.colors.gray};
+      border-top: 1px solid ${theme.colors.blockquote};
       background: none;
     }
     em {
@@ -123,6 +123,11 @@ const getGlobalStyles = theme => {
       ::-webkit-scrollbar-thumb {
         background: #888;
         border-radius: 5px;
+      }
+    }
+    .footnotes {
+      ol {
+        margin-left: 0
       }
     }
   `
