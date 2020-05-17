@@ -12,5 +12,9 @@ export default {
   previousPage: '← Previous Page',
   previousPageAria: 'View previous page',
   nextPage: 'Next Page →',
-  nextPageAria: 'View next page'
+  nextPageAria: 'View next page',
+  next: '→',
+  nextArticleAria: 'View next article',
+  previous: '←',
+  previousArticleAria: 'View next article',
 }

@@ -1,63 +1,48 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
-import SEO from 'components/SEO'
 import { css } from '@emotion/core'
-import Container from 'components/Container'
+import SEO from '../components/SEO'
+import Container from '../components/Container'
 import Layout from '../components/Layout'
-import { fontFamily } from '../lib/typography'
-import config from '../../config/website'
+import { useTheme } from '../components/Theming'
+import Link from "../components/Link";
+import i18n from "../i18n";
 
 export default function Post({
   data: { site, mdx },
   pageContext: { next, prev },
 }) {
-  const author = mdx.frontmatter.author || config.author
+  const theme = useTheme()
   const date = mdx.frontmatter.date
   const title = mdx.frontmatter.title
 
   return (
-    <Layout site={site} frontmatter={mdx.frontmatter}>
+    <Layout site={site} frontmatter={mdx.frontmatter} pageTitle={title}>
       <SEO frontmatter={mdx.frontmatter} isBlogPost />
-      <article
-        css={css`
-          width: 100%;
-          display: flex;
-        `}
-      >
-        <Container>
-          <h1
-            css={css`
-              text-align: center;
-              margin-bottom: 20px;
-            `}
-          >
+      <Container css={css`padding-bottom: 0`}>
+        <article>
+          <h1 css={css`margin-bottom: 5px;`}>
             {title}
           </h1>
-          <div
-            css={css`
-              display: flex;
-              justify-content: center;
-              margin-bottom: 20px;
-              h3,
-              span {
-                text-align: center;
-                font-size: 15px;
-                opacity: 0.6;
-                font-family: ${fontFamily};
-                font-weight: normal;
-                margin: 0 5px;
-              }
-            `}
-          >
-            {author && <h3>{author}</h3>}
-            {author && <span>—</span>}
-            {date && <h3>{date}</h3>}
-          </div>
+          <small css={css`display: inline-block; margin-bottom: 60px;`}>{date}</small>
           <br />
           <MDXRenderer>{mdx.body}</MDXRenderer>
-        </Container>
-      </article>
+        </article>
+        <div css={css({ marginTop: '80px', marginBottom: '80px', display: 'flex', justifyContent: 'space-between'})}>
+          {prev === null ? <div></div> : (
+            <Link to={`/${prev.fields.slug}`} aria-label={i18n.previousArticleAria}>
+              {`${i18n.previous} ${prev.fields.title}`}
+            </Link>
+          )}
+          {next && (
+            <Link to={`/${next.fields.slug}`} aria-label={i18n.nextArticleAria}>
+              {`${next.fields.title} ${i18n.next}`}
+            </Link>
+          )}
+        </div>
+        <hr css={css`border-top: 3px solid ${theme.colors.headerBg}`} />
+      </Container>
     </Layout>
   )
 }
