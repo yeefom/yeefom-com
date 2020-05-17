@@ -17,4 +17,5 @@ export default {
   nextArticleAria: 'View next article',
   previous: '←',
   previousArticleAria: 'View next article',
+  notFound: 'Page not found'
 }
