@@ -54,7 +54,7 @@ const ResetStyles = () => {
     }
   
     blockquote {
-      border-left: 5px solid ${theme.colors.link};
+      border-left: 5px solid ${theme.colors.blockquote};
       padding-left: 1rem !important;
       margin-left: 0 !important;
       margin-right: 0 !important;
