@@ -50,6 +50,7 @@ module.exports = {
               maxWidth: 1035,
             },
           },
+          'gatsby-remark-numbered-footnotes'
         ],
       },
     },
@@ -93,6 +94,9 @@ module.exports = {
                 description
                 siteUrl
                 site_url: siteUrl
+                author {
+                  name
+                }
               }
             }
           }
@@ -102,10 +106,9 @@ module.exports = {
             serialize: ({ query: { site, allMdx } }) => {
               return allMdx.edges.map(edge => {
                 return Object.assign({}, edge.node.frontmatter, {
-                  description: edge.node.excerpt,
+                  description: edge.node.html,
                   date: edge.node.fields.date,
                   url: site.siteMetadata.siteUrl + '/' + edge.node.fields.slug,
-                  guid: site.siteMetadata.siteUrl + '/' + edge.node.fields.slug,
                 })
               })
             },
@@ -118,7 +121,6 @@ module.exports = {
                 ) {
                   edges {
                     node {
-                      excerpt(pruneLength: 250)
                       fields { 
                         slug
                         date
@@ -126,13 +128,16 @@ module.exports = {
                       frontmatter {
                         title
                       }
+                      html
                     }
                   }
                 }
               }
             `,
+            match: "^/blog/",
             output: '/rss.xml',
             title: 'Yifeng Wang RSS Feed',
+            author: 'Yifeng Wang'
           },
         ],
       },
