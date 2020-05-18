@@ -129,6 +129,21 @@ const getGlobalStyles = theme => {
       ol {
         margin-left: 0
       }
+      font-size: 0.85rem;
+    }
+    .littlefoot-footnote__host {
+      button {
+        font-size: 0.8rem;
+        font-weight: 500;
+        padding: 0 6px;
+        height: 1rem;
+      }
+      button:hover {
+        border: none;
+      }
+      .littlefoot-footnote__content {
+        font-size: 0.8rem;
+      }
     }
   `
 }
@@ -185,7 +200,8 @@ export default ({
             width: 100%;
             min-height: 100vh;
             blockquote {
-              border-color: ${theme.colors.blockquote}
+              border-color: ${theme.colors.blockquote};
+              color: ${theme.colors.blockquote};
             }
           `}
         >
