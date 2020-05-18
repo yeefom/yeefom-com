@@ -51,7 +51,9 @@
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
+    "@types/react": "^16.0.0",
     "babel-preset-gatsby": "^0.2.20",
-    "prettier": "1.18.2"
+    "prettier": "1.18.2",
+    "typescript": "^3.9.2"
   }
 }
