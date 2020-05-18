@@ -57,7 +57,6 @@ module.exports = {
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     'gatsby-plugin-emotion',
-    'gatsby-plugin-catch-links',
     'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-plugin-manifest',
@@ -134,7 +133,6 @@ module.exports = {
                 }
               }
             `,
-            match: "^/blog/",
             output: '/rss.xml',
             title: 'Yifeng Wang RSS Feed',
             author: 'Yifeng Wang'
@@ -148,6 +146,5 @@ module.exports = {
         pathToConfigModule: `src/lib/typography`,
       },
     },
-    'gatsby-plugin-offline',
   ],
 }

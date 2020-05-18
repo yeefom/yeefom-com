@@ -1,4 +1,4 @@
-import { React } from 'react'
+import React from 'react'
 import { css } from '@emotion/core'
 import { Link } from 'gatsby'
 import { useTheme } from '../Theming'
