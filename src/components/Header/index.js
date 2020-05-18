@@ -54,6 +54,9 @@ const Header = ({ siteTitle }) => {
                 text-decoration: underline;
                 color: ${theme.colors.text};
               }
+              a:hover {
+                color: ${theme.colors.text};
+              }
               .active {
                 font-weight: 600;
               }
