@@ -39,6 +39,13 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/content/images`,
+        name: 'image',
+      },
+    },
+    {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: ['.mdx', '.md', '.markdown'],
@@ -46,7 +53,8 @@ module.exports = {
           {
             resolve: 'gatsby-remark-images',
             options: {
-              backgroundColor: '#fafafa',
+              backgroundColor: 'transparent',
+              disableBgImage: true,
               maxWidth: 1035,
             },
           },
@@ -146,5 +154,6 @@ module.exports = {
         pathToConfigModule: `src/lib/typography`,
       },
     },
+    `gatsby-plugin-offline`,
   ],
 }
