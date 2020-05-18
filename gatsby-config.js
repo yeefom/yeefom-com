@@ -45,6 +45,8 @@ module.exports = {
         name: 'image',
       },
     },
+    'gatsby-plugin-sharp',
+    'gatsby-remark-images',
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
@@ -53,7 +55,7 @@ module.exports = {
           {
             resolve: 'gatsby-remark-images',
             options: {
-              backgroundColor: 'transparent',
+              backgroundColor: 'none',
               disableBgImage: true,
               maxWidth: 1035,
             },
@@ -62,7 +64,6 @@ module.exports = {
         ],
       },
     },
-    'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     'gatsby-plugin-emotion',
     'gatsby-plugin-react-helmet',
@@ -128,7 +129,7 @@ module.exports = {
                 ) {
                   edges {
                     node {
-                      fields { 
+                      fields {
                         slug
                         date
                       }
@@ -154,6 +155,5 @@ module.exports = {
         pathToConfigModule: `src/lib/typography`,
       },
     },
-    `gatsby-plugin-offline`,
   ],
 }
