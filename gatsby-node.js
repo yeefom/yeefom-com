@@ -48,7 +48,7 @@ const createAboutPage = (createPage) => {
   })
 }
 
-const createIndexPages = (createPage, edges) => {
+const createIndexPages = (createPage, createRedirect, edges) => {
   const pages = edges.filter(edge => edge.node.fields.type === 'blog')
     .reduce((acc, value, index) => {
       const pageIndex = Math.floor(index / PAGINATION_OFFSET)
@@ -63,19 +63,27 @@ const createIndexPages = (createPage, edges) => {
     }, [])
 
   pages.forEach((page, index) => {
+    const pageIndex = index + 1;
     createPage({
-      path: index === 0 ? '/' : `/${index}`,
+      path: pageIndex === 1 ? '/' : `/page/${pageIndex}`,
       component: path.resolve(`src/templates/index.js`),
       context: {
         pagination: {
           page,
-          nextPagePath: index === pages.length - 1 ? null : `/${index + 1}`,
-          previousPagePath: index === 0 ? null : `/${index - 1 === 0 ? '' : index - 1}`,
+          nextPagePath: pageIndex === pages.length ? null : `/page/${pageIndex + 1}`,
+          previousPagePath: pageIndex === 1 ? null : `${pageIndex === 2 ? '/' : `/page/${pageIndex - 1}`}`,
           pageCount: pages.length,
         },
         categories: []
       },
     })
+  })
+
+  createRedirect({
+    fromPath: '/page/1',
+    toPath: '/',
+    redirectInBrowser: true,
+    isPermanent: true,
   })
 }
 
@@ -117,7 +125,7 @@ exports.createPages = ({ actions, graphql }) =>
     const { edges } = data.allMdx
     const { createRedirect, createPage } = actions
     createPosts(createPage, createRedirect, edges)
-    createIndexPages(createPage, edges, {})
+    createIndexPages(createPage, createRedirect, edges)
     createArchivePage(createPage)
     createAboutPage(createPage)
   })
