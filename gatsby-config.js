@@ -60,7 +60,6 @@ module.exports = {
               maxWidth: 1035,
             },
           },
-          'gatsby-remark-numbered-footnotes'
         ],
       },
     },
