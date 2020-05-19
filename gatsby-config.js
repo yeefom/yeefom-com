@@ -91,7 +91,7 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-feed-mdx`,
+      resolve: `gatsby-plugin-feed`,
       options: {
         query: `
           {
@@ -114,7 +114,6 @@ module.exports = {
               return allMdx.edges.map(edge => {
                 return Object.assign({}, edge.node.frontmatter, {
                   description: edge.node.html,
-                  date: edge.node.fields.date,
                   url: site.siteMetadata.siteUrl + '/' + edge.node.fields.slug,
                 })
               })
@@ -130,10 +129,10 @@ module.exports = {
                     node {
                       fields {
                         slug
-                        date
                       }
                       frontmatter {
                         title
+                        date
                       }
                       html
                     }
@@ -141,9 +140,9 @@ module.exports = {
                 }
               }
             `,
-            output: '/rss.xml',
-            title: 'Yifeng Wang RSS Feed',
-            author: 'Yifeng Wang'
+            title: `${config.siteTitle} RSS Feed`,
+            author: config.author,
+            output: config.feed
           },
         ],
       },

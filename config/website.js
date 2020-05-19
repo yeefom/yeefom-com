@@ -19,5 +19,5 @@ module.exports = {
   twitterHandle: '@yeefom',
   github: 'https://github.com/yeefom/',
   email: 'mailto:yifeng@yeefom.com',
-  feed: '/rss.xml'
+  feed: 'feed.xml'
 }
