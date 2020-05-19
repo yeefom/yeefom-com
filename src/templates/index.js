@@ -10,43 +10,44 @@ import i18n from '../i18n'
 
 export default function Index({ data: { site, allMdx }, pageContext: { pagination } }) {
   const theme = useTheme()
-  const { page, nextPagePath, previousPagePath } = pagination
-  const posts = page
-    .map(id => allMdx.edges.find(edge => edge.node.id === id))
-    .filter(post => post !== undefined)
+  const { nextPagePath, previousPagePath } = pagination
 
   return (
     <Layout site={site}>
       <Container>
-        {posts.map(({ node: post }) => (
-          <article
-            key={post.id}
-            css={css`
-              :not(:first-of-type) {
-                margin-top: 140px;
-              }
-            `}
-          >
-            <h1
-              css={css({
-                marginBottom: '5px',
-                ':hover': {
-                  color: theme.colors.primary,
-                },
-              })}
+        {allMdx.edges.map(({ node }) => {
+          const { id, body, frontmatter, fields } = node;
+
+          return (
+            <article
+              key={id}
+              css={css`
+                :not(:first-of-type) {
+                  margin-top: 140px;
+                }
+              `}
             >
-              <Link
-                to={'/blog/' + post.frontmatter.slug}
-                aria-label={`View ${post.frontmatter.title}`}
+              <h1
+                css={css({
+                  marginBottom: '5px',
+                  ':hover': {
+                    color: theme.colors.primary,
+                  },
+                })}
               >
-                {post.frontmatter.title}
-              </Link>
-            </h1>
-            <small css={css`display: inline-block; margin-bottom: 60px;`}>{post.frontmatter.date}</small>
-            <br />
-            <MDXRenderer>{post.body}</MDXRenderer>
-          </article>
-        ))}
+                <Link
+                  to={fields.pagePath}
+                  aria-label={`View ${frontmatter.title}`}
+                >
+                  {frontmatter.title}
+                </Link>
+              </h1>
+              <small css={css`display: inline-block; margin-bottom: 60px;`}>{frontmatter.date}</small>
+              <br/>
+              <MDXRenderer>{body}</MDXRenderer>
+            </article>
+          );
+        })}
         <div css={css({ marginTop: '77px', display: 'flex', justifyContent: 'space-between'})}>
           {previousPagePath === null ? <div>{''}</div> : (
             <Link to={previousPagePath} aria-label={i18n.previousPageAria}>
@@ -65,32 +66,23 @@ export default function Index({ data: { site, allMdx }, pageContext: { paginatio
 }
 
 export const pageQuery = graphql`
-  query {
+  query($pagePosts: [String!]!) {
     site {
       ...site
-      siteMetadata {
-        title
-      }
     }
     allMdx(
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: { fields: { type: { eq: "blog" } } }
+      filter: { id: { in: $pagePosts } }
     ) {
       edges {
         node {
           id
           fields {
-            title
-            slug
-            date
-            type
+            pagePath
           }
           frontmatter {
             title
             date(formatString: "MMMM DD, YYYY")
-            description
-            slug
-            keywords
           }
           body
         }

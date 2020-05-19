@@ -36,7 +36,7 @@ export const pageQuery = graphql`
     site {
       ...site
     }
-    mdx(fields: { type: { eq: "page" }, slug: { eq: "about" } }) {
+    mdx(fields: { type: { eq: "page" } }, frontmatter: { slug: { eq: "about" } }) {
       frontmatter {
         title
         slug

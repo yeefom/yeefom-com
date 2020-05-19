@@ -119,7 +119,7 @@ module.exports = {
               return allMdx.edges.map(edge => {
                 return Object.assign({}, edge.node.frontmatter, {
                   description: edge.node.html,
-                  url: site.siteMetadata.siteUrl + '/' + edge.node.fields.slug,
+                  url: site.siteMetadata.siteUrl + edge.node.fields.pagePath,
                 })
               })
             },
@@ -133,7 +133,7 @@ module.exports = {
                   edges {
                     node {
                       fields {
-                        slug
+                        pagePath
                       }
                       frontmatter {
                         title

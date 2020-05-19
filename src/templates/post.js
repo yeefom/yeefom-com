@@ -12,30 +12,29 @@ export default function Post({
   data: { site, mdx },
   pageContext: { next, prev },
 }) {
-  const date = mdx.frontmatter.date
-  const title = mdx.frontmatter.title
+  const { frontmatter, body } = mdx
 
   return (
-    <Layout site={site} frontmatter={mdx.frontmatter} pageTitle={title}>
-      <SEO frontmatter={mdx.frontmatter} isBlogPost />
+    <Layout site={site} frontmatter={frontmatter} pageTitle={frontmatter.title}>
+      <SEO frontmatter={frontmatter} isBlogPost />
       <Container>
         <article>
           <h1 css={css`margin-bottom: 5px;`}>
-            {title}
+            {frontmatter.title}
           </h1>
-          <small css={css`display: inline-block; margin-bottom: 60px;`}>{date}</small>
+          <small css={css`display: inline-block; margin-bottom: 60px;`}>{frontmatter.date}</small>
           <br />
-          <MDXRenderer>{mdx.body}</MDXRenderer>
+          <MDXRenderer>{body}</MDXRenderer>
         </article>
         <div css={css({ marginTop: '77px', display: 'flex', justifyContent: 'space-between'})}>
           {prev === null ? <div>{''}</div> : (
-            <Link to={`/${prev.fields.slug}`} aria-label={i18n.previousArticleAria}>
-              {`${i18n.previous} ${prev.fields.title}`}
+            <Link to={prev.pagePath} aria-label={i18n.previousArticleAria}>
+              {`${i18n.previous} ${prev.title}`}
             </Link>
           )}
           {next && (
-            <Link to={`/${next.fields.slug}`} aria-label={i18n.nextArticleAria}>
-              {`${next.fields.title} ${i18n.next}`}
+            <Link to={next.pagePath} aria-label={i18n.nextArticleAria}>
+              {`${next.title} ${i18n.next}`}
             </Link>
           )}
         </div>
@@ -49,12 +48,11 @@ export const pageQuery = graphql`
     site {
       ...site
     }
-    mdx(fields: { id: { eq: $id } }) {
+    mdx(id: { eq: $id }) {
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
         author
-        slug
         keywords
       }
       body

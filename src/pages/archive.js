@@ -7,11 +7,8 @@ import Layout from '../components/Layout'
 import Link from '../components/Link'
 import i18n from '../i18n'
 
-export default ({
-  data: { site, allMdx }
-}) => {
-  const posts = allMdx.edges
-    .filter(post => post !== undefined)
+export default ({ data }) => {
+  const { site, allMdx } = data
 
   return (
     <Layout site={site} pageTitle={i18n.archive}>
@@ -21,33 +18,37 @@ export default ({
           {i18n.archive}
         </h1>
         <br />
-        {posts.map(({ node: post }) => (
-          <div
-            key={post.id}
-            css={css`
-              :not(:first-of-type) {
-                margin-top: 20px;
-              }
-              display: flex;
-              flex-direction: column;
-            `}
-          >
-            <small>{post.frontmatter.date}</small>
-            <h2
+        {allMdx.edges.map(({ node }) => {
+          const { frontmatter, fields, id } = node
+
+          return (
+            <div
+              key={id}
               css={css`
-                font-size: 1em;
-                margin-top: 8px;
-                margin-bottom: 10px;
+                :not(:first-of-type) {
+                  margin-top: 20px;
+                }
+                display: flex;
+                flex-direction: column;
               `}
             >
-              <Link
-                aria-label={`View ${post.frontmatter.title} article`}
-                to={`/${post.fields.slug}`}>
-                {post.frontmatter.title}
-              </Link>
-            </h2>
-          </div>
-        ))}
+              <small>{frontmatter.date}</small>
+              <h2
+                css={css`
+                  font-size: 1em;
+                  margin-top: 8px;
+                  margin-bottom: 10px;
+                `}
+              >
+                <Link
+                  aria-label={`View ${frontmatter.title} article`}
+                  to={fields.pagePath}>
+                  {frontmatter.title}
+                </Link>
+              </h2>
+            </div>
+          );
+        })}
       </Container>
     </Layout>
   )
@@ -66,14 +67,11 @@ export const pageQuery = graphql`
         node {
           id
           fields {
-            title
-            slug
-            date
+            pagePath
           }
           frontmatter {
             title
             date(formatString: "MMMM DD, YYYY")
-            slug
           }
         }
       }

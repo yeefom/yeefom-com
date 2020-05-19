@@ -1,34 +1,25 @@
 const path = require('path')
 
-const _ = require('lodash')
 const PAGINATION_OFFSET = 7
 
-const createPosts = (createPage, createRedirect, edges) => {
-  const posts = edges.filter(edge => edge.node.fields.type === 'blog');
-
-  posts.forEach(({ node }, i) => {
-    const prev = i === 0 ? null : posts[i - 1].node
-    const next = i === posts.length - 1 ? null : posts[i + 1].node
-    const pagePath = node.fields.slug
-
-    if (node.fields.redirects) {
-      node.fields.redirects.forEach(fromPath => {
-        createRedirect({
-          fromPath,
-          toPath: pagePath,
-          redirectInBrowser: true,
-          isPermanent: true,
-        })
-      })
-    }
+const createPosts = (createPage, edges) => {
+  edges.forEach(({ node }, i) => {
+    const prev = i === 0 ? null : edges[i - 1].node
+    const next = i === edges.length - 1 ? null : edges[i + 1].node
 
     createPage({
-      path: pagePath,
+      path: node.fields.pagePath,
       component: path.resolve(`./src/templates/post.js`),
       context: {
         id: node.id,
-        prev,
-        next,
+        prev: prev ? {
+          pagePath: prev.fields.pagePath,
+          title: prev.frontmatter.title
+        } : null,
+        next: next ? {
+          pagePath: next.fields.pagePath,
+          title: next.frontmatter.title
+        } : null
       },
     })
   })
@@ -52,15 +43,14 @@ const createIndexPages = (createPage, createRedirect, edges) => {
     const pageIndex = index + 1;
     createPage({
       path: pageIndex === 1 ? '/' : `/page/${pageIndex}`,
-      component: path.resolve(`src/templates/index.js`),
+      component: path.resolve(`./src/templates/index.js`),
       context: {
+        pagePosts: page,
         pagination: {
-          page,
           nextPagePath: pageIndex === pages.length ? null : `/page/${pageIndex + 1}`,
           previousPagePath: pageIndex === 1 ? null : `${pageIndex === 2 ? '/' : `/page/${pageIndex - 1}`}`,
           pageCount: pages.length,
-        },
-        categories: []
+        }
       },
     })
   })
@@ -78,22 +68,18 @@ exports.createPages = ({ actions, graphql }) =>
     query {
       allMdx(
         sort: { order: DESC, fields: [frontmatter___date] }
+        filter: { fields: { type: { eq: "blog" } } }
       ) {
         edges {
           node {
             id
-            parent {
-              ... on File {
-                name
-                sourceInstanceName
-              }
-            }
-            excerpt(pruneLength: 250)
             fields {
-              title
-              slug
-              date
+              pagePath
               type
+            }
+            frontmatter {
+              title
+              date
             }
           }
         }
@@ -104,13 +90,13 @@ exports.createPages = ({ actions, graphql }) =>
       return Promise.reject(errors)
     }
 
-    if (_.isEmpty(data.allMdx)) {
+    if (!data.allMdx || !data.allMdx.edges) {
       return Promise.reject('There are no posts!')
     }
 
     const { edges } = data.allMdx
     const { createRedirect, createPage } = actions
-    createPosts(createPage, createRedirect, edges)
+    createPosts(createPage, edges)
     createIndexPages(createPage, createRedirect, edges)
   })
 
@@ -132,50 +118,14 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   if (node.internal.type === `Mdx`) {
     const parent = getNode(node.parent)
     const type = parent.sourceInstanceName
-    const slug = type === 'blog'
-      ? `blog/${node.frontmatter.slug}`
-      : node.frontmatter.slug
+    const pagePath = type === 'blog'
+      ? `/blog/${node.frontmatter.slug}`
+      : `/${node.frontmatter.slug}`
 
     createNodeField({
-      name: 'id',
+      name: 'pagePath',
       node,
-      value: node.id,
-    })
-
-    createNodeField({
-      name: 'title',
-      node,
-      value: node.frontmatter.title,
-    })
-
-    createNodeField({
-      name: 'description',
-      node,
-      value: node.frontmatter.description,
-    })
-
-    createNodeField({
-      name: 'slug',
-      node,
-      value: slug,
-    })
-
-    createNodeField({
-      name: 'date',
-      node,
-      value: node.frontmatter.date ? node.frontmatter.date.split(' ')[0] : '',
-    })
-
-    createNodeField({
-      name: 'keywords',
-      node,
-      value: node.frontmatter.keywords || [],
-    })
-
-    createNodeField({
-      name: 'redirects',
-      node,
-      value: node.frontmatter.redirects,
+      value: pagePath,
     })
 
     createNodeField({
