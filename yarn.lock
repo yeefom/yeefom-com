@@ -11721,6 +11721,13 @@ remark-mdx@^1.5.8:
     remark-parse "7.0.2"
     unified "8.4.2"
 
+remark-numbered-footnote-labels@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/remark-numbered-footnote-labels/-/remark-numbered-footnote-labels-1.1.0.tgz#1ce06af0bbaa09ce96cf258cd533b9a7a1856b6f"
+  integrity sha512-G9iPR+chpA/Lg0zhnuRUKQGB8Rl9h6efeQdd6HJXAq+l+NRh9/CD9+khJOfrStKU1aq8NIuhIvTTh1AzwLZVvQ==
+  dependencies:
+    unist-util-visit "^2.0.0"
+
 remark-parse@7.0.2:
   version "7.0.2"
   resolved "https://registry.yarnpkg.com/remark-parse/-/remark-parse-7.0.2.tgz#41e7170d9c1d96c3d32cf1109600a9ed50dba7cf"

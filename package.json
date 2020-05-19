@@ -9,9 +9,8 @@
     "gatsby"
   ],
   "scripts": {
-    "clean": "rm -rf .cache && rm -rf public",
-    "build": "rm -rf .cache && rm -rf public && gatsby build",
-    "serve": "rm -rf .cache && rm -rf public && gatsby build && gatsby serve"
+    "build": "gatsby clean && gatsby build",
+    "serve": "gatsby clean && gatsby build && gatsby serve"
   },
   "main": "",
   "dependencies": {
@@ -45,6 +44,7 @@
     "react-helmet": "~5.2.1",
     "react-icons": "^3.7.0",
     "react-typography": "^0.16.19",
+    "remark-numbered-footnote-labels": "^1.1.0",
     "typography": "^0.16.19"
   },
   "devDependencies": {

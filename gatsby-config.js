@@ -1,4 +1,6 @@
+const remarkFootnotesPlugin = require('remark-numbered-footnote-labels')
 const config = require('./config/website')
+
 const pathPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix
 
 require('dotenv').config({
@@ -61,6 +63,9 @@ module.exports = {
             },
           },
         ],
+        remarkPlugins: [
+          remarkFootnotesPlugin
+        ]
       },
     },
     'gatsby-transformer-sharp',
