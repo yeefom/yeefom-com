@@ -34,20 +34,6 @@ const createPosts = (createPage, createRedirect, edges) => {
   })
 }
 
-const createArchivePage = (createPage) => {
-  createPage({
-    path: '/archive',
-    component: path.resolve(`src/templates/archive.js`)
-  })
-}
-
-const createAboutPage = (createPage) => {
-  createPage({
-    path: '/about',
-    component: path.resolve(`src/templates/about.js`)
-  })
-}
-
 const createIndexPages = (createPage, createRedirect, edges) => {
   const pages = edges.filter(edge => edge.node.fields.type === 'blog')
     .reduce((acc, value, index) => {
@@ -126,8 +112,6 @@ exports.createPages = ({ actions, graphql }) =>
     const { createRedirect, createPage } = actions
     createPosts(createPage, createRedirect, edges)
     createIndexPages(createPage, createRedirect, edges)
-    createArchivePage(createPage)
-    createAboutPage(createPage)
   })
 
 exports.onCreateWebpackConfig = ({ actions }) => {
