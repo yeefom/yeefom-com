@@ -12,7 +12,6 @@ module.exports = {
   siteMetadata: {
     siteUrl: config.siteUrl + pathPrefix,
     title: config.siteTitle,
-    twitterHandle: config.twitterHandle,
     description: config.siteDescription,
     keywords: [''],
     canonicalUrl: config.siteUrl,
@@ -22,7 +21,6 @@ module.exports = {
     },
     social: {
       twitter: config.twitterHandle,
-      fbAppID: '',
     },
   },
   plugins: [
