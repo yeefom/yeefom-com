@@ -6,11 +6,8 @@ import Container from '../components/Container'
 import Layout from '../components/Layout'
 
 export default () => {
-  const { site, mdx } = useStaticQuery(graphql`
+  const { mdx } = useStaticQuery(graphql`
     query {
-      site {
-        ...site
-      }
       mdx(
         fields: { type: { eq: "page" } }, 
         frontmatter: { slug: { eq: "about" } }
@@ -27,7 +24,7 @@ export default () => {
   const title = mdx.frontmatter.title
 
   return (
-    <Layout site={site} frontmatter={mdx.frontmatter} pageTitle={title}>
+    <Layout frontmatter={mdx.frontmatter} pageTitle={title}>
       <Container css={css`
         p:last-of-type {
           margin-bottom: 0;

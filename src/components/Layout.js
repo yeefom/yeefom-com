@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect } from 'react'
 import Helmet from 'react-helmet'
-import { graphql } from 'gatsby'
+import { graphql, useStaticQuery } from 'gatsby'
 import { MDXProvider } from '@mdx-js/react'
 import { lighten } from 'polished'
 import { Global, css } from '@emotion/core'
@@ -63,6 +63,10 @@ const getGlobalStyles = theme => {
       border: none;
       border-top: 1px solid ${theme.colors.blockquote};
       background: none;
+    }
+    blockquote {
+      border-color: ${theme.colors.blockquote};
+      color: ${theme.colors.blockquote};
     }
     em {
       font-style: italic;
@@ -148,12 +152,20 @@ const getGlobalStyles = theme => {
   `
 }
 
-export default ({
-  site,
-  frontmatter = {},
-  children,
-  pageTitle
-}) => {
+export default ({ children, pageTitle }) => {
+  const { site } = useStaticQuery(graphql`
+    query {
+      site {
+        siteMetadata {
+          title
+          author {
+            name
+          }
+        }
+      }
+    }
+  `)
+
   const initializeTheme = () => {
     if (typeof window !== 'undefined') {
       return localStorage.getItem('theme') || 'default'
@@ -169,22 +181,11 @@ export default ({
   }, [themeName])
 
   const toggleTheme = name => setTheme(name)
+
   const theme = {
     ...themes[themeName],
-    toggleTheme: toggleTheme,
+    toggleTheme
   }
-  const {
-    description: siteDescription,
-    keywords: siteKeywords,
-  } = site.siteMetadata
-
-  const {
-    keywords: frontmatterKeywords,
-    description: frontmatterDescription,
-  } = frontmatter
-
-  const keywords = (frontmatterKeywords || siteKeywords).join(', ')
-  const description = frontmatterDescription || siteDescription
 
   const siteTitle = pageTitle ? `${pageTitle} — ${site.siteMetadata.title}` : site.siteMetadata.title
 
@@ -199,20 +200,9 @@ export default ({
             flex-direction: column;
             width: 100%;
             min-height: 100vh;
-            blockquote {
-              border-color: ${theme.colors.blockquote};
-              color: ${theme.colors.blockquote};
-            }
           `}
         >
-          <Helmet
-            title={siteTitle}
-            titleTemplate={siteTitle}
-            meta={[
-              { name: 'description', content: description },
-              { name: 'keywords', content: keywords },
-            ]}
-          >
+          <Helmet title={siteTitle}>
             <html lang="en" />
             <noscript>This site runs best with JavaScript enabled.</noscript>
           </Helmet>
@@ -229,16 +219,3 @@ export default ({
     </ThemeProvider>
   )
 }
-
-export const pageQuery = graphql`
-  fragment site on Site {
-    siteMetadata {
-      title
-      description
-      author {
-        name
-      }
-      keywords
-    }
-  }
-`

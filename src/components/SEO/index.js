@@ -11,6 +11,7 @@ const SEO = ({ frontmatter = {}, postImage, isBlogPost }) => {
         siteMetadata {
           title
           description
+          keywords
           canonicalUrl
           image
           author {
@@ -26,6 +27,7 @@ const SEO = ({ frontmatter = {}, postImage, isBlogPost }) => {
 
   const title = isBlogPost ? frontmatter.title : siteMetadata.siteTitle
   const description = frontmatter.description || siteMetadata.description
+  const keywords = frontmatter.keywords || siteMetadata.keywords
   const image = postImage ? `${siteMetadata.canonicalUrl}${postImage}` : siteMetadata.image
   const url = frontmatter.slug
     ? (isBlogPost ? `/blog/${frontmatter.slug}` : `/${frontmatter.slug}`)
@@ -36,8 +38,8 @@ const SEO = ({ frontmatter = {}, postImage, isBlogPost }) => {
     <React.Fragment>
       <Helmet>
         {/* General tags */}
-        <title>{title}</title>
         <meta name="description" content={description}/>
+        <meta name="keywords" content={keywords.join(', ')}/>
         <meta name="image" content={image}/>
 
         {/* OpenGraph tags */}

@@ -8,11 +8,8 @@ import Link from '../components/Link'
 import i18n from '../i18n'
 
 export default () => {
-  const { site, allMdx } = useStaticQuery(graphql`
+  const { allMdx } = useStaticQuery(graphql`
     query {
-      site {
-        ...site
-      }
       allMdx(
         sort: { fields: [frontmatter___date], order: DESC }
         filter: { fields: { type: { eq: "blog" } } }
@@ -34,7 +31,7 @@ export default () => {
   `)
 
   return (
-    <Layout site={site} pageTitle={i18n.archive}>
+    <Layout pageTitle={i18n.archive}>
       <SEO />
       <Container>
         <h1 css={css`margin-bottom: 40px;`}>

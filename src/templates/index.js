@@ -8,12 +8,12 @@ import Container from '../components/Container'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import i18n from '../i18n'
 
-export default function Index({ data: { site, allMdx }, pageContext: { pagination } }) {
+export default function Index({ data: { allMdx }, pageContext: { pagination } }) {
   const theme = useTheme()
   const { nextPagePath, previousPagePath } = pagination
 
   return (
-    <Layout site={site}>
+    <Layout>
       <Container>
         {allMdx.edges.map(({ node }) => {
           const { id, body, frontmatter, fields } = node;
@@ -67,9 +67,6 @@ export default function Index({ data: { site, allMdx }, pageContext: { paginatio
 
 export const pageQuery = graphql`
   query($pagePosts: [String!]!) {
-    site {
-      ...site
-    }
     allMdx(
       sort: { fields: [frontmatter___date], order: DESC }
       filter: { id: { in: $pagePosts } }

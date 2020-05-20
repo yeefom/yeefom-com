@@ -9,13 +9,13 @@ import Link from "../components/Link";
 import i18n from "../i18n";
 
 export default function Post({
-  data: { site, mdx },
+  data: { mdx },
   pageContext: { next, prev },
 }) {
   const { frontmatter, body } = mdx
 
   return (
-    <Layout site={site} frontmatter={frontmatter} pageTitle={frontmatter.title}>
+    <Layout frontmatter={frontmatter} pageTitle={frontmatter.title}>
       <SEO frontmatter={frontmatter} isBlogPost />
       <Container>
         <article>
@@ -45,9 +45,6 @@ export default function Post({
 
 export const pageQuery = graphql`
   query($id: String!) {
-    site {
-      ...site
-    }
     mdx(id: { eq: $id }) {
       frontmatter {
         title

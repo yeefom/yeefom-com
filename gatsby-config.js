@@ -1,19 +1,12 @@
 const remarkFootnotesPlugin = require('remark-numbered-footnote-labels')
 const config = require('./config/website')
 
-const pathPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix
-
-require('dotenv').config({
-  path: `.env.${process.env.NODE_ENV}`,
-})
-
 module.exports = {
-  pathPrefix: config.pathPrefix,
   siteMetadata: {
-    siteUrl: config.siteUrl + pathPrefix,
+    siteUrl: config.siteUrl,
     title: config.siteTitle,
     description: config.siteDescription,
-    keywords: [''],
+    keywords: ['personal site', 'blog'],
     canonicalUrl: config.siteUrl,
     image: config.siteLogo,
     author: {
@@ -75,7 +68,7 @@ module.exports = {
         name: config.siteTitle,
         short_name: config.siteTitleShort,
         description: config.siteDescription,
-        start_url: config.pathPrefix,
+        start_url: '/',
         background_color: config.backgroundColor,
         theme_color: config.themeColor,
         display: 'standalone',
