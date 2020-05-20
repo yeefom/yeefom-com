@@ -1,13 +1,23 @@
 import React from 'react'
-import { Link, StaticQuery, graphql } from 'gatsby'
+import { Link, useStaticQuery, graphql } from 'gatsby'
 import { css } from '@emotion/core'
 import { useTheme } from '../Theming'
 import Links from './Links'
 
 import Container from '../Container'
 
-const Header = ({ siteTitle }) => {
+const Header = () => {
   const theme = useTheme()
+  const { site: { siteMetadata: { title } } } = useStaticQuery(graphql`
+    {
+      site {
+        siteMetadata {
+          title
+        }
+      }
+    }
+  `)
+
   return (
     <header
       css={css`
@@ -33,7 +43,7 @@ const Header = ({ siteTitle }) => {
             }
           `}
         >
-          {siteTitle}
+          {title}
         </Link>
         <nav
           css={css`
@@ -79,21 +89,4 @@ const Header = ({ siteTitle }) => {
   )
 }
 
-const ConnectedHeader = props => (
-  <StaticQuery
-    query={graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-          }
-        }
-      }
-    `}
-    render={data => (
-      <Header siteTitle={data.site.siteMetadata.title} {...props} />
-    )}
-  />
-)
-
-export default ConnectedHeader
+export default Header
