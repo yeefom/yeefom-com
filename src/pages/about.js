@@ -1,11 +1,29 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, useStaticQuery } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { css } from '@emotion/core'
 import Container from '../components/Container'
 import Layout from '../components/Layout'
 
-export default ({ data: { site, mdx } }) => {
+export default () => {
+  const { site, mdx } = useStaticQuery(graphql`
+    query {
+      site {
+        ...site
+      }
+      mdx(
+        fields: { type: { eq: "page" } }, 
+        frontmatter: { slug: { eq: "about" } }
+        ) {
+          frontmatter {
+            title
+            slug
+          }
+          body
+      }
+    }
+  `)
+
   const title = mdx.frontmatter.title
 
   return (
@@ -30,18 +48,3 @@ export default ({ data: { site, mdx } }) => {
     </Layout>
   )
 }
-
-export const pageQuery = graphql`
-  query {
-    site {
-      ...site
-    }
-    mdx(fields: { type: { eq: "page" } }, frontmatter: { slug: { eq: "about" } }) {
-      frontmatter {
-        title
-        slug
-      }
-      body
-    }
-  }
-`

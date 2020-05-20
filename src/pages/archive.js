@@ -1,5 +1,5 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, useStaticQuery } from 'gatsby'
 import { css } from '@emotion/core'
 import Container from '../components/Container'
 import SEO from '../components/SEO'
@@ -7,8 +7,31 @@ import Layout from '../components/Layout'
 import Link from '../components/Link'
 import i18n from '../i18n'
 
-export default ({ data }) => {
-  const { site, allMdx } = data
+export default () => {
+  const { site, allMdx } = useStaticQuery(graphql`
+    query {
+      site {
+        ...site
+      }
+      allMdx(
+        sort: { fields: [frontmatter___date], order: DESC }
+        filter: { fields: { type: { eq: "blog" } } }
+      ) {
+        edges {
+          node {
+            id
+            fields {
+              pagePath
+            }
+            frontmatter {
+              title
+              date(formatString: "MMMM DD, YYYY")
+            }
+          }
+        }
+      }
+    }
+  `)
 
   return (
     <Layout site={site} pageTitle={i18n.archive}>
@@ -53,28 +76,3 @@ export default ({ data }) => {
     </Layout>
   )
 }
-
-export const pageQuery = graphql`
-  query {
-    site {
-      ...site
-    }
-    allMdx(
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { fields: { type: { eq: "blog" } } }
-    ) {
-      edges {
-        node {
-          id
-          fields {
-            pagePath
-          }
-          frontmatter {
-            title
-            date(formatString: "MMMM DD, YYYY")
-          }
-        }
-      }
-    }
-  }
-`
