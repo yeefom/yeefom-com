@@ -121,9 +121,8 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   if (node.internal.type === `Mdx`) {
     const parent = getNode(node.parent)
     const type = parent.sourceInstanceName
-    const pagePath = type === 'blog'
-      ? `/blog/${node.frontmatter.slug}`
-      : `/${node.frontmatter.slug}`
+    const { frontmatter } = node
+    const pagePath = type === 'blog' ? `/blog/${frontmatter.slug}` : `/${frontmatter.slug}`
 
     createNodeField({
       name: 'pagePath',
@@ -135,6 +134,36 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       name: 'type',
       node,
       value: type,
+    })
+
+    createNodeField({
+      name: 'title',
+      node,
+      value: frontmatter.title,
+    })
+
+    createNodeField({
+      name: 'date',
+      node,
+      value: frontmatter.date,
+    })
+
+    createNodeField({
+      name: 'slug',
+      node,
+      value: frontmatter.slug,
+    })
+
+    createNodeField({
+      name: 'description',
+      node,
+      value: frontmatter.description,
+    })
+
+    createNodeField({
+      name: 'keywords',
+      node,
+      value: frontmatter.keywords,
     })
   }
 }

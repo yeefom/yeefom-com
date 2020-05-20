@@ -7,6 +7,7 @@ import { useTheme } from '../components/Theming'
 import Container from '../components/Container'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import i18n from '../i18n'
+import SEO from "../components/SEO";
 
 export default function Index({ data: { allMdx }, pageContext: { pagination } }) {
   const theme = useTheme()
@@ -14,9 +15,10 @@ export default function Index({ data: { allMdx }, pageContext: { pagination } })
 
   return (
     <Layout>
+      <SEO />
       <Container>
         {allMdx.edges.map(({ node }) => {
-          const { id, body, frontmatter, fields } = node;
+          const { id, body, fields } = node;
 
           return (
             <article
@@ -37,12 +39,12 @@ export default function Index({ data: { allMdx }, pageContext: { pagination } })
               >
                 <Link
                   to={fields.pagePath}
-                  aria-label={`View ${frontmatter.title}`}
+                  aria-label={`View ${fields.title}`}
                 >
-                  {frontmatter.title}
+                  {fields.title}
                 </Link>
               </h1>
-              <small css={css`display: inline-block; margin-bottom: 60px;`}>{frontmatter.date}</small>
+              <small css={css`display: inline-block; margin-bottom: 60px;`}>{fields.date}</small>
               <br/>
               <MDXRenderer>{body}</MDXRenderer>
             </article>
@@ -68,7 +70,7 @@ export default function Index({ data: { allMdx }, pageContext: { pagination } })
 export const pageQuery = graphql`
   query($pagePosts: [String!]!) {
     allMdx(
-      sort: { fields: [frontmatter___date], order: DESC }
+      sort: { fields: [fields___date], order: DESC }
       filter: { id: { in: $pagePosts } }
     ) {
       edges {
@@ -76,8 +78,6 @@ export const pageQuery = graphql`
           id
           fields {
             pagePath
-          }
-          frontmatter {
             title
             date(formatString: "MMMM DD, YYYY")
           }

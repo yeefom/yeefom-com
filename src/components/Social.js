@@ -3,7 +3,7 @@ import { useTheme } from './Theming'
 import { css } from '@emotion/core'
 import i18n from '../i18n'
 
-export const Twitter = (target) => {
+export const Twitter = ({ target }) => {
   const theme = useTheme()
   return (
     <a
@@ -33,7 +33,7 @@ export const Twitter = (target) => {
   )
 }
 
-export const GitHub = (target) => {
+export const GitHub = ({ target }) => {
   const theme = useTheme()
   return (
     <a
@@ -63,7 +63,7 @@ export const GitHub = (target) => {
   )
 }
 
-export const Email = (target) => {
+export const Email = ({ target }) => {
   const theme = useTheme()
   return (
     <a
@@ -93,7 +93,7 @@ export const Email = (target) => {
   )
 }
 
-export const Feed = (target) => {
+export const Feed = ({ target }) => {
   const theme = useTheme()
   return (
     <a

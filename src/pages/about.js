@@ -4,27 +4,25 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { css } from '@emotion/core'
 import Container from '../components/Container'
 import Layout from '../components/Layout'
+import SEO from "../components/SEO";
 
 export default () => {
-  const { mdx } = useStaticQuery(graphql`
+  const { mdx: { fields, body } } = useStaticQuery(graphql`
     query {
       mdx(
-        fields: { type: { eq: "page" } }, 
-        frontmatter: { slug: { eq: "about" } }
-        ) {
-          frontmatter {
-            title
-            slug
-          }
-          body
+        fields: { type: { eq: "page" }, slug: { eq: "about" } }, 
+      ) {
+        fields {
+          title
+        }
+        body
       }
     }
   `)
 
-  const title = mdx.frontmatter.title
-
   return (
-    <Layout frontmatter={mdx.frontmatter} pageTitle={title}>
+    <Layout pageTitle={fields.title}>
+      <SEO postMeta={{ title: fields.title }} />
       <Container css={css`
         p:last-of-type {
           margin-bottom: 0;
@@ -36,10 +34,10 @@ export default () => {
               margin-bottom: 40px;
             `}
           >
-            {title}
+            {fields.title}
           </h1>
           <br />
-          <MDXRenderer>{mdx.body}</MDXRenderer>
+          <MDXRenderer>{body}</MDXRenderer>
         </article>
       </Container>
     </Layout>

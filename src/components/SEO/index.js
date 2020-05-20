@@ -4,7 +4,7 @@ import { useStaticQuery, graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 import SchemaOrg from './SchemaOrg'
 
-const SEO = ({ frontmatter = {}, postImage, isBlogPost }) => {
+const SEO = ({ postMeta = {}, isBlogPost }) => {
   const { site: { siteMetadata } } = useStaticQuery(graphql`
     {
       site {
@@ -25,14 +25,14 @@ const SEO = ({ frontmatter = {}, postImage, isBlogPost }) => {
     }
   `)
 
-  const title = isBlogPost ? frontmatter.title : siteMetadata.siteTitle
-  const description = frontmatter.description || siteMetadata.description
-  const keywords = frontmatter.keywords || siteMetadata.keywords
-  const image = postImage ? `${siteMetadata.canonicalUrl}${postImage}` : siteMetadata.image
-  const url = frontmatter.slug
-    ? (isBlogPost ? `/blog/${frontmatter.slug}` : `/${frontmatter.slug}`)
+  const title = postMeta.title || siteMetadata.title
+  const description = postMeta.description || siteMetadata.description
+  const keywords = postMeta.keywords || siteMetadata.keywords
+  const image = postMeta.postImage ? `${siteMetadata.canonicalUrl}${postMeta.postImage}` : siteMetadata.image
+  const url = postMeta.slug
+    ? (isBlogPost ? `/blog/${postMeta.slug}` : `/${postMeta.slug}`)
     : siteMetadata.canonicalUrl
-  const datePublished = isBlogPost ? frontmatter.datePublished : false
+  const datePublished = isBlogPost ? postMeta.datePublished : false
 
   return (
     <React.Fragment>

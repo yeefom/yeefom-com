@@ -12,17 +12,17 @@ export default function Post({
   data: { mdx },
   pageContext: { next, prev },
 }) {
-  const { frontmatter, body } = mdx
+  const { fields, body } = mdx
 
   return (
-    <Layout frontmatter={frontmatter} pageTitle={frontmatter.title}>
-      <SEO frontmatter={frontmatter} isBlogPost />
+    <Layout pageTitle={fields.title}>
+      <SEO postMeta={fields} isBlogPost />
       <Container>
         <article>
           <h1 css={css`margin-bottom: 5px;`}>
-            {frontmatter.title}
+            {fields.title}
           </h1>
-          <small css={css`display: inline-block; margin-bottom: 60px;`}>{frontmatter.date}</small>
+          <small css={css`display: inline-block; margin-bottom: 60px;`}>{fields.date}</small>
           <br />
           <MDXRenderer>{body}</MDXRenderer>
         </article>
@@ -46,10 +46,11 @@ export default function Post({
 export const pageQuery = graphql`
   query($id: String!) {
     mdx(id: { eq: $id }) {
-      frontmatter {
+      fields {
         title
         date(formatString: "MMMM DD, YYYY")
-        author
+        slug
+        description
         keywords
       }
       body
