@@ -1,14 +1,13 @@
 import React from 'react'
 import { useTheme } from './Theming'
 import { css } from '@emotion/core'
-import config from '../../config/website'
 import i18n from '../i18n'
 
-export const Twitter = () => {
+export const Twitter = (target) => {
   const theme = useTheme()
   return (
     <a
-      href={config.twitter}
+      href={target}
       aria-label={i18n.twitterAria}
       css={css`
         color: ${theme.colors.text};
@@ -34,11 +33,11 @@ export const Twitter = () => {
   )
 }
 
-export const GitHub = () => {
+export const GitHub = (target) => {
   const theme = useTheme()
   return (
     <a
-      href={config.github}
+      href={target}
       aria-label={i18n.githubAria}
       css={css`
         margin-left: 10px;
@@ -64,11 +63,11 @@ export const GitHub = () => {
   )
 }
 
-export const Email = () => {
+export const Email = (target) => {
   const theme = useTheme()
   return (
     <a
-      href={config.email}
+      href={target}
       aria-label={i18n.emailAria}
       css={css`
         margin-left: 10px;
@@ -94,11 +93,11 @@ export const Email = () => {
   )
 }
 
-export const Feed = () => {
+export const Feed = (target) => {
   const theme = useTheme()
   return (
     <a
-      href={`/${config.feed}`}
+      href={target}
       aria-label={i18n.feedAria}
       css={css`
         margin-left: 10px;

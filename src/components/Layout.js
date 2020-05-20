@@ -9,7 +9,6 @@ import { bpMaxSM } from '../lib/breakpoints'
 import mdxComponents from './mdx'
 import Header from './Header'
 import reset from '../lib/reset'
-import config from '../../config/website'
 import Footer from '../components/Footer'
 
 const getGlobalStyles = theme => {
@@ -210,10 +209,7 @@ export default ({ children, pageTitle }) => {
           <MDXProvider components={mdxComponents}>
             <Fragment>{children}</Fragment>
           </MDXProvider>
-          <Footer
-            author={site.siteMetadata.author.name}
-            copyRightYears={config.copyRightYears}
-          />
+          <Footer/>
         </div>
       </Fragment>
     </ThemeProvider>

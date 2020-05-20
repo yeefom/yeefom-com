@@ -1,11 +1,30 @@
 import React from 'react'
 import { css } from '@emotion/core'
-import {Twitter, GitHub, Feed, Email} from './Social'
+import { useStaticQuery, graphql } from 'gatsby'
+import { Twitter, GitHub, Feed, Email } from './Social'
 import Container from './Container'
 import { useTheme } from './Theming'
 
-const Footer = ({ author, copyRightYears }) => {
+const Footer = () => {
   const theme = useTheme()
+  const { site: { siteMetadata: { author, footer } } } = useStaticQuery(graphql`
+    {
+      site {
+        siteMetadata {
+          author {
+            name
+          }
+          footer {
+            copyRightYears
+            twitter
+            github
+            email
+            feedPath
+          }
+        }
+      }
+    }
+  `)
 
   return (
     <footer>
@@ -18,10 +37,10 @@ const Footer = ({ author, copyRightYears }) => {
         `}
         >
           <div css={css`opacity: 0.7`}>
-            <Twitter/>
-            <GitHub/>
-            <Email/>
-            <Feed/>
+            <Twitter target={footer.twitter}/>
+            <GitHub target={footer.github}/>
+            <Email target={footer.email}/>
+            <Feed target={footer.feedPath}/>
           </div>
           <div
             css={css`
@@ -30,7 +49,7 @@ const Footer = ({ author, copyRightYears }) => {
               opacity: 0.7;
             `}
           >
-            {author && `${author} \u00A9 ${copyRightYears}`}
+            {`${author.name} \u00A9 ${footer.copyRightYears}`}
           </div>
         </div>
       </Container>

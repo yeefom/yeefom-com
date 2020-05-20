@@ -13,8 +13,15 @@ module.exports = {
       name: config.author
     },
     social: {
-      twitter: config.twitterHandle,
+      twitterHandle: config.twitterHandle,
     },
+    footer: {
+      copyRightYears: config.copyRightYears,
+      twitter: config.twitter,
+      github: config.github,
+      email: config.email,
+      feedPath: `/${config.feed}`
+    }
   },
   plugins: [
     {
