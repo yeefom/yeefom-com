@@ -1,5 +1,5 @@
 const remarkFootnotesPlugin = require('remark-numbered-footnote-labels')
-const config = require('./config/website')
+const config = require('./config/config')
 
 module.exports = {
   siteMetadata: {
