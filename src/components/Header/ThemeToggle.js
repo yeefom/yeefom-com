@@ -19,7 +19,7 @@ const DefaultMode = styled(FiSun)({
   margin: '0',
 })
 
-const ThemeToggler = ({ toggleTheme, themeName }) => {
+const ThemeToggle = ({ toggleTheme, themeName }) => {
   const theme = useTheme()
   return (
     <Button
@@ -57,4 +57,4 @@ const ThemeToggler = ({ toggleTheme, themeName }) => {
     </Button>
   )
 }
-export default ThemeToggler
+export default ThemeToggle

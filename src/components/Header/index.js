@@ -2,7 +2,7 @@ import React from 'react'
 import { Link, useStaticQuery, graphql } from 'gatsby'
 import { css } from '@emotion/core'
 import { useTheme } from '../Theming'
-import Links from './Links'
+import Nav from './Nav'
 
 import Container from '../Container'
 
@@ -80,7 +80,7 @@ const Header = () => {
                 align-items: center;
               `}
             >
-              <Links />
+              <Nav />
             </div>
           </div>
         </nav>

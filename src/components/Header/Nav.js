@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'gatsby'
 import { css } from '@emotion/core'
 import { useTheme } from '../Theming'
-import ThemeToggler from './ThemeToggler'
+import ThemeToggle from './ThemeToggle'
 import i18n from '../../i18n'
 
 export default () => {
@@ -16,7 +16,7 @@ export default () => {
         {i18n.about}
       </Link>
 
-      <ThemeToggler
+      <ThemeToggle
         css={{}}
         toggleTheme={theme.toggleTheme}
         themeName={theme.themeName}
