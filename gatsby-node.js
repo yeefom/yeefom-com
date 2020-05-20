@@ -63,8 +63,8 @@ const createIndexPages = (createPage, createRedirect, edges) => {
   })
 }
 
-exports.createPages = ({ actions, graphql }) =>
-  graphql(`
+exports.createPages = async ({ actions, graphql }) => {
+  const { data: { allMdx }, err } = await graphql(`
     query {
       allMdx(
         sort: { order: DESC, fields: [frontmatter___date] }
@@ -85,20 +85,23 @@ exports.createPages = ({ actions, graphql }) =>
         }
       }
     }
-  `).then(({ data, errors }) => {
-    if (errors) {
-      return Promise.reject(errors)
-    }
+  `)
 
-    if (!data.allMdx || !data.allMdx.edges) {
-      return Promise.reject('There are no posts!')
-    }
+  if (err) {
+    console.error('Error fetching posts data', err)
+    return
+  }
 
-    const { edges } = data.allMdx
-    const { createRedirect, createPage } = actions
-    createPosts(createPage, edges)
-    createIndexPages(createPage, createRedirect, edges)
-  })
+  if (!allMdx || !allMdx.edges) {
+    console.error('No post found')
+    return
+  }
+
+  const { edges } = allMdx
+  const { createRedirect, createPage } = actions
+  createPosts(createPage, edges)
+  createIndexPages(createPage, createRedirect, edges)
+}
 
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
