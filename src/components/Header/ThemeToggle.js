@@ -25,22 +25,23 @@ const ThemeToggle = ({ toggleTheme, themeName }) => {
     <Button
       css={{
         borderRadius: '50%',
-        width: '2.375rem',
-        height: '2.375rem',
+        width: '1.9rem',
+        height: '1.9rem',
         padding: 0,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         margin: 0,
         borderStyle: 'solid',
-        borderWidth: '1px',
+        borderWidth: '1.5px',
         color: theme.colors.text,
         background: theme.colors.headerBg,
         '@media (hover: hover)': {
           ':hover': {
             background: 'none',
             borderColor: theme.colors.text,
-            color: theme.colors.text
+            color: theme.colors.text,
+            borderWidth: '1.5px',
           },
         },
       }}

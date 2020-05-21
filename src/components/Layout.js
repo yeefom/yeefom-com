@@ -19,13 +19,9 @@ const getGlobalStyles = theme => {
     }
     a {
       color: ${theme.colors.link};
-      text-decoration: underline;
       &:hover,
       &:focus {
         color: ${theme.colors.link};
-      }
-      &:hover {
-        text-decoration: underline;
       }
     }
     h1,

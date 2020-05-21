@@ -22,7 +22,7 @@ const themes = {
       primary: lighten(0.05, colors.blue),
       text: colors.white,
       bodyBg: colors.black,
-      headerBg: colors.black,
+      headerBg: colors.gray,
       blockquote: darken(0.25, colors.white),
       link: lighten(0.05, colors.white),
       divider: lighten(0.05, colors.white),

@@ -37,16 +37,13 @@ const ResetStyles = () => {
     }
     a {
       transition: 100ms;
-      text-decoration: none;
     }
   
     a:not([href]):not([tabindex]) {
       color: inherit;
-      text-decoration: none;
       &:hover,
       &:focus {
         color: inherit;
-        text-decoration: none;
       }
       &:focus {
         outline: 0;

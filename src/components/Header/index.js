@@ -61,7 +61,6 @@ const Header = () => {
               display: flex;
               align-items: center;
               a {
-                text-decoration: underline;
                 color: ${theme.colors.text};
               }
               a:hover {
