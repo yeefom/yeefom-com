@@ -1,5 +1,33 @@
+const fs = require('fs')
+const path = require('path')
 const remarkFootnotesPlugin = require('remark-numbered-footnote-labels')
-const config = require('./config/config')
+
+let config = {
+  siteTitle: 'Example site',
+  siteTitleShort: 'Example',
+  siteUrl: 'https://example.com',
+  siteLanguage: 'en',
+  siteLogo: 'images/logo.png',
+  siteDescription: 'Example site',
+  siteKeywords: 'personal site, blog',
+  author: 'Example author',
+
+  // Manifest and Progress color
+  themeColor: '#5348FF',
+  backgroundColor: '#2b2e3c',
+
+  // footer
+  copyRightYears: '2020–2020',
+  twitter: 'https://twitter.com/',
+  twitterHandle: '@',
+  github: 'https://github.com/',
+  email: 'mailto:example@example.com',
+  feed: 'feed.xml'
+}
+
+if (fs.existsSync(path.resolve('./content/config.js'))) {
+  config = require('./content/config.js')
+}
 
 module.exports = {
   siteMetadata: {
