@@ -7,9 +7,12 @@ import Layout from '../components/Layout'
 import Link from '../components/Link'
 import i18n from '../i18n'
 
-export default ({ data: { allMdx } }) => (
+export default ({ data: { allMdx, site: { siteMetadata } }}) => (
   <Layout pageTitle={i18n.archive}>
-    <SEO postMeta={{title: i18n.archive}}/>
+    <SEO meta={{
+      title: i18n.archive,
+      description: siteMetadata.archiveDescription
+    }}/>
     <Container>
       <h1 css={css`margin-bottom: 40px;`}>
         {i18n.archive}
@@ -52,6 +55,11 @@ export default ({ data: { allMdx } }) => (
 
 export const pageQuery = graphql`
   query {
+    site {
+      siteMetadata {
+        archiveDescription
+      }
+    }
     allMdx(
       sort: { fields: [fields___date], order: DESC }
       filter: { fields: { type: { eq: "blog" } } }

@@ -6,9 +6,12 @@ import Container from '../components/Container'
 import Layout from '../components/Layout'
 import SEO from "../components/SEO";
 
-export default ({ data: { mdx: { fields, body } } }) => (
+export default ({ data: { mdx: { fields, body }, site: { siteMetadata } } }) => (
   <Layout pageTitle={fields.title}>
-    <SEO postMeta={{title: fields.title}}/>
+    <SEO meta={{
+      title: fields.title,
+      description: siteMetadata.aboutDescription
+    }}/>
     <Container css={css`
       p:last-of-type {
         margin-bottom: 0;
@@ -31,6 +34,11 @@ export default ({ data: { mdx: { fields, body } } }) => (
 
 export const pageQuery = graphql`
   query {
+    site {
+      siteMetadata {
+        aboutDescription
+      }
+    }
     mdx(
       fields: { type: { eq: "page" }, slug: { eq: "about" } }
     ) {

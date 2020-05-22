@@ -9,13 +9,17 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 import i18n from '../i18n'
 import SEO from "../components/SEO";
 
-export default function Index({ data: { allMdx }, pageContext: { pagination } }) {
+export default function Index({ data: { allMdx, site: { siteMetadata } }, pageContext: { pagination } }) {
   const theme = useTheme()
   const { nextPagePath, previousPagePath } = pagination
 
   return (
     <Layout>
-      <SEO />
+      <SEO meta={{
+        title: siteMetadata.title,
+        description: siteMetadata.description,
+        keyword: siteMetadata.keywords
+      }}/>
       <Container>
         {allMdx.edges.map(({ node }) => {
           const { id, body, fields } = node;
@@ -69,6 +73,12 @@ export default function Index({ data: { allMdx }, pageContext: { pagination } })
 
 export const pageQuery = graphql`
   query($pagePosts: [String!]!) {
+    site {
+      siteMetadata {
+        title
+        description
+      }
+    }
     allMdx(
       sort: { fields: [fields___date], order: DESC }
       filter: { id: { in: $pagePosts } }

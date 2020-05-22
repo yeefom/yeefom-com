@@ -11,6 +11,8 @@ let config = {
   siteDescription: 'Example site',
   siteKeywords: 'personal site, blog',
   author: 'Example author',
+  aboutDescription: 'about page',
+  archiveDescription: 'archive page',
 
   // Manifest and Progress color
   themeColor: '#5348FF',
@@ -34,9 +36,11 @@ module.exports = {
     siteUrl: config.siteUrl,
     title: config.siteTitle,
     description: config.siteDescription,
-    keywords: ['personal site', 'blog'],
+    keywords: 'personal site, blog',
     canonicalUrl: config.siteUrl,
     image: config.siteLogo,
+    aboutDescription: config.aboutDescription,
+    archiveDescription: config.archiveDescription,
     author: {
       name: config.author
     },

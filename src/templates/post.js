@@ -12,11 +12,17 @@ export default function Post({
   data: { mdx },
   pageContext: { next, prev },
 }) {
-  const { fields, body } = mdx
+  const { fields, body, frontmatter, excerpt } = mdx
+  const image = frontmatter.image ? frontmatter.image.publicURL : null
 
   return (
     <Layout pageTitle={fields.title}>
-      <SEO postMeta={fields} isBlogPost />
+      <SEO meta={{
+        title: fields.title,
+        description: fields.description || excerpt,
+        keywords: fields.keywords,
+        image
+      }} isBlogPost />
       <Container>
         <article>
           <h1 css={css`margin-bottom: 5px;`}>
@@ -53,7 +59,13 @@ export const pageQuery = graphql`
         description
         keywords
       }
+      frontmatter {
+        image {
+          publicURL
+        }
+      }
       body
+      excerpt
     }
   }
 `

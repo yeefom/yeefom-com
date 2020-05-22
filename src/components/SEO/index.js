@@ -4,16 +4,13 @@ import { useStaticQuery, graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 import SchemaOrg from './SchemaOrg'
 
-const SEO = ({ postMeta = {}, isBlogPost }) => {
+const SEO = ({ meta = {}, isBlogPost }) => {
   const { site: { siteMetadata } } = useStaticQuery(graphql`
     {
       site {
         siteMetadata {
           title
-          description
-          keywords
           canonicalUrl
-          image
           author {
             name
           }
@@ -25,35 +22,31 @@ const SEO = ({ postMeta = {}, isBlogPost }) => {
     }
   `)
 
-  const title = postMeta.title || siteMetadata.title
-  const description = postMeta.description || siteMetadata.description
-  const keywords = postMeta.keywords || siteMetadata.keywords
-  const image = postMeta.postImage ? `${siteMetadata.canonicalUrl}${postMeta.postImage}` : siteMetadata.image
-  const url = postMeta.slug
-    ? (isBlogPost ? `/blog/${postMeta.slug}` : `/${postMeta.slug}`)
-    : siteMetadata.canonicalUrl
-  const datePublished = isBlogPost ? postMeta.datePublished : false
+  const title = meta.title === siteMetadata.title ? meta.title : `${meta.title} — ${siteMetadata.title}`
+  const image = meta.image ? `${siteMetadata.canonicalUrl}${meta.image}` : undefined
+  const pagePath = meta.slug ? (isBlogPost ? `/blog/${meta.slug}` : `/${meta.slug}`) : ''
+  const url = `${siteMetadata.canonicalUrl}${pagePath}`
 
   return (
     <React.Fragment>
       <Helmet>
         {/* General tags */}
-        <meta name="description" content={description}/>
-        <meta name="keywords" content={keywords.join(', ')}/>
+        <meta name="description" content={meta.description}/>
+        <meta name="keywords" content={meta.keywords}/>
         <meta name="image" content={image}/>
 
         {/* OpenGraph tags */}
         <meta property="og:url" content={url}/>
         {isBlogPost ? <meta property="og:type" content="article"/> : null}
         <meta property="og:title" content={title}/>
-        <meta property="og:description" content={description}/>
+        <meta property="og:description" content={meta.description}/>
         <meta property="og:image" content={image}/>
 
         {/* Twitter Card tags */}
         <meta name="twitter:card" content="summary_large_image"/>
         <meta name="twitter:creator" content={siteMetadata.social.twitterHandle}/>
         <meta name="twitter:title" content={title}/>
-        <meta name="twitter:description" content={description}/>
+        <meta name="twitter:description" content={meta.description}/>
         <meta name="twitter:image" content={image}/>
       </Helmet>
       <SchemaOrg
@@ -61,11 +54,11 @@ const SEO = ({ postMeta = {}, isBlogPost }) => {
         url={url}
         title={title}
         image={image}
-        description={description}
-        datePublished={datePublished}
+        description={meta.description}
+        datePublished={meta.date}
         canonicalUrl={siteMetadata.canonicalUrl}
         author={siteMetadata.author}
-        defaultTitle={siteMetadata.title}
+        defaultTitle={title}
       />
     </React.Fragment>
   )
