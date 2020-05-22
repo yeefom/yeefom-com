@@ -33,6 +33,7 @@
     "gatsby-remark-images": "^3.1.28",
     "gatsby-source-filesystem": "^2.1.33",
     "gatsby-transformer-sharp": "^2.3.0",
+    "littlefoot": "^3.2.5",
     "polished": "^3.4.1",
     "prism-react-renderer": "^1.0.2",
     "prop-types": "^15.7.2",

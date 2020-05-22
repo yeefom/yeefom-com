@@ -129,8 +129,30 @@ const getGlobalStyles = theme => {
         margin-left: 0
       }
       font-size: 0.85rem;
+      .footnote-print-only {
+        display: revert !important;
+      }
+    }
+    .footnotes.footnote-print-only {
+      display: revert !important;
+    }
+    .littlefoot-footnote.is-scrollable::after {
+      background-image: none;
+    }
+    .littlefoot-footnote.is-scrollable .littlefoot-footnote__wrapper::before {
+      background-image: none;
+    }
+    .littlefoot-footnote.is-scrollable .littlefoot-footnote__wrapper::after {
+      background-image: none;
+    }
+    .littlefoot-footnote__button {
+      color: ${theme.colors.footnoteButtonText};
+      background-color: ${theme.colors.footnoteButtonBackground};
     }
     .littlefoot-footnote__host {
+      .littlefoot-footnote__content, .littlefoot-footnote__tooltip {
+        background: ${theme.colors.headerBg};
+      }
       button {
         font-size: 0.8rem;
         font-weight: 500;
