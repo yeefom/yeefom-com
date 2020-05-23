@@ -150,7 +150,7 @@ const getGlobalStyles = theme => {
       background-color: ${theme.colors.footnoteButtonBackground};
     }
     .littlefoot-footnote__host {
-      .littlefoot-footnote__content, .littlefoot-footnote__tooltip {
+      .littlefoot-footnote__content, .littlefoot-footnote__tooltip, .littlefoot-footnote__wrapper {
         background: ${theme.colors.headerBg};
       }
       button {
