@@ -24,7 +24,7 @@
     "gatsby": "^2.17.2",
     "gatsby-link": "^2.2.22",
     "gatsby-plugin-emotion": "^4.1.12",
-    "gatsby-plugin-feed": "^2.5.1",
+    "gatsby-plugin-feed": "^2.5.3",
     "gatsby-plugin-mdx": "^1.0.53",
     "gatsby-plugin-react-helmet": "^3.1.13",
     "gatsby-plugin-sharp": "^2.2.32",
@@ -49,6 +49,6 @@
     "@types/react": "^16.0.0",
     "babel-preset-gatsby": "^0.2.20",
     "prettier": "1.18.2",
-    "typescript": "^3.9.2"
+    "typescript": "^3.9.3"
   }
 }
