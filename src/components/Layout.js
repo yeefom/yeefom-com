@@ -5,7 +5,6 @@ import { MDXProvider } from '@mdx-js/react'
 import { lighten } from 'polished'
 import { Global, css } from '@emotion/core'
 import { ThemeProvider, themes } from './Theming'
-import { bpMaxSM } from '../lib/breakpoints'
 import mdxComponents from './mdxComponents'
 import Header from './Header'
 import reset from '../lib/reset'
@@ -38,19 +37,6 @@ const getGlobalStyles = theme => {
         &:focus {
           color: ${theme.colors.text};
         }
-      }
-    }
-    ${bpMaxSM} {
-      p,
-      em,
-      strong {
-        font-size: 90%;
-      }
-      h1 {
-        font-size: 30px;
-      }
-      h2 {
-        font-size: 24px;
       }
     }
     hr {
