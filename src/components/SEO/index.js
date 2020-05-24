@@ -1,5 +1,5 @@
 import React from 'react'
-import Helmet from 'react-helmet'
+import { Helmet } from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 import SchemaOrg from './SchemaOrg'
@@ -32,22 +32,22 @@ const SEO = ({ meta = {}, isBlogPost }) => {
       <Helmet>
         {/* General tags */}
         <meta name="description" content={meta.description}/>
-        <meta name="keywords" content={meta.keywords}/>
-        <meta name="image" content={image}/>
+        {meta.keywords && <meta name="keywords" content={meta.keywords}/>}
+        {image && <meta name="image" content={image}/>}
 
         {/* OpenGraph tags */}
         <meta property="og:url" content={url}/>
-        {isBlogPost ? <meta property="og:type" content="article"/> : null}
+        {isBlogPost && <meta property="og:type" content="article"/>}
         <meta property="og:title" content={title}/>
-        <meta property="og:description" content={meta.description}/>
-        <meta property="og:image" content={image}/>
+        {meta.description && <meta property="og:description" content={meta.description}/>}
+        {image && <meta property="og:image" content={image}/>}
 
         {/* Twitter Card tags */}
-        <meta name="twitter:card" content="summary_large_image"/>
+        <meta name="twitter:card" content={image ? "summary_large_image" : "summary"}/>
         <meta name="twitter:creator" content={siteMetadata.social.twitterHandle}/>
         <meta name="twitter:title" content={title}/>
-        <meta name="twitter:description" content={meta.description}/>
-        <meta name="twitter:image" content={image}/>
+        {meta.description && <meta name="twitter:description" content={meta.description}/>}
+        {image && <meta name="twitter:image" content={image}/>}
       </Helmet>
       <SchemaOrg
         isBlogPost={isBlogPost}
