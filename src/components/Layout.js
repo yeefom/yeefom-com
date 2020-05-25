@@ -5,11 +5,11 @@ import { MDXProvider } from '@mdx-js/react'
 import { lighten } from 'polished'
 import { Global, css } from '@emotion/core'
 import { ThemeProvider, themes } from './Theming'
-import mdxComponents from './mdxComponents'
 import Header from './Header'
 import reset from '../lib/reset'
 import Footer from '../components/Footer'
 import { bpMaxSM } from "../lib/breakpoints";
+import Code from './Code'
 
 const getGlobalStyles = theme => {
   return css`
@@ -227,7 +227,7 @@ export default ({ children, pageTitle }) => {
             <noscript>This site runs best with JavaScript enabled.</noscript>
           </Helmet>
           <Header />
-          <MDXProvider components={mdxComponents}>
+          <MDXProvider components={{ code: Code }}>
             <Fragment>{children}</Fragment>
           </MDXProvider>
           <Footer/>
