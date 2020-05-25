@@ -1,25 +1,19 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import { FiMoon, FiSun } from 'react-icons/fi'
-import { useTheme } from '../Theming'
-import i18n from '../../i18n'
+import i18n from '../i18n'
 
-const DarkMode = styled(FiMoon)({
+const iconStyles = {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
   margin: '0',
-})
+}
 
-const DefaultMode = styled(FiSun)({
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  margin: '0',
-})
+const DarkMode = styled(FiMoon)(iconStyles)
+const DefaultMode = styled(FiSun)(iconStyles)
 
 const ThemeToggle = ({ toggleTheme, themeName }) => {
-  const theme = useTheme()
   return (
     <button
       css={{
@@ -31,16 +25,13 @@ const ThemeToggle = ({ toggleTheme, themeName }) => {
         alignItems: 'center',
         justifyContent: 'center',
         margin: 0,
-        border: `1.5px solid ${theme.colors.text}`,
-        color: theme.colors.text,
-        background: theme.colors.headerBg,
+        borderWidth: '1.5px',
+        borderStyle: 'solid',
         cursor: 'pointer',
         transition: 'all 150ms ease',
         ':hover': {
-          background: 'none',
-          borderColor: theme.colors.text,
-          color: theme.colors.text,
           borderWidth: '1.5px',
+          background: 'none',
         },
       }}
       aria-label={
