@@ -1,5 +1,4 @@
 import React from 'react'
-import Button from './Button'
 import styled from '@emotion/styled'
 import { FiMoon, FiSun } from 'react-icons/fi'
 import { useTheme } from '../Theming'
@@ -22,7 +21,7 @@ const DefaultMode = styled(FiSun)({
 const ThemeToggle = ({ toggleTheme, themeName }) => {
   const theme = useTheme()
   return (
-    <Button
+    <button
       css={{
         borderRadius: '50%',
         width: '1.9rem',
@@ -32,10 +31,11 @@ const ThemeToggle = ({ toggleTheme, themeName }) => {
         alignItems: 'center',
         justifyContent: 'center',
         margin: 0,
-        borderStyle: 'solid',
-        borderWidth: '1.5px',
+        border: `1.5px solid ${theme.colors.text}`,
         color: theme.colors.text,
         background: theme.colors.headerBg,
+        cursor: 'pointer',
+        transition: 'all 150ms ease',
         ':hover': {
           background: 'none',
           borderColor: theme.colors.text,
@@ -53,7 +53,7 @@ const ThemeToggle = ({ toggleTheme, themeName }) => {
       ) : (
         <DarkMode title={i18n.switchToDarkAria} />
       )}
-    </Button>
+    </button>
   )
 }
 export default ThemeToggle
