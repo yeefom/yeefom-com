@@ -1,6 +1,6 @@
 const path = require('path')
 
-const PAGINATION_OFFSET = 7
+const PAGINATION_OFFSET = 5
 
 const createPosts = (createPage, edges) => {
   edges.forEach(({ node }, i) => {

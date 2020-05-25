@@ -5,6 +5,7 @@ import { css } from '@emotion/core'
 import Container from '../components/Container'
 import Layout from '../components/Layout'
 import SEO from "../components/SEO";
+import { bpMaxSM } from "../lib/breakpoints";
 
 export default ({ data: { mdx: { fields, body }, site: { siteMetadata } } }) => (
   <Layout pageTitle={fields.title}>
@@ -21,6 +22,9 @@ export default ({ data: { mdx: { fields, body }, site: { siteMetadata } } }) => 
         <h1
           css={css`
             margin-bottom: 40px;
+            ${bpMaxSM} {
+              margin-bottom: 10px;
+            }
           `}
         >
           {fields.title}

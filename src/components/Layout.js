@@ -9,6 +9,7 @@ import mdxComponents from './mdxComponents'
 import Header from './Header'
 import reset from '../lib/reset'
 import Footer from '../components/Footer'
+import { bpMaxSM } from "../lib/breakpoints";
 
 const getGlobalStyles = theme => {
   return css`
@@ -37,6 +38,19 @@ const getGlobalStyles = theme => {
         &:focus {
           color: ${theme.colors.text};
         }
+      }
+    }
+    ${bpMaxSM} {
+      p,
+      em,
+      li,
+      strong {
+        font-size: 90%;
+      }
+      h1 {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        font-size: 25px;
       }
     }
     hr {

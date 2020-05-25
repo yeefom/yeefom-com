@@ -7,6 +7,8 @@ import Container from '../components/Container'
 import Layout from '../components/Layout'
 import Link from "../components/Link";
 import i18n from "../i18n";
+import { bpMaxSM } from "../lib/breakpoints";
+import { useTheme } from "../components/Theming";
 
 export default function Post({
   data: { mdx },
@@ -14,6 +16,7 @@ export default function Post({
 }) {
   const { fields, body, frontmatter, excerpt } = mdx
   const image = frontmatter.image ? frontmatter.image.publicURL : null
+  const theme = useTheme()
 
   return (
     <Layout pageTitle={fields.title}>
@@ -28,11 +31,36 @@ export default function Post({
           <h1 css={css`margin-bottom: 5px;`}>
             {fields.title}
           </h1>
-          <small css={css`display: inline-block; margin-bottom: 60px;`}>{fields.date}</small>
+          <small css={css`
+            display: inline-block; 
+            margin-bottom: 60px;
+            ${bpMaxSM} {
+              margin-bottom: 40px;
+            }
+          `}>
+            {fields.date}
+          </small>
           <br />
           <MDXRenderer>{body}</MDXRenderer>
         </article>
-        <div css={css({ marginTop: '77px', display: 'flex', justifyContent: 'space-between'})}>
+        <div css={css`
+          margin-top: 77px;
+          display: flex;
+          justify-content: space-between;
+          a {
+            color: ${theme.colors.text};
+            &:focus {
+              color: ${theme.colors.text};
+              outline: none;
+            }
+            &:hover {
+              color: ${theme.colors.text};
+            }
+            ${bpMaxSM} {
+              font-size: 90%;
+            }
+          }
+        `}>
           {prev === null ? <div>{''}</div> : (
             <Link to={prev.pagePath} aria-label={i18n.previousArticleAria}>
               {`${i18n.previous} ${prev.title}`}

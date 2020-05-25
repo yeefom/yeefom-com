@@ -6,6 +6,7 @@ import SEO from '../components/SEO'
 import Layout from '../components/Layout'
 import Link from '../components/Link'
 import i18n from '../i18n'
+import { bpMaxSM } from "../lib/breakpoints";
 
 export default ({ data: { allMdx, site: { siteMetadata } }}) => (
   <Layout pageTitle={i18n.archive}>
@@ -14,7 +15,12 @@ export default ({ data: { allMdx, site: { siteMetadata } }}) => (
       description: siteMetadata.archiveDescription
     }}/>
     <Container>
-      <h1 css={css`margin-bottom: 40px;`}>
+      <h1 css={css`
+        margin-bottom: 40px;
+        ${bpMaxSM} {
+          margin-bottom: 10px;
+        }
+      `}>
         {i18n.archive}
       </h1>
       <br/>

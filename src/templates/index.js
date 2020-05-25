@@ -8,6 +8,7 @@ import Container from '../components/Container'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import i18n from '../i18n'
 import SEO from "../components/SEO";
+import { bpMaxSM } from "../lib/breakpoints";
 
 export default function Index({ data: { allMdx, site: { siteMetadata } }, pageContext: { pagination } }) {
   const theme = useTheme()
@@ -48,13 +49,38 @@ export default function Index({ data: { allMdx, site: { siteMetadata } }, pageCo
                   {fields.title}
                 </Link>
               </h1>
-              <small css={css`display: inline-block; margin-bottom: 60px;`}>{fields.date}</small>
+              <small css={css`
+                display: inline-block; 
+                margin-bottom: 60px;
+                ${bpMaxSM} {
+                  margin-bottom: 40px;
+                }
+              `}>
+                {fields.date}
+              </small>
               <br/>
               <MDXRenderer>{body}</MDXRenderer>
             </article>
           );
         })}
-        <div css={css({ marginTop: '77px', display: 'flex', justifyContent: 'space-between'})}>
+        <div css={css`
+          margin-top: 77px;
+          display: flex;
+          justify-content: space-between;
+          a {
+            color: ${theme.colors.text};
+            &:focus {
+              color: ${theme.colors.text};
+              outline: none;
+            }
+            &:hover {
+              color: ${theme.colors.text};
+            }
+            ${bpMaxSM} {
+              font-size: 90%;
+            }
+          }
+        `}>
           {previousPagePath === null ? <div>{''}</div> : (
             <Link to={previousPagePath} aria-label={i18n.previousPageAria}>
               {i18n.previousPage}
