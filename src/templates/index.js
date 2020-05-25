@@ -3,15 +3,12 @@ import { graphql } from 'gatsby'
 import { css } from '@emotion/core'
 import Layout from '../components/Layout'
 import Link from '../components/Link'
-import { useTheme } from '../components/Theming'
 import Container from '../components/Container'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import i18n from '../i18n'
 import SEO from "../components/SEO";
-import { bpMaxSM } from "../lib/breakpoints";
 
 export default function Index({ data: { allMdx, site: { siteMetadata } }, pageContext: { pagination } }) {
-  const theme = useTheme()
   const { nextPagePath, previousPagePath } = pagination
 
   return (
@@ -27,6 +24,7 @@ export default function Index({ data: { allMdx, site: { siteMetadata } }, pageCo
 
           return (
             <article
+              className="index-article"
               key={id}
               css={css`
                 :not(:first-of-type) {
@@ -34,14 +32,7 @@ export default function Index({ data: { allMdx, site: { siteMetadata } }, pageCo
                 }
               `}
             >
-              <h1
-                css={css({
-                  marginBottom: '5px',
-                  ':hover': {
-                    color: theme.colors.primary,
-                  },
-                })}
-              >
+              <h1>
                 <Link
                   to={fields.pagePath}
                   aria-label={`View ${fields.title}`}
@@ -49,13 +40,7 @@ export default function Index({ data: { allMdx, site: { siteMetadata } }, pageCo
                   {fields.title}
                 </Link>
               </h1>
-              <small css={css`
-                display: inline-block; 
-                margin-bottom: 60px;
-                ${bpMaxSM} {
-                  margin-bottom: 40px;
-                }
-              `}>
+              <small className="article-date">
                 {fields.date}
               </small>
               <br/>
@@ -63,24 +48,7 @@ export default function Index({ data: { allMdx, site: { siteMetadata } }, pageCo
             </article>
           );
         })}
-        <div css={css`
-          margin-top: 77px;
-          display: flex;
-          justify-content: space-between;
-          a {
-            color: ${theme.colors.text};
-            &:focus {
-              color: ${theme.colors.text};
-              outline: none;
-            }
-            &:hover {
-              color: ${theme.colors.text};
-            }
-            ${bpMaxSM} {
-              font-size: 90%;
-            }
-          }
-        `}>
+        <div className="nav-link">
           {previousPagePath === null ? <div>{''}</div> : (
             <Link to={previousPagePath} aria-label={i18n.previousPageAria}>
               {i18n.previousPage}
