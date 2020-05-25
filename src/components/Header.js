@@ -9,6 +9,7 @@ import ThemeToggle from './ThemeToggle'
 
 const Header = () => {
   const theme = useTheme()
+  const pathname = window.location.pathname
   const { site: { siteMetadata: { title } } } = useStaticQuery(graphql`
     {
       site {
@@ -33,7 +34,6 @@ const Header = () => {
           }
           &:hover {
             color: ${theme.colors.text};
-            text-decoration: none;
           }
         }
         button {
@@ -65,9 +65,6 @@ const Header = () => {
             margin-top: 16px;
             font-size: 16px;
             line-height: 1.25;
-            .active {
-              font-weight: 600;
-            }
           `}
         >
           <div
@@ -78,10 +75,23 @@ const Header = () => {
               align-items: center;
             `}
           >
-            <Link to="/archive" activeClassName="active" aria-label={i18n.archiveAria} css={css`margin-left: 0`}>
+            <Link
+              to="/archive"
+              aria-label={i18n.archiveAria}
+              css={css`
+                margin-left: 0;
+                font-weight: ${pathname === '/archive' || pathname === '/archive/' ? '600' : '400'};
+              `}
+            >
               {i18n.archive}
             </Link>
-            <Link to="/about" activeClassName="active" aria-label={i18n.aboutAria}>
+            <Link
+              to="/about"
+              aria-label={i18n.aboutAria}
+              css={css`
+                font-weight: ${pathname === '/about' || pathname === '/about/' ? '600' : '400'};
+              `}
+            >
               {i18n.about}
             </Link>
 
