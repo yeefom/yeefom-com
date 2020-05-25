@@ -41,7 +41,7 @@ export default ({ data: { allMdx, site: { siteMetadata } }}) => (
             <small>{fields.date}</small>
             <h2
               css={css`
-                font-size: 1em;
+                font-size: 1rem;
                 margin-top: 8px;
                 margin-bottom: 10px;
               `}
