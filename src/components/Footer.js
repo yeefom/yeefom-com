@@ -31,12 +31,23 @@ const Footer = () => {
       <Container noVerticalPadding>
         <div
           css={css`
-          border-top: 3px solid ${theme.colors.divider};
-          padding: 50px 0;
-          margin-top: 40px;
-        `}
+            border-top: 3px solid ${theme.colors.divider};
+            padding: 50px 0;
+            margin-top: 40px;
+          `}
         >
-          <div css={css`opacity: 0.7`}>
+          <div css={css`
+            opacity: 0.7;
+            a {
+              color: ${theme.colors.text};
+              :hover {
+                color: ${theme.colors.text};
+              }
+              :not(:first-of-type) {
+                margin-left: 10px;
+              }
+            }
+          `}>
             <Twitter target={footer.twitter}/>
             <GitHub target={footer.github}/>
             <Email target={footer.email}/>

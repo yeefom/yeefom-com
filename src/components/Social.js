@@ -1,20 +1,12 @@
 import React from 'react'
-import { useTheme } from './Theming'
 import { css } from '@emotion/core'
 import i18n from '../i18n'
 
 export const Twitter = ({ target }) => {
-  const theme = useTheme()
   return (
     <a
       href={target}
       aria-label={i18n.twitterAria}
-      css={css`
-        color: ${theme.colors.text};
-        :hover {
-          color: ${theme.colors.text};
-        }
-      `}
     >
       <svg
         css={css`transform: translateY(-2px)`}
@@ -34,18 +26,10 @@ export const Twitter = ({ target }) => {
 }
 
 export const GitHub = ({ target }) => {
-  const theme = useTheme()
   return (
     <a
       href={target}
       aria-label={i18n.githubAria}
-      css={css`
-        margin-left: 10px;
-        color: ${theme.colors.text};
-        :hover {
-          color: ${theme.colors.text};
-        }
-      `}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -64,18 +48,10 @@ export const GitHub = ({ target }) => {
 }
 
 export const Email = ({ target }) => {
-  const theme = useTheme()
   return (
     <a
       href={target}
       aria-label={i18n.emailAria}
-      css={css`
-        margin-left: 10px;
-        color: ${theme.colors.text};
-        :hover {
-          color: ${theme.colors.text};
-        }
-      `}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -94,18 +70,10 @@ export const Email = ({ target }) => {
 }
 
 export const Feed = ({ target }) => {
-  const theme = useTheme()
   return (
     <a
       href={target}
       aria-label={i18n.feedAria}
-      css={css`
-        margin-left: 10px;
-        color: ${theme.colors.text};
-        :hover {
-          color: ${theme.colors.text};
-        }
-      `}
     >
       <svg
         css={css`transform: translateY(-1px)`}
