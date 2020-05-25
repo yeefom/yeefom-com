@@ -36,13 +36,11 @@ const ThemeToggle = ({ toggleTheme, themeName }) => {
         borderWidth: '1.5px',
         color: theme.colors.text,
         background: theme.colors.headerBg,
-        '@media (hover: hover)': {
-          ':hover': {
-            background: 'none',
-            borderColor: theme.colors.text,
-            color: theme.colors.text,
-            borderWidth: '1.5px',
-          },
+        ':hover': {
+          background: 'none',
+          borderColor: theme.colors.text,
+          color: theme.colors.text,
+          borderWidth: '1.5px',
         },
       }}
       aria-label={

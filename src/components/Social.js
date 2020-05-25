@@ -12,7 +12,7 @@ export const Twitter = ({ target }) => {
       css={css`
         color: ${theme.colors.text};
         :hover {
-          color: ${theme.colors.primary};
+          color: ${theme.colors.text};
         }
       `}
     >
@@ -43,7 +43,7 @@ export const GitHub = ({ target }) => {
         margin-left: 10px;
         color: ${theme.colors.text};
         :hover {
-          color: ${theme.colors.primary};
+          color: ${theme.colors.text};
         }
       `}
     >
@@ -73,7 +73,7 @@ export const Email = ({ target }) => {
         margin-left: 10px;
         color: ${theme.colors.text};
         :hover {
-          color: ${theme.colors.primary};
+          color: ${theme.colors.text};
         }
       `}
     >
@@ -103,7 +103,7 @@ export const Feed = ({ target }) => {
         margin-left: 10px;
         color: ${theme.colors.text};
         :hover {
-          color: ${theme.colors.primary};
+          color: ${theme.colors.text};
         }
       `}
     >
