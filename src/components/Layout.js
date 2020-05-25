@@ -116,11 +116,14 @@ const getGlobalStyles = theme => {
       }
       font-size: 0.85rem;
       .footnote-print-only {
-        display: revert !important;
+        display: inherit !important;
       }
     }
     .footnotes.footnote-print-only {
-      display: revert !important;
+      display: inherit !important;
+    }
+    .footnotes .footnote-print-only li {
+      display: list-item !important;
     }
     .littlefoot-footnote.is-scrollable::after {
       background-image: none;

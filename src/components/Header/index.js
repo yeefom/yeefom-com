@@ -37,6 +37,10 @@ const Header = () => {
             font-size: 40px;
             font-weight: 600;
             color: ${theme.colors.text};
+            &:focus {
+              color: ${theme.colors.text};
+              outline: none;
+            }
             &:hover {
               color: ${theme.colors.text};
               text-decoration: none;

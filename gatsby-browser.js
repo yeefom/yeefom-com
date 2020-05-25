@@ -1,5 +1,5 @@
-import littlefoot from 'littlefoot'
-import 'littlefoot/dist/littlefoot.css'
+const { littlefoot } = require('littlefoot')
+require('littlefoot/dist/littlefoot.css')
 
 export function onRouteUpdate() {
   littlefoot({
@@ -11,7 +11,7 @@ export function onRouteUpdate() {
         class="littlefoot-footnote__button"
         id="<% reference %>"
         rel="footnote"
-        title="See Footnote <% number %>"
+        title="See footnote <% number %>"
       />
         <% number %>
       </button>`,
