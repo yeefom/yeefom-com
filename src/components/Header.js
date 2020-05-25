@@ -7,9 +7,8 @@ import Container from './Container'
 import i18n from '../i18n'
 import ThemeToggle from './ThemeToggle'
 
-const Header = () => {
+const Header = ({ pageUri }) => {
   const theme = useTheme()
-  const pathname = window.location.pathname
   const { site: { siteMetadata: { title } } } = useStaticQuery(graphql`
     {
       site {
@@ -80,7 +79,7 @@ const Header = () => {
               aria-label={i18n.archiveAria}
               css={css`
                 margin-left: 0;
-                font-weight: ${pathname === '/archive' || pathname === '/archive/' ? '600' : '400'};
+                font-weight: ${pageUri === '/archive' ? '600' : '400'};
               `}
             >
               {i18n.archive}
@@ -89,12 +88,11 @@ const Header = () => {
               to="/about"
               aria-label={i18n.aboutAria}
               css={css`
-                font-weight: ${pathname === '/about' || pathname === '/about/' ? '600' : '400'};
+                font-weight: ${pageUri === '/about' ? '600' : '400'};
               `}
             >
               {i18n.about}
             </Link>
-
             <ThemeToggle
               toggleTheme={theme.toggleTheme}
               themeName={theme.themeName}

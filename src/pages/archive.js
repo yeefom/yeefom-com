@@ -8,56 +8,60 @@ import Link from '../components/Link'
 import i18n from '../i18n'
 import { bpMaxSM } from "../lib/breakpoints";
 
-export default ({ data: { allMdx, site: { siteMetadata } }}) => (
-  <Layout pageTitle={i18n.archive}>
-    <SEO meta={{
-      title: i18n.archive,
-      description: siteMetadata.archiveDescription
-    }}/>
-    <Container>
-      <h1 css={css`
-        margin-bottom: 40px;
-        ${bpMaxSM} {
-          margin-bottom: 10px;
-        }
-      `}>
-        {i18n.archive}
-      </h1>
-      <br/>
-      {allMdx.edges.map(({node}) => {
-        const {fields, id} = node
+export default ({ data, uri }) => {
+  const { allMdx, site: { siteMetadata } } = data
 
-        return (
-          <div
-            key={id}
-            css={css`
-              :not(:first-of-type) {
-                margin-top: 20px;
-              }
-              display: flex;
-              flex-direction: column;
-            `}
-          >
-            <small>{fields.date}</small>
-            <h2
+  return (
+    <Layout pageTitle={i18n.archive} pageUri={uri}>
+      <SEO meta={{
+        title: i18n.archive,
+        description: siteMetadata.archiveDescription
+      }}/>
+      <Container>
+        <h1 css={css`
+          margin-bottom: 40px;
+          ${bpMaxSM} {
+            margin-bottom: 10px;
+          }
+        `}>
+          {i18n.archive}
+        </h1>
+        <br/>
+        {allMdx.edges.map(({ node }) => {
+          const { fields, id } = node
+
+          return (
+            <div
+              key={id}
               css={css`
-                font-size: 1rem;
-                margin-top: 8px;
-                margin-bottom: 10px;
+                :not(:first-of-type) {
+                  margin-top: 20px;
+                }
+                display: flex;
+                flex-direction: column;
               `}
             >
-              <Link
-                aria-label={`View ${fields.title} article`}
-                to={fields.pagePath}>
-                {fields.title}
-              </Link>
-            </h2>
-          </div>
-        );
-      })}
-    </Container>
-  </Layout>
-)
+              <small>{fields.date}</small>
+              <h2
+                css={css`
+                  font-size: 1rem;
+                  margin-top: 8px;
+                  margin-bottom: 10px;
+                `}
+              >
+                <Link
+                  aria-label={`View ${fields.title} article`}
+                  to={fields.pagePath}>
+                  {fields.title}
+                </Link>
+              </h2>
+            </div>
+          )
+        })}
+      </Container>
+    </Layout>
+  )
+}
 
 export const pageQuery = graphql`
   query {
