@@ -33,7 +33,7 @@ export default function Post({
           <br />
           <MDXRenderer>{body}</MDXRenderer>
         </article>
-        <div className="nav-link">
+        <div className="pagination-link">
           {prev === null ? <div>{''}</div> : (
             <Link to={prev.pagePath} aria-label={i18n.previousArticleAria}>
               {`${i18n.previous} ${prev.title}`}

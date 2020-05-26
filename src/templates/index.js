@@ -48,7 +48,7 @@ export default function Index({ data: { allMdx, site: { siteMetadata } }, pageCo
             </article>
           );
         })}
-        <div className="nav-link">
+        <div className="pagination-link">
           {previousPagePath === null ? <div>{''}</div> : (
             <Link to={previousPagePath} aria-label={i18n.previousPageAria}>
               {i18n.previousPage}

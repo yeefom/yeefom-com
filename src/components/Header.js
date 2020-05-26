@@ -20,32 +20,7 @@ const Header = ({ pageUri }) => {
   `)
 
   return (
-    <header
-      css={css`
-        width: 100%;
-        padding: 20px 0;
-        background: ${theme.colors.headerBg};
-        a {
-          color: ${theme.colors.text};
-          &:focus {
-            color: ${theme.colors.text};
-            outline: none;
-          }
-          &:hover {
-            color: ${theme.colors.text};
-          }
-        }
-        button {
-          color: ${theme.colors.text};
-          background: ${theme.colors.headerBg};
-          border-color: ${theme.colors.text};
-          &:{
-            color: ${theme.colors.text};
-            border-color: ${theme.colors.text};
-          }
-        }
-      `}
-    >
+    <header className="layout-header">
       <Container noVerticalPadding css={css`margin-bottom: 16px`}>
         <Link
           to="/"

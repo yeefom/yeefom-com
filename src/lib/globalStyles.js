@@ -115,7 +115,32 @@ export const getGlobalStyles = theme => {
         border-radius: 5px;
       }
     }
-    .nav-link {
+    .layout-header {
+      width: 100%;
+      padding: 20px 0;
+      background: ${theme.colors.headerBg};
+      a {
+        color: ${theme.colors.text};
+        border-color: ${theme.colors.text};
+        &:focus {
+          color: ${theme.colors.text};
+          outline: none;
+        }
+        &:hover {
+          color: ${theme.colors.text};
+        }
+      }
+      button {
+        color: ${theme.colors.text};
+        background: ${theme.colors.headerBg};
+        border-color: ${theme.colors.text};
+        &:hover {
+          color: ${theme.colors.text};
+          border-color: ${theme.colors.text};
+        }
+      }
+    }
+    .pagination-link {
       margin-top: 77px;
       display: flex;
       justify-content: space-between;
