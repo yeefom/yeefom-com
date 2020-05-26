@@ -31,26 +31,6 @@ export const getGlobalStyles = () => {
         }
       }
     }
-    ${bpMaxSM} {
-      p,
-      em,
-      li,
-      strong {
-        font-size: 90%;
-        margin-bottom: 1rem;
-      }
-      h1 {
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-        font-size: 25px;
-      }
-      h2 {
-        font-size: 20px;
-      }
-      h3 {
-        font-size: 18px;
-      }
-    }
     hr {
       margin: 40px 0;
       border: none;
@@ -215,6 +195,29 @@ export const getGlobalStyles = () => {
       }
       .littlefoot-footnote__content {
         font-size: 0.8rem;
+      }
+    }
+    ${bpMaxSM} {
+      p,
+      em,
+      li,
+      strong {
+        font-size: 90%;
+        margin-bottom: 1rem;
+      }
+      h1 {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        font-size: 25px;
+      }
+      h2 {
+        font-size: 20px;
+      }
+      h3 {
+        font-size: 18px;
+      }
+      hr {
+        margin: 30px 0;
       }
     }
     @media (prefers-color-scheme: dark) {
