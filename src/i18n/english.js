@@ -17,4 +17,6 @@ export default {
   previousArticleAria: 'View next article',
   notFound: 'Page not found',
   homeAria: 'Go to homepage',
+  page: 'Page',
+  view: 'View',
 }
