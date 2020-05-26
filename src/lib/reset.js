@@ -1,6 +1,5 @@
 import { css } from '@emotion/core'
 import { light } from './colors'
-import typography, { fontFamily } from '../lib/typography'
 
 const ResetStyles = () => {
   return css`
@@ -10,7 +9,6 @@ const ResetStyles = () => {
     ul, ol {
       list-style-position: outside;
       margin-left: 1.7rem;
-      font-size: ${typography.baseFontSize};
     }
     *,
     *:before,
@@ -19,7 +17,6 @@ const ResetStyles = () => {
     }
     html,
     body {
-      font-family: ${fontFamily}
       font-style: normal;
       padding: 0;
       margin: 0;
@@ -50,8 +47,6 @@ const ResetStyles = () => {
     }
   
     blockquote {
-      border-left: 5px solid ${light.blockquote};
-      color: ${light.blockquote};
       padding-left: 1rem !important;
       margin-left: 0 !important;
       margin-right: 0 !important;

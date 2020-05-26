@@ -37,6 +37,7 @@ export const getGlobalStyles = () => {
       li,
       strong {
         font-size: 90%;
+        margin-bottom: 1rem;
       }
       h1 {
         margin-top: 1rem;
@@ -57,7 +58,7 @@ export const getGlobalStyles = () => {
       background: none;
     }
     blockquote {
-      border-color: ${light.blockquote};
+      border-left: 5px solid ${light.blockquote};
       color: ${light.blockquote};
     }
     em {

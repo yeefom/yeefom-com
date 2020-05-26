@@ -23,7 +23,7 @@ const Header = ({ pageName }) => {
           aria-label={i18n.homeAria}
           css={css`
             text-decoration: none;
-            font-size: 40px;
+            font-size: 2.3rem;
             font-weight: 600;
           `}
         >
