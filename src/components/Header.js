@@ -1,14 +1,10 @@
 import React from 'react'
 import { Link, useStaticQuery, graphql } from 'gatsby'
 import { css } from '@emotion/core'
-import { useTheme } from './Theming'
-
 import Container from './Container'
 import i18n from '../i18n'
-import ThemeToggle from './ThemeToggle'
 
 const Header = ({ pageUri }) => {
-  const theme = useTheme()
   const { site: { siteMetadata: { title } } } = useStaticQuery(graphql`
     {
       site {
@@ -20,7 +16,7 @@ const Header = ({ pageUri }) => {
   `)
 
   return (
-    <header className="layout-header">
+    <header>
       <Container noVerticalPadding css={css`margin-bottom: 16px`}>
         <Link
           to="/"
@@ -43,7 +39,7 @@ const Header = ({ pageUri }) => {
         >
           <div
             css={css`
-              width: 200px;
+              width: 130px;
               display: flex;
               justify-content: space-between;
               align-items: center;
@@ -68,10 +64,6 @@ const Header = ({ pageUri }) => {
             >
               {i18n.about}
             </Link>
-            <ThemeToggle
-              toggleTheme={theme.toggleTheme}
-              themeName={theme.themeName}
-            />
           </div>
         </nav>
       </Container>

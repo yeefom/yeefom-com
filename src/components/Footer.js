@@ -3,10 +3,8 @@ import { css } from '@emotion/core'
 import { useStaticQuery, graphql } from 'gatsby'
 import { Twitter, GitHub, Feed, Email } from './Social'
 import Container from './Container'
-import { useTheme } from './Theming'
 
 const Footer = () => {
-  const theme = useTheme()
   const { site: { siteMetadata: { author, footer } } } = useStaticQuery(graphql`
     {
       site {
@@ -29,25 +27,8 @@ const Footer = () => {
   return (
     <footer>
       <Container noVerticalPadding>
-        <div
-          css={css`
-            border-top: 3px solid ${theme.colors.divider};
-            padding: 50px 0;
-            margin-top: 40px;
-          `}
-        >
-          <div css={css`
-            opacity: 0.7;
-            a {
-              color: ${theme.colors.text};
-              :hover {
-                color: ${theme.colors.text};
-              }
-              :not(:first-of-type) {
-                margin-left: 10px;
-              }
-            }
-          `}>
+        <div className="footer-container">
+          <div className="social-container">
             <Twitter target={footer.twitter}/>
             <GitHub target={footer.github}/>
             <Email target={footer.email}/>

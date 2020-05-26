@@ -1,9 +1,8 @@
 import { css } from '@emotion/core'
-import { useTheme } from '../components/Theming'
+import { light } from './colors'
 import typography, { fontFamily } from '../lib/typography'
 
 const ResetStyles = () => {
-  const theme = useTheme()
   return css`
     form {
       margin: 0;
@@ -51,8 +50,8 @@ const ResetStyles = () => {
     }
   
     blockquote {
-      border-left: 5px solid ${theme.colors.blockquote};
-      color: ${theme.colors.blockquote};
+      border-left: 5px solid ${light.blockquote};
+      color: ${light.blockquote};
       padding-left: 1rem !important;
       margin-left: 0 !important;
       margin-right: 0 !important;
@@ -92,12 +91,12 @@ const ResetStyles = () => {
     }
     table {
       border-collapse: collapse;
-      background-color: ${theme.colors.bodyBg};
+      background-color: ${light.bodyBg};
     }
     caption {
       padding-top: 1.5rem;
       padding-bottom: 1.5rem;
-      color: ${theme.colors.bodyBg};
+      color: ${light.bodyBg};
       text-align: center;
       caption-side: bottom;
     }

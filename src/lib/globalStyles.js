@@ -1,18 +1,19 @@
 import { css } from '@emotion/core'
 import { lighten } from 'polished'
 import { bpMaxSM } from './breakpoints'
+import { light, dark } from './colors'
 
-export const getGlobalStyles = theme => {
+export const getGlobalStyles = () => {
   return css`
     body {
-      background: ${theme.colors.bodyBg};
-      color: ${theme.colors.text};
+      background: ${light.bodyBg};
+      color: ${light.text};
     }
     a {
-      color: ${theme.colors.link};
+      color: ${light.link};
       &:hover,
       &:focus {
-        color: ${theme.colors.link};
+        color: ${light.link};
       }
     }
     h1,
@@ -21,13 +22,13 @@ export const getGlobalStyles = theme => {
     h4,
     h5,
     h6 {
-      color: ${theme.colors.text};
+      color: ${light.text};
       a {
         text-decoration: none;
-        color: ${theme.colors.text};
+        color: ${light.text};
         &:hover,
         &:focus {
-          color: ${theme.colors.text};
+          color: ${light.text};
         }
       }
     }
@@ -47,12 +48,12 @@ export const getGlobalStyles = theme => {
     hr {
       margin: 50px 0;
       border: none;
-      border-top: 1px solid ${theme.colors.blockquote};
+      border-top: 1px solid ${light.blockquote};
       background: none;
     }
     blockquote {
-      border-color: ${theme.colors.blockquote};
-      color: ${theme.colors.blockquote};
+      border-color: ${light.blockquote};
+      color: ${light.blockquote};
     }
     em {
       font-style: italic;
@@ -66,7 +67,7 @@ export const getGlobalStyles = theme => {
     }
     input {
       border-radius: 4px;
-      border: 1px solid ${theme.colors.gray};
+      border: 1px solid ${light.gray};
       padding: 5px 10px;
       box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
       margin-top: 5px;
@@ -80,16 +81,16 @@ export const getGlobalStyles = theme => {
     }
     button {
       border-radius: 4px;
-      background-color: ${theme.colors.primary};
+      background-color: ${light.primary};
       border: none;
-      color: ${theme.colors.white};
+      color: ${light.white};
       padding: 5px 10px;
       cursor: pointer;
-      border: 1px solid ${theme.colors.primary};
+      border: 1px solid ${light.primary};
       transition: all 150ms;
       :hover {
-        background: ${lighten(0.05, theme.colors.primary)};
-        border: 1px solid ${lighten(0.05, theme.colors.primary)};
+        background: ${lighten(0.05, light.primary)};
+        border: 1px solid ${lighten(0.05, light.primary)};
       }
     }
     pre {
@@ -115,28 +116,28 @@ export const getGlobalStyles = theme => {
         border-radius: 5px;
       }
     }
-    .layout-header {
+    header {
       width: 100%;
       padding: 20px 0;
-      background: ${theme.colors.headerBg};
+      background: ${light.headerBg};
       a {
-        color: ${theme.colors.text};
-        border-color: ${theme.colors.text};
+        color: ${light.text};
+        border-color: ${light.text};
         &:focus {
-          color: ${theme.colors.text};
+          color: ${light.text};
           outline: none;
         }
         &:hover {
-          color: ${theme.colors.text};
+          color: ${light.text};
         }
       }
       button {
-        color: ${theme.colors.text};
-        background: ${theme.colors.headerBg};
-        border-color: ${theme.colors.text};
+        color: ${light.text};
+        background: ${light.headerBg};
+        border-color: ${light.text};
         &:hover {
-          color: ${theme.colors.text};
-          border-color: ${theme.colors.text};
+          color: ${light.text};
+          border-color: ${light.text};
         }
       }
     }
@@ -145,13 +146,13 @@ export const getGlobalStyles = theme => {
       display: flex;
       justify-content: space-between;
       a {
-        color: ${theme.colors.text};
+        color: ${light.text};
         &:focus {
-          color: ${theme.colors.text};
+          color: ${light.text};
           outline: none;
         }
         &:hover {
-          color: ${theme.colors.text};
+          color: ${light.text};
         }
         ${bpMaxSM} {
           font-size: 90%;
@@ -173,6 +174,25 @@ export const getGlobalStyles = theme => {
       margin-bottom: 60px;
       ${bpMaxSM} {
         margin-bottom: 40px;
+      }
+    }
+    footer {
+      .footer-container {
+        border-top: 3px solid ${light.divider};
+        padding: 50px 0;
+        margin-top: 40px;
+      }
+      .social-container {
+        opacity: 0.7;
+        a {
+          color: ${light.text};
+          :hover {
+            color: ${light.text};
+          }
+          :not(:first-of-type) {
+            margin-left: 10px;
+          }
+        }
       }
     }
     .footnotes {
@@ -200,12 +220,12 @@ export const getGlobalStyles = theme => {
       background-image: none;
     }
     .littlefoot-footnote__button {
-      color: ${theme.colors.footnoteButtonText};
-      background-color: ${theme.colors.footnoteButtonBackground};
+      color: ${light.footnoteButtonText};
+      background-color: ${light.footnoteButtonBackground};
     }
     .littlefoot-footnote__host {
       .littlefoot-footnote__content, .littlefoot-footnote__tooltip, .littlefoot-footnote__wrapper {
-        background: ${theme.colors.headerBg};
+        background: ${light.headerBg};
       }
       button {
         font-size: 0.8rem;
