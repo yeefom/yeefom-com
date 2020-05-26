@@ -43,9 +43,15 @@ export const getGlobalStyles = () => {
         margin-bottom: 1rem;
         font-size: 25px;
       }
+      h2 {
+        font-size: 20px;
+      }
+      h3 {
+        font-size: 18px;
+      }
     }
     hr {
-      margin: 50px 0;
+      margin: 40px 0;
       border: none;
       border-top: 1px solid ${light.blockquote};
       background: none;
@@ -163,11 +169,14 @@ export const getGlobalStyles = () => {
     }
     .footnotes {
       ol {
-        margin-left: 0
+        margin-left: 1.5rem;
       }
       font-size: 0.85rem;
       .footnote-print-only {
         display: inherit !important;
+      }
+      hr {
+        margin-bottom: 25px;
       }
     }
     .footnotes.footnote-print-only {

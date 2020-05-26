@@ -8,8 +8,8 @@ const ResetStyles = () => {
       margin: 0;
     }
     ul, ol {
-      list-style-position: inside;
-      margin-left: 1.6rem;
+      list-style-position: outside;
+      margin-left: 1.7rem;
       font-size: ${typography.baseFontSize};
     }
     *,
