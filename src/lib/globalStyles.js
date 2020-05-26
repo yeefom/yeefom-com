@@ -1,5 +1,4 @@
 import { css } from '@emotion/core'
-import { lighten } from 'polished'
 import { bpMaxSM } from './breakpoints'
 import { light, dark } from './colors'
 
@@ -65,33 +64,9 @@ export const getGlobalStyles = () => {
         font-weight: 600;
       }
     }
-    input {
-      border-radius: 4px;
-      border: 1px solid ${light.gray};
-      padding: 5px 10px;
-      box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
-      margin-top: 5px;
-      ::placeholder {
-        opacity: 0.4;
-      }
-    }
     .gatsby-resp-image-image {
       background: none !important;
       box-shadow: 0;
-    }
-    button {
-      border-radius: 4px;
-      background-color: ${light.primary};
-      border: none;
-      color: ${light.white};
-      padding: 5px 10px;
-      cursor: pointer;
-      border: 1px solid ${light.primary};
-      transition: all 150ms;
-      :hover {
-        background: ${lighten(0.05, light.primary)};
-        border: 1px solid ${lighten(0.05, light.primary)};
-      }
     }
     pre {
       background-color: #061526 !important;
@@ -129,15 +104,6 @@ export const getGlobalStyles = () => {
         }
         &:hover {
           color: ${light.text};
-        }
-      }
-      button {
-        color: ${light.text};
-        background: ${light.headerBg};
-        border-color: ${light.text};
-        &:hover {
-          color: ${light.text};
-          border-color: ${light.text};
         }
       }
     }
@@ -186,7 +152,7 @@ export const getGlobalStyles = () => {
         opacity: 0.7;
         a {
           color: ${light.text};
-          :hover {
+          &:hover {
             color: ${light.text};
           }
           :not(:first-of-type) {
@@ -238,6 +204,83 @@ export const getGlobalStyles = () => {
       }
       .littlefoot-footnote__content {
         font-size: 0.8rem;
+      }
+    }
+    @media (prefers-color-scheme: dark) {
+      body {
+        background: ${dark.bodyBg};
+        color: ${dark.text};
+      }
+      a {
+        color: ${dark.link};
+        &:hover, &:focus {
+          color: ${dark.link};
+        }
+      }
+      h1, h2, h3, h4, h5, h6 {
+        color: ${dark.text};
+        a {
+          color: ${dark.text};
+          &:hover, &:focus {
+            color: ${dark.text};
+          }
+        }
+      }
+      hr {
+        border-color: ${dark.blockquote}
+      }
+      blockquote {
+        border-color: ${dark.blockquote};
+        color: ${dark.blockquote};
+      }
+      input {
+        border-color: ${dark.blockquote};
+      }
+      header {
+        background: ${dark.headerBg};
+        a {
+          color: ${dark.text};
+          border-color: ${dark.text};
+          &:focus {
+            color: ${dark.text};
+          }
+          &:hover {
+            color: ${dark.text};
+          }
+        }
+      }
+      .pagination-link {
+        a {
+          color: ${dark.text};
+          &:focus {
+            color: ${dark.text};
+          }
+          &:hover {
+            color: ${dark.text};
+          }
+        }
+      }
+      footer {
+        .footer-container {
+          border-color: ${dark.divider};
+        }
+        .social-container {
+          a {
+            color: ${dark.text};
+            &:hover {
+              color: ${dark.text};
+            }
+          }
+        }
+      }
+      .littlefoot-footnote__button {
+        color: ${dark.footnoteButtonText};
+        background-color: ${dark.footnoteButtonBackground};
+      }
+      .littlefoot-footnote__host {
+        .littlefoot-footnote__content, .littlefoot-footnote__tooltip, .littlefoot-footnote__wrapper {
+          background: ${dark.headerBg};
+        }
       }
     }
   `
