@@ -118,6 +118,7 @@ export const getGlobalStyles = () => {
       display: flex;
       justify-content: space-between;
       a {
+        display:block;
         color: ${light.text};
         &:focus {
           color: ${light.text};

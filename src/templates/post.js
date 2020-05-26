@@ -1,6 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
+import { css } from '@emotion/core'
 import SEO from '../components/SEO'
 import Container from '../components/Container'
 import Layout from '../components/Layout'
@@ -33,16 +34,33 @@ export default function Post({
           <br />
           <MDXRenderer>{body}</MDXRenderer>
         </article>
-        <div className="pagination-link">
+        <div
+          className="pagination-link"
+          css={css`
+            .navigation-label {
+              font-size: 0.9em;            
+            }
+          `}
+        >
           {prev === null ? <div>{''}</div> : (
-            <Link to={prev.pagePath} aria-label={i18n.previousArticleAria}>
-              {`${i18n.previous} ${prev.title}`}
-            </Link>
+            <div>
+              <div className="navigation-label">{i18n.previousPage}</div>
+              <Link to={prev.pagePath} aria-label={i18n.previousArticleAria}>
+                {prev.title}
+              </Link>
+            </div>
           )}
           {next && (
-            <Link to={next.pagePath} aria-label={i18n.nextArticleAria}>
-              {`${next.title} ${i18n.next}`}
-            </Link>
+            <div css={css`
+              text-align: right;
+            `}>
+              <div className="navigation-label">
+                {i18n.nextPage}
+              </div>
+              <Link to={next.pagePath} aria-label={i18n.nextArticleAria}>
+                {next.title}
+              </Link>
+            </div>
           )}
         </div>
       </Container>
