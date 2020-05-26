@@ -5,13 +5,14 @@ import { css } from '@emotion/core'
 import Container from '../components/Container'
 import Layout from '../components/Layout'
 import SEO from "../components/SEO";
+import i18n from "../i18n"
 import { bpMaxSM } from "../lib/breakpoints";
 
-export default ({ data, uri }) => {
+export default ({ data }) => {
   const { mdx: { fields, body }, site: { siteMetadata } } = data
 
   return (
-    <Layout pageTitle={fields.title} pageUri={uri}>
+    <Layout pageTitle={i18n.title} pageName="about">
       <SEO meta={{
         title: fields.title,
         description: siteMetadata.aboutDescription

@@ -8,11 +8,11 @@ import Link from '../components/Link'
 import i18n from '../i18n'
 import { bpMaxSM } from "../lib/breakpoints";
 
-export default ({ data, uri }) => {
+export default ({ data }) => {
   const { allMdx, site: { siteMetadata } } = data
 
   return (
-    <Layout pageTitle={i18n.archive} pageUri={uri}>
+    <Layout pageTitle={i18n.archive} pageName="archive">
       <SEO meta={{
         title: i18n.archive,
         description: siteMetadata.archiveDescription

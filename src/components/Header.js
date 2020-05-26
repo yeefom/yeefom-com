@@ -4,7 +4,7 @@ import { css } from '@emotion/core'
 import Container from './Container'
 import i18n from '../i18n'
 
-const Header = ({ pageUri }) => {
+const Header = ({ pageName }) => {
   const { site: { siteMetadata: { title } } } = useStaticQuery(graphql`
     {
       site {
@@ -20,7 +20,7 @@ const Header = ({ pageUri }) => {
       <Container noVerticalPadding css={css`margin-bottom: 16px`}>
         <Link
           to="/"
-          aria-label="go to homepage"
+          aria-label={i18n.homeAria}
           css={css`
             text-decoration: none;
             font-size: 40px;
@@ -50,7 +50,7 @@ const Header = ({ pageUri }) => {
               aria-label={i18n.archiveAria}
               css={css`
                 margin-left: 0;
-                font-weight: ${pageUri === '/archive' ? '600' : '400'};
+                font-weight: ${pageName === 'archive' ? '600' : '400'};
               `}
             >
               {i18n.archive}
@@ -59,7 +59,7 @@ const Header = ({ pageUri }) => {
               to="/about"
               aria-label={i18n.aboutAria}
               css={css`
-                font-weight: ${pageUri === '/about' ? '600' : '400'};
+                font-weight: ${pageName === 'about' ? '600' : '400'};
               `}
             >
               {i18n.about}

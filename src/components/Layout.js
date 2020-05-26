@@ -9,7 +9,7 @@ import Footer from '../components/Footer'
 import Code from './Code'
 import { getGlobalStyles } from '../lib/globalStyles'
 
-export default ({ children, pageTitle, pageUri }) => {
+export default ({ children, pageTitle, pageName }) => {
   const { site } = useStaticQuery(graphql`
     query {
       site {
@@ -41,7 +41,7 @@ export default ({ children, pageTitle, pageUri }) => {
           <html lang="en" />
           <noscript>This site runs best with JavaScript enabled.</noscript>
         </Helmet>
-        <Header pageUri={pageUri}/>
+        <Header pageName={pageName}/>
         <MDXProvider components={{ code: Code }}>
           <Fragment>{children}</Fragment>
         </MDXProvider>
