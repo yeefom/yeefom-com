@@ -50,7 +50,7 @@ export default ({ data }) => {
                 `}
               >
                 <Link
-                  aria-label={`View ${fields.title} article`}
+                  aria-label={`${i18n.view} ${fields.title}`}
                   to={fields.pagePath}>
                   {fields.title}
                 </Link>

@@ -8,8 +8,9 @@ import reset from '../lib/reset'
 import Footer from '../components/Footer'
 import Code from './Code'
 import { getGlobalStyles } from '../lib/globalStyles'
+import i18n from '../i18n'
 
-export default ({ children, pageTitle, pageName }) => {
+export default ({ children, pageTitle, pageName, pageIndex }) => {
   const { site } = useStaticQuery(graphql`
     query {
       site {
@@ -23,7 +24,9 @@ export default ({ children, pageTitle, pageName }) => {
     }
   `)
 
-  const siteTitle = pageTitle ? `${pageTitle} — ${site.siteMetadata.title}` : site.siteMetadata.title
+  const siteTitle = pageIndex
+    ? pageIndex === 1 ? site.siteMetadata.title : `${site.siteMetadata.title} — ${i18n.page} ${pageIndex}`
+    : pageTitle ? `${pageTitle} — ${site.siteMetadata.title}` : site.siteMetadata.title
 
   return (
     <Fragment>

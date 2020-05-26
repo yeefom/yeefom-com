@@ -9,10 +9,10 @@ import i18n from '../i18n'
 import SEO from "../components/SEO";
 
 export default function Index({ data: { allMdx, site: { siteMetadata } }, pageContext: { pagination } }) {
-  const { nextPagePath, previousPagePath } = pagination
+  const { nextPagePath, previousPagePath, pageIndex } = pagination
 
   return (
-    <Layout>
+    <Layout pageIndex={pageIndex}>
       <SEO meta={{
         title: siteMetadata.title,
         description: siteMetadata.description,
@@ -35,7 +35,7 @@ export default function Index({ data: { allMdx, site: { siteMetadata } }, pageCo
               <h1>
                 <Link
                   to={fields.pagePath}
-                  aria-label={`View ${fields.title}`}
+                  aria-label={`${i18n.view} ${fields.title}`}
                 >
                   {fields.title}
                 </Link>

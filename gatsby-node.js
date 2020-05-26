@@ -47,6 +47,7 @@ const createIndexPages = (createPage, createRedirect, edges) => {
       context: {
         pagePosts: page,
         pagination: {
+          pageIndex,
           nextPagePath: pageIndex === pages.length ? null : `/page/${pageIndex + 1}`,
           previousPagePath: pageIndex === 1 ? null : `${pageIndex === 2 ? '/' : `/page/${pageIndex - 1}`}`,
           pageCount: pages.length,

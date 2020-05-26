@@ -12,7 +12,7 @@ export default ({ data }) => {
   const { mdx: { fields, body }, site: { siteMetadata } } = data
 
   return (
-    <Layout pageTitle={i18n.title} pageName="about">
+    <Layout pageTitle={i18n.about} pageName="about">
       <SEO meta={{
         title: fields.title,
         description: siteMetadata.aboutDescription
