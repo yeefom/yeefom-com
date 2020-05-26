@@ -103,18 +103,6 @@ exports.createPages = async ({ actions, graphql }) => {
   createIndexPages(createPage, createRedirect, edges)
 }
 
-exports.onCreateWebpackConfig = ({ actions }) => {
-  actions.setWebpackConfig({
-    resolve: {
-      modules: [path.resolve(__dirname, 'src'), 'node_modules'],
-      alias: {
-        'react-dom': '@hot-loader/react-dom',
-        $components: path.resolve(__dirname, 'src/components'),
-      },
-    },
-  })
-}
-
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
 

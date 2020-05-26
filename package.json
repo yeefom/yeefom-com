@@ -16,7 +16,6 @@
   "dependencies": {
     "@emotion/core": "^10.0.22",
     "@emotion/styled": "^10.0.22",
-    "@hot-loader/react-dom": "16.10.2",
     "@mdx-js/mdx": "^1.6.4",
     "@mdx-js/react": "^1.6.4",
     "@reach/router": "^1.1.1",
@@ -35,8 +34,8 @@
     "polished": "^3.6.3",
     "prism-react-renderer": "^1.1.1",
     "prop-types": "^15.7.2",
-    "react": "^16.11.0",
-    "react-dom": "^16.11.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "react-helmet": "^6.0.0",
     "react-icons": "^3.10.0",
     "react-typography": "^0.16.19",
