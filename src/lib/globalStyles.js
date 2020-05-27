@@ -113,8 +113,22 @@ export const getGlobalStyles = () => {
     header {
       padding: 1.2rem 0;
       background: ${light.headerBg};
+      .header-navigation {
+        a {
+          color: ${light.text};
+          &:active,
+          &:visited,
+          &:hover,
+          &:focus {
+            color: ${light.text};
+          }
+        }
+      }
     }
     .navigation-links {
+      margin-top: 4.3rem;
+      display: flex;
+      justify-content: space-between;
       a {
         color: ${light.text};
         &:active,
@@ -124,9 +138,6 @@ export const getGlobalStyles = () => {
           color: ${light.text};
         }
       }
-      margin-top: 4.3rem;
-      display: flex;
-      justify-content: space-between;
     }
     .index-article, .post-article {
       h1 {

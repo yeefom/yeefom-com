@@ -33,8 +33,10 @@ const Header = ({ pageName }) => {
           </Link>
         </h1>
         <nav
-          className="navigation-links"
+          className="header-navigation"
           css={css`
+            display: flex;
+            justify-content: space-between;
             margin-top: 1rem;
             width: 7.5rem;
             font-size: 90%;
