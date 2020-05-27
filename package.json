@@ -28,7 +28,6 @@
     "gatsby-source-filesystem": "^2.3.8",
     "gatsby-transformer-sharp": "^2.3.0",
     "littlefoot": "^3.2.5",
-    "polished": "^3.6.3",
     "prism-react-renderer": "^1.1.1",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",

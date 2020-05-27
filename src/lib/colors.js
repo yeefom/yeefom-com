@@ -1,39 +1,37 @@
-import { darken, lighten } from 'polished'
-
 const colors = {
   black: '#131415',
+  lighterBlack: 'rgb(19, 20, 21)',
+  lightBlack: '#242526',
   white: '#fff',
   offWhite: '#f2f0ed',
-  gray: '#242526',
-  darkGray: 'rgba(110,110,110,0.5)',
+  lightGrey: '#bfbfbf',
+  grey: '#747a80',
+  darkGrey: 'rgba(110,110,110,0.5)',
   red: '#E74C3C',
   blue: '#06c',
   green: '#29B573',
-  lighterBlack: 'rgb(19, 20, 21)'
 }
 
 const light = {
-  primary: colors.blue,
   text: colors.lighterBlack,
   bodyBg: colors.white,
   headerBg: colors.offWhite,
-  blockquote: lighten(0.4, colors.black),
+  blockquote: colors.grey,
   link: colors.blue,
   divider: colors.offWhite,
   footnoteButtonText: colors.white,
-  footnoteButtonBackground: colors.darkGray,
+  footnoteButtonBackground: colors.darkGrey,
 }
 
 const dark = {
-  primary: lighten(0.05, colors.blue),
   text: colors.white,
   bodyBg: colors.black,
-  headerBg: colors.gray,
-  blockquote: darken(0.25, colors.white),
-  link: lighten(0.05, colors.white),
-  divider: lighten(0.05, colors.white),
+  headerBg: colors.lightBlack,
+  blockquote: colors.lightGrey,
+  link: colors.white,
+  divider: colors.white,
   footnoteButtonText: colors.white,
-  footnoteButtonBackground: colors.darkGray,
+  footnoteButtonBackground: colors.darkGrey,
 }
 
 export { light, dark }
