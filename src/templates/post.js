@@ -1,11 +1,10 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { css } from '@emotion/core'
 import SEO from '../components/SEO'
 import Container from '../components/Container'
 import Layout from '../components/Layout'
-import Link from "../components/Link";
 import i18n from "../i18n";
 
 export default function Post({

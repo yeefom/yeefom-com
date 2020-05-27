@@ -15,12 +15,9 @@
   "main": "",
   "dependencies": {
     "@emotion/core": "^10.0.22",
-    "@emotion/styled": "^10.0.22",
     "@mdx-js/mdx": "^1.6.4",
     "@mdx-js/react": "^1.6.4",
-    "@reach/router": "^1.1.1",
     "gatsby": "^2.17.2",
-    "gatsby-link": "^2.4.3",
     "gatsby-plugin-emotion": "^4.3.2",
     "gatsby-plugin-feed": "^2.5.3",
     "gatsby-plugin-mdx": "^1.0.53",
@@ -36,7 +33,6 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-helmet": "^6.0.0",
-    "react-icons": "^3.10.0",
     "remark-numbered-footnote-labels": "^1.1.0"
   },
   "devDependencies": {

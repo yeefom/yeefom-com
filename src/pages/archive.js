@@ -1,10 +1,9 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import { css } from '@emotion/core'
 import Container from '../components/Container'
 import SEO from '../components/SEO'
 import Layout from '../components/Layout'
-import Link from '../components/Link'
 import i18n from '../i18n'
 import { bpMaxSM } from "../lib/breakpoints";
 
