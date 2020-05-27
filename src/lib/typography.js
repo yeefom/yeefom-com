@@ -21,7 +21,7 @@ const typography = new Typography({
       fontSize: '1.15rem',
     },
     'h1,h2,h3,h4': {
-      lineHeight: 1.25,
+      lineHeight: 1.4,
       marginTop: '1.4rem',
       marginBottom: '1rem',
     },
