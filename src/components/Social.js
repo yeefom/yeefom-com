@@ -7,13 +7,15 @@ export const Twitter = ({ target }) => {
     <a
       href={target}
       aria-label={i18n.twitterAria}
+      css={css`
+        display: inline-block;
+      `}
     >
       <svg
-        css={css`transform: translateY(-2px)`}
         xmlns="http://www.w3.org/2000/svg"
         width="27"
         height="27"
-        viewBox="0 0 24 20"
+        viewBox="0 0 23 23"
       >
         <path
           fill="currentColor"
@@ -32,6 +34,9 @@ export const GitHub = ({ target }) => {
       aria-label={i18n.githubAria}
     >
       <svg
+        css={css`
+          display: inline-block;
+        `}
         xmlns="http://www.w3.org/2000/svg"
         width="26"
         height="26"
@@ -52,6 +57,10 @@ export const Email = ({ target }) => {
     <a
       href={target}
       aria-label={i18n.emailAria}
+      css={css`
+        display: inline-block;
+        transform: translateY(2px);
+      `}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -74,9 +83,12 @@ export const Feed = ({ target }) => {
     <a
       href={target}
       aria-label={i18n.feedAria}
+      css={css`
+        display: inline-block;
+        transform: translateY(-3px);
+      `}
     >
       <svg
-        css={css`transform: translateY(-1px)`}
         xmlns="http://www.w3.org/2000/svg"
         width="22"
         height="22"

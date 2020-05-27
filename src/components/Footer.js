@@ -28,7 +28,18 @@ const Footer = () => {
     <footer>
       <Container noVerticalPadding>
         <div className="footer-container">
-          <div className="social-container">
+          <div
+            className="dark-link"
+            css={css`
+              opacity: 0.7;
+              a {
+                display: inline-block;
+                :not(:first-of-type) {
+                  margin-left: 10px;
+                }
+              }
+            `}
+          >
             <Twitter target={footer.twitter}/>
             <GitHub target={footer.github}/>
             <Email target={footer.email}/>

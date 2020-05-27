@@ -149,18 +149,6 @@ export const getGlobalStyles = () => {
         padding: 50px 0;
         margin-top: 40px;
       }
-      .social-container {
-        opacity: 0.7;
-        a {
-          color: ${light.text};
-          &:hover {
-            color: ${light.text};
-          }
-          :not(:first-of-type) {
-            margin-left: 10px;
-          }
-        }
-      }
     }
     .footnotes {
       ol {
