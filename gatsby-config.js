@@ -102,6 +102,12 @@ module.exports = {
     'gatsby-plugin-emotion',
     'gatsby-plugin-react-helmet',
     {
+      resolve: `gatsby-plugin-catch-links`,
+      options: {
+        excludePattern: /\.xml$/,
+      },
+    },
+    {
       resolve: `gatsby-plugin-feed`,
       options: {
         query: `
