@@ -34,7 +34,7 @@ export default function Post({
           <MDXRenderer>{body}</MDXRenderer>
         </article>
         <div
-          className="pagination-links"
+          className="navigation-links"
           css={css`
             .navigation-label {
               font-size: 0.9em;            
@@ -45,7 +45,6 @@ export default function Post({
             <div>
               <div className="navigation-label">{i18n.previousPage}</div>
               <Link
-                className="black-link"
                 to={prev.pagePath}
                 aria-label={i18n.previousArticleAria}
               >
@@ -61,7 +60,6 @@ export default function Post({
                 {i18n.nextPage}
               </div>
               <Link
-                className="black-link"
                 to={next.pagePath}
                 aria-label={i18n.nextArticleAria}
               >

@@ -114,16 +114,16 @@ export const getGlobalStyles = () => {
       padding: 1.2rem 0;
       background: ${light.headerBg};
     }
-    .black-link {
-      color: ${light.text};
-      &:active,
-      &:visited,
-      &:hover,
-      &:focus {
+    .navigation-links {
+      a {
         color: ${light.text};
+        &:active,
+        &:visited,
+        &:hover,
+        &:focus {
+          color: ${light.text};
+        }
       }
-    }
-    .pagination-links {
       margin-top: 4.3rem;
       display: flex;
       justify-content: space-between;

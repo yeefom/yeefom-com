@@ -47,10 +47,9 @@ export default function Index({ data: { allMdx, site: { siteMetadata } }, pageCo
             </article>
           );
         })}
-        <div className="pagination-links">
+        <div className="navigation-links">
           {previousPagePath === null ? <div>{''}</div> : (
             <Link
-              className="black-link"
               to={previousPagePath}
               aria-label={i18n.previousPageAria}
             >
@@ -59,7 +58,6 @@ export default function Index({ data: { allMdx, site: { siteMetadata } }, pageCo
           )}
           {nextPagePath && (
             <Link
-              className="black-link"
               to={nextPagePath}
               aria-label={i18n.nextPageAria}
             >

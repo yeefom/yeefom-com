@@ -33,41 +33,31 @@ const Header = ({ pageName }) => {
           </Link>
         </h1>
         <nav
+          className="navigation-links"
           css={css`
-            width: 100%;
             margin-top: 1rem;
+            width: 7.5rem;
+            font-size: 90%;
           `}
         >
-          <div
+          <Link
+            to="/archive"
+            aria-label={i18n.archiveAria}
             css={css`
-              width: 7.5rem;
-              display: flex;
-              justify-content: space-between;
-              align-items: center;
+              ${pageName === 'archive' ? 'font-weight: 600' : ''};
             `}
           >
-            <Link
-              to="/archive"
-              aria-label={i18n.archiveAria}
-              className="black-link"
-              css={css`
-                margin-left: 0;
-                font-weight: ${pageName === 'archive' ? '600' : '400'};
-              `}
-            >
-              {i18n.archive}
-            </Link>
-            <Link
-              to="/about"
-              aria-label={i18n.aboutAria}
-              className="black-link"
-              css={css`
-                font-weight: ${pageName === 'about' ? '600' : '400'};
-              `}
-            >
-              {i18n.about}
-            </Link>
-          </div>
+            {i18n.archive}
+          </Link>
+          <Link
+            to="/about"
+            aria-label={i18n.aboutAria}
+            css={css`
+              ${pageName === 'about' ? 'font-weight: 600' : ''};
+            `}
+          >
+            {i18n.about}
+          </Link>
         </nav>
       </Container>
     </header>
