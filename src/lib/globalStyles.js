@@ -88,10 +88,9 @@ export const getGlobalStyles = () => {
       box-shadow: 0;
     }
     pre {
-      background-color: #061526 !important;
+      background-color: #061526;
       border-radius: 4px;
-      font-size: 16px;
-      padding: 10px;
+      padding: 0.8rem;
       overflow-x: auto;
       /* Track */
       ::-webkit-scrollbar {

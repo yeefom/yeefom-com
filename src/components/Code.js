@@ -13,7 +13,7 @@ const Code = ({ children, className = 'language-js' }) => {
       theme={theme}
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <pre className={className} style={{ ...style, padding: '20px' }}>
+        <code className={className} style={{ ...style }}>
           {tokens.map((line, i) => (
             <div key={i} {...getLineProps({ line, key: i })}>
               {line.map((token, key) => (
@@ -21,7 +21,7 @@ const Code = ({ children, className = 'language-js' }) => {
               ))}
             </div>
           ))}
-        </pre>
+        </code>
       )}
     </Highlight>
   )
