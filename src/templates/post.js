@@ -34,7 +34,7 @@ export default function Post({
           <MDXRenderer>{body}</MDXRenderer>
         </article>
         <div
-          className="navigation-links"
+          className="navigation-links dark-link"
           css={css`
             .navigation-label {
               font-size: 0.9em;            

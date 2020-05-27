@@ -47,7 +47,7 @@ export default function Index({ data: { allMdx, site: { siteMetadata } }, pageCo
             </article>
           );
         })}
-        <div className="navigation-links">
+        <div className="navigation-links dark-link">
           {previousPagePath === null ? <div>{''}</div> : (
             <Link
               to={previousPagePath}

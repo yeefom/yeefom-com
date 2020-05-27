@@ -28,8 +28,8 @@ export const getGlobalStyles = () => {
     h4,
     h5,
     h6 {
-      font-weight: 600;
       color: ${light.text};
+      font-weight: 600;
       line-height: 1.3;
       a {
         text-decoration: none;
@@ -55,7 +55,7 @@ export const getGlobalStyles = () => {
       list-style-position: outside;
       margin-left: 1.7rem;
       li {
-        margin-bottom: 1em;
+        margin-top: 1em;
       }
     }
     small {
@@ -112,22 +112,13 @@ export const getGlobalStyles = () => {
     header {
       padding: 1.2rem 0;
       background: ${light.headerBg};
-      .header-navigation {
-        a {
-          color: ${light.text};
-          &:active,
-          &:visited,
-          &:hover,
-          &:focus {
-            color: ${light.text};
-          }
-        }
-      }
     }
     .navigation-links {
       margin-top: 4.3rem;
       display: flex;
       justify-content: space-between;
+    }
+    .dark-link {
       a {
         color: ${light.text};
         &:active,
@@ -247,16 +238,38 @@ export const getGlobalStyles = () => {
         color: ${dark.text};
       }
       a {
-        color: ${dark.link};
-        &:hover, &:focus {
-          color: ${dark.link};
+        color: ${dark.text};
+        &:active,
+        &:visited,
+        &:hover,
+        &:focus {
+          color: ${dark.text};
         }
       }
-      h1, h2, h3, h4, h5, h6 {
+      h1, 
+      h2, 
+      h3, 
+      h4, 
+      h5, 
+      h6 {
         color: ${dark.text};
         a {
           color: ${dark.text};
-          &:hover, &:focus {
+          &:active,
+          &:visited,
+          &:hover,
+          &:focus {
+            color: ${dark.text};
+          }
+        }
+      }
+      .dark-link {
+        a {
+          color: ${dark.text};
+          &:active,
+          &:visited,
+          &:hover,
+          &:focus {
             color: ${dark.text};
           }
         }

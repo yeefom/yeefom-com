@@ -33,7 +33,7 @@ const Header = ({ pageName }) => {
           </Link>
         </h1>
         <nav
-          className="header-navigation"
+          className="header-navigation dark-link"
           css={css`
             display: flex;
             justify-content: space-between;
