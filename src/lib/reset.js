@@ -25,7 +25,7 @@ const ResetStyles = () => {
     blockquote {
       margin: 0;
       padding: 0;
-      font-weight: normal;
+      font-weight: 400;
     }
     
     img {
