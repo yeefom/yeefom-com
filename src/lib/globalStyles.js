@@ -203,15 +203,13 @@ export const getGlobalStyles = () => {
         font-size: 90%;
       }
       h1 {
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-        font-size: 25px;
+        font-size: 1.4rem;
       }
       h2 {
-        font-size: 20px;
-      }
+        font-size: 1.15rem;
+      },
       h3 {
-        font-size: 18px;
+        font-size: 1rem;
       }
       hr {
         margin: 30px 0;
