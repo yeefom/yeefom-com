@@ -25,15 +25,14 @@ export default ({ data }) => {
         <article>
           <h1
             css={css`
-              margin-bottom: 40px;
+              margin-bottom: 2.7rem;
               ${bpMaxSM} {
-                margin-bottom: 10px;
+                margin-bottom: 1.3rem;
               }
             `}
           >
             {fields.title}
           </h1>
-          <br/>
           <MDXRenderer>{body}</MDXRenderer>
         </article>
       </Container>

@@ -4,15 +4,22 @@ import { light, dark } from './colors'
 
 export const getGlobalStyles = () => {
   return css`
+    html {
+      font: 112.5%/1.55 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    }
     body {
+      word-wrap: break-word;
       background: ${light.bodyBg};
       color: ${light.text};
     }
     a {
       color: ${light.link};
+      &:active,
+      &:visited,
       &:hover,
       &:focus {
         color: ${light.link};
+        outline: none;
       }
     }
     h1,
@@ -21,15 +28,38 @@ export const getGlobalStyles = () => {
     h4,
     h5,
     h6 {
+      font-weight: 600;
       color: ${light.text};
+      line-height: 1.3;
       a {
         text-decoration: none;
         color: ${light.text};
+        &:active,
+        &:visited,
         &:hover,
         &:focus {
           color: ${light.text};
         }
       }
+    }
+    h1 {
+      font-size: 1.6rem;
+    }
+    h2 {
+      font-size: 1.35rem;
+    },
+    h3 {
+      font-size: 1.15rem;
+    }
+    ul, ol {
+      list-style-position: outside;
+      margin-left: 1.7rem;
+      li {
+        margin-bottom: 1em;
+      }
+    }
+    small {
+      font-size: 80%
     }
     hr {
       margin: 40px 0;
@@ -38,6 +68,8 @@ export const getGlobalStyles = () => {
       background: none;
     }
     blockquote {
+      padding-left: 1em;
+      font-style: italic;
       border-left: 5px solid ${light.blockquote};
       color: ${light.blockquote};
     }
@@ -79,39 +111,22 @@ export const getGlobalStyles = () => {
       }
     }
     header {
-      width: 100%;
-      padding: 20px 0;
+      padding: 1.2rem 0;
       background: ${light.headerBg};
-      a {
+    }
+    .black-link {
+      color: ${light.text};
+      &:active,
+      &:visited,
+      &:hover,
+      &:focus {
         color: ${light.text};
-        border-color: ${light.text};
-        &:focus {
-          color: ${light.text};
-          outline: none;
-        }
-        &:hover {
-          color: ${light.text};
-        }
       }
     }
-    .pagination-link {
-      margin-top: 77px;
+    .pagination-links {
+      margin-top: 4.3rem;
       display: flex;
       justify-content: space-between;
-      a {
-        display:block;
-        color: ${light.text};
-        &:focus {
-          color: ${light.text};
-          outline: none;
-        }
-        &:hover {
-          color: ${light.text};
-        }
-        ${bpMaxSM} {
-          font-size: 90%;
-        }
-      }
     }
     .index-article, .post-article {
       h1 {
@@ -125,10 +140,7 @@ export const getGlobalStyles = () => {
     }
     small.article-date {
       display: inline-block; 
-      margin-bottom: 60px;
-      ${bpMaxSM} {
-        margin-bottom: 40px;
-      }
+      margin: 0 0 1.5rem;
     }
     footer {
       .footer-container {
@@ -198,12 +210,8 @@ export const getGlobalStyles = () => {
       }
     }
     ${bpMaxSM} {
-      p,
-      em,
-      li,
-      strong {
+      body {
         font-size: 90%;
-        margin-bottom: 1rem;
       }
       h1 {
         margin-top: 1rem;
@@ -218,6 +226,9 @@ export const getGlobalStyles = () => {
       }
       hr {
         margin: 30px 0;
+      }
+      small.article-date {
+        margin-bottom: 1rem;
       }
     }
     @media (prefers-color-scheme: dark) {

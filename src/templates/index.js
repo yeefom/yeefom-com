@@ -48,14 +48,22 @@ export default function Index({ data: { allMdx, site: { siteMetadata } }, pageCo
             </article>
           );
         })}
-        <div className="pagination-link">
+        <div className="pagination-links">
           {previousPagePath === null ? <div>{''}</div> : (
-            <Link to={previousPagePath} aria-label={i18n.previousPageAria}>
+            <Link
+              className="black-link"
+              to={previousPagePath}
+              aria-label={i18n.previousPageAria}
+            >
               {i18n.previousPage}
             </Link>
           )}
           {nextPagePath && (
-            <Link to={nextPagePath} aria-label={i18n.nextPageAria}>
+            <Link
+              className="black-link"
+              to={nextPagePath}
+              aria-label={i18n.nextPageAria}
+            >
               {i18n.nextPage}
             </Link>
           )}

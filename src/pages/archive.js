@@ -19,14 +19,13 @@ export default ({ data }) => {
       }}/>
       <Container>
         <h1 css={css`
-          margin-bottom: 40px;
+          margin-bottom: 2.7rem;
           ${bpMaxSM} {
-            margin-bottom: 10px;
+            margin-bottom: 1.3rem;
           }
         `}>
           {i18n.archive}
         </h1>
-        <br/>
         {allMdx.edges.map(({ node }) => {
           const { fields, id } = node
 

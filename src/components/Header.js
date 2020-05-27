@@ -18,28 +18,29 @@ const Header = ({ pageName }) => {
   return (
     <header>
       <Container noVerticalPadding css={css`margin-bottom: 16px`}>
-        <Link
-          to="/"
-          aria-label={i18n.homeAria}
-          css={css`
-            text-decoration: none;
-            font-size: 2.3rem;
-            font-weight: 600;
-          `}
-        >
-          {title}
-        </Link>
+        <h1>
+          <Link
+            to="/"
+            aria-label={i18n.homeAria}
+            css={css`
+              text-decoration: none;
+              font-size: 2.3rem;
+              font-weight: 600;
+              line-height: 1.55;
+            `}
+          >
+            {title}
+          </Link>
+        </h1>
         <nav
           css={css`
             width: 100%;
-            margin-top: 16px;
-            font-size: 16px;
-            line-height: 1.25;
+            margin-top: 1rem;
           `}
         >
           <div
             css={css`
-              width: 130px;
+              width: 7.5rem;
               display: flex;
               justify-content: space-between;
               align-items: center;
@@ -48,6 +49,7 @@ const Header = ({ pageName }) => {
             <Link
               to="/archive"
               aria-label={i18n.archiveAria}
+              className="black-link"
               css={css`
                 margin-left: 0;
                 font-weight: ${pageName === 'archive' ? '600' : '400'};
@@ -58,6 +60,7 @@ const Header = ({ pageName }) => {
             <Link
               to="/about"
               aria-label={i18n.aboutAria}
+              className="black-link"
               css={css`
                 font-weight: ${pageName === 'about' ? '600' : '400'};
               `}

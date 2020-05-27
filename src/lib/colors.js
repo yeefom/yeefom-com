@@ -9,11 +9,12 @@ const colors = {
   red: '#E74C3C',
   blue: '#06c',
   green: '#29B573',
+  lighterBlack: 'rgb(19, 20, 21)'
 }
 
 const light = {
   primary: colors.blue,
-  text: colors.black,
+  text: colors.lighterBlack,
   bodyBg: colors.white,
   headerBg: colors.offWhite,
   blockquote: lighten(0.4, colors.black),

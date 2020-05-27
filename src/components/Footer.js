@@ -36,7 +36,7 @@ const Footer = () => {
           </div>
           <div
             css={css`
-              margin-top: 16px;
+              margin-top: 1rem;
               font-size: 93%;
               opacity: 0.7;
             `}

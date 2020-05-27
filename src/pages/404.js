@@ -7,7 +7,7 @@ import i18n from '../i18n'
 export default () => (
   <Layout pageTitle='404'>
     <Container>
-        <span css={css`margin-bottom: 40px;`}>
+        <span css={css`margin-bottom: 2.6rem;`}>
           {i18n.notFound}
         </span>
     </Container>

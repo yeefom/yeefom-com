@@ -9,17 +9,16 @@ const Container = props => {
     noVerticalPadding = false,
     ...restProps
   } = props
+
   return (
     <div
       css={css`
         width: 100%;
         margin: 0 auto;
-        max-width: ${maxWidth + (noHorizontalPadding ? 0 : 80)}px;
-        padding: ${noVerticalPadding ? 0 : '40'}px
-          ${noHorizontalPadding ? 0 : '40'}px;
+        max-width: ${noHorizontalPadding ? 0 : `${maxWidth + 80}px`};
+        padding: ${noVerticalPadding ? 0 : '40px'} ${noHorizontalPadding ? 0 : '40px'};
         ${bpMaxSM} {
-          padding: ${noVerticalPadding ? 0 : '20'}px
-            ${noHorizontalPadding ? 0 : '20'}px;
+          padding: ${noVerticalPadding ? 0 : '20px'} ${noHorizontalPadding ? 0 : '20px'};
         }
       `}
       {...restProps}
