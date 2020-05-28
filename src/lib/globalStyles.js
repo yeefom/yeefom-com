@@ -2,7 +2,7 @@ import { css } from '@emotion/core'
 import { bpMaxSM } from './breakpoints'
 import { light, dark } from './colors'
 
-export const getGlobalStyles = () => {
+export default () => {
   return css`
     html {
       font: 112.5%/1.55 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
@@ -155,47 +155,8 @@ export const getGlobalStyles = () => {
         margin-left: 1.5rem;
       }
       font-size: 0.85rem;
-      .footnote-print-only {
-        display: inherit !important;
-      }
       hr {
         margin-bottom: 25px;
-      }
-    }
-    .footnotes.footnote-print-only {
-      display: inherit !important;
-    }
-    .footnotes .footnote-print-only li {
-      display: list-item !important;
-    }
-    .littlefoot-footnote.is-scrollable::after {
-      background-image: none;
-    }
-    .littlefoot-footnote.is-scrollable .littlefoot-footnote__wrapper::before {
-      background-image: none;
-    }
-    .littlefoot-footnote.is-scrollable .littlefoot-footnote__wrapper::after {
-      background-image: none;
-    }
-    .littlefoot-footnote__button {
-      color: ${light.footnoteButtonText};
-      background-color: ${light.footnoteButtonBackground};
-    }
-    .littlefoot-footnote__host {
-      .littlefoot-footnote__content, .littlefoot-footnote__tooltip, .littlefoot-footnote__wrapper {
-        background: ${light.headerBg};
-      }
-      button {
-        font-size: 0.8rem;
-        font-weight: 500;
-        padding: 0 6px;
-        height: 1rem;
-      }
-      button:hover {
-        border: none;
-      }
-      .littlefoot-footnote__content {
-        font-size: 0.8rem;
       }
     }
     ${bpMaxSM} {
@@ -305,15 +266,6 @@ export const getGlobalStyles = () => {
               color: ${dark.text};
             }
           }
-        }
-      }
-      .littlefoot-footnote__button {
-        color: ${dark.footnoteButtonText};
-        background-color: ${dark.footnoteButtonBackground};
-      }
-      .littlefoot-footnote__host {
-        .littlefoot-footnote__content, .littlefoot-footnote__tooltip, .littlefoot-footnote__wrapper {
-          background: ${dark.headerBg};
         }
       }
     }

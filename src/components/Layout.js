@@ -4,11 +4,12 @@ import { graphql, useStaticQuery } from 'gatsby'
 import { MDXProvider } from '@mdx-js/react'
 import { Global, css } from '@emotion/core'
 import Header from './Header'
-import reset from '../lib/reset'
-import Footer from '../components/Footer'
+import Footer from './Footer'
 import Code from './Code'
-import { getGlobalStyles } from '../lib/globalStyles'
 import i18n from '../i18n'
+import reset from '../lib/reset'
+import getGlobalStyles from '../lib/globalStyles'
+import littleFoot from '../lib/littleFoot'
 
 export default ({ children, pageTitle, pageName, pageIndex }) => {
   const { site } = useStaticQuery(graphql`
@@ -32,6 +33,7 @@ export default ({ children, pageTitle, pageName, pageIndex }) => {
     <Fragment>
       <Global styles={reset()} />
       <Global styles={getGlobalStyles()} />
+      <Global styles={littleFoot()} />
       <div
         css={css`
           display: flex;

@@ -3,6 +3,7 @@ const colors = {
   lighterBlack: 'rgb(19, 20, 21)',
   lightBlack: '#242526',
   white: '#fff',
+  white2: '#fafafa',
   offWhite: '#f2f0ed',
   lightGrey: '#bfbfbf',
   grey: '#747a80',
@@ -19,6 +20,7 @@ const light = {
   blockquote: colors.grey,
   link: colors.blue,
   divider: colors.offWhite,
+  footnotePopover: colors.white2,
   footnoteButtonText: colors.white,
   footnoteButtonBackground: colors.darkGrey,
 }
@@ -30,6 +32,7 @@ const dark = {
   blockquote: colors.lightGrey,
   link: colors.white,
   divider: colors.white,
+  footnotePopover: colors.white2,
   footnoteButtonText: colors.white,
   footnoteButtonBackground: colors.darkGrey,
 }

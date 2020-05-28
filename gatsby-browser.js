@@ -1,5 +1,4 @@
 const { littlefoot } = require('littlefoot')
-require('littlefoot/dist/littlefoot.css')
 
 export function onRouteUpdate() {
   littlefoot({
