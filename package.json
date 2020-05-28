@@ -1,43 +1,50 @@
 {
-  "name": "ydc-gatsby",
-  "description": "",
-  "version": "0.0.1",
+  "name": "yeefom-com",
+  "description": "Source code for yeefom.com",
+  "version": "1.0.0",
   "license": "MIT",
-  "author": "",
-  "repository": "",
+  "author": "Yifeng Wang",
+  "homepage": "https://github.com/yeefom/yeefom-com",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:yeefom/yeefom-com.git"
+  },
   "keywords": [
-    "gatsby"
+    "blog",
+    "personal site",
+    "gatsby",
+    "gatsbyjs",
+    "react"
   ],
   "scripts": {
     "build": "gatsby clean && gatsby build",
     "serve": "gatsby clean && gatsby build && gatsby serve"
   },
-  "main": "",
   "dependencies": {
-    "@emotion/core": "^10.0.22",
+    "@babel/core": "^7.10.1",
+    "@emotion/core": "^10.0.28",
     "@mdx-js/mdx": "^1.6.4",
     "@mdx-js/react": "^1.6.4",
-    "gatsby": "^2.17.2",
+    "gatsby": "^2.22.12",
     "gatsby-plugin-catch-links": "^2.3.3",
     "gatsby-plugin-emotion": "^4.3.2",
     "gatsby-plugin-feed": "^2.5.3",
-    "gatsby-plugin-mdx": "^1.0.53",
+    "gatsby-plugin-mdx": "^1.2.13",
     "gatsby-plugin-react-helmet": "^3.3.2",
-    "gatsby-plugin-sharp": "^2.2.32",
+    "gatsby-plugin-sharp": "^2.6.9",
     "gatsby-remark-images": "^3.3.8",
     "gatsby-source-filesystem": "^2.3.8",
-    "gatsby-transformer-sharp": "^2.3.0",
+    "gatsby-transformer-sharp": "^2.5.3",
     "littlefoot": "^3.2.5",
     "prism-react-renderer": "^1.1.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-helmet": "^6.0.0",
-    "remark-numbered-footnote-labels": "^1.1.0"
+    "react-refresh": "^0.8.3",
+    "remark-numbered-footnote-labels": "^1.1.0",
+    "typescript": "^3.9.3"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0",
-    "@types/react": "^16.0.0",
-    "prettier": "1.18.2",
-    "typescript": "^3.9.3"
+    "prettier": "^2.0.5"
   }
 }
