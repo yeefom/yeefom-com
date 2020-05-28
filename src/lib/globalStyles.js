@@ -58,10 +58,10 @@ export default () => {
       }
     }
     ul {
-      margin-left: 2rem;
+      margin-left: 1.8rem;
     }
     ol {
-      margin-left: 2.2rem;
+      margin-left: 2rem;
     }
     small {
       font-size: 80%
