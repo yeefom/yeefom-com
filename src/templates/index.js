@@ -15,7 +15,7 @@ export default function Index({ data: { allMdx, site: { siteMetadata } }, pageCo
       <SEO meta={{
         title: siteMetadata.title,
         description: siteMetadata.description,
-        keyword: siteMetadata.keywords
+        keywords: siteMetadata.keywords
       }}/>
       <Container>
         {allMdx.edges.map(({ node }) => {
@@ -76,6 +76,7 @@ export const pageQuery = graphql`
       siteMetadata {
         title
         description
+        keywords
       }
     }
     allMdx(

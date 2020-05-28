@@ -3,14 +3,12 @@ const path = require('path')
 const remarkFootnotesPlugin = require('remark-numbered-footnote-labels')
 
 let config = {
-  siteTitle: 'Example site',
-  siteTitleShort: 'Example',
-  siteUrl: 'https://example.com',
-  siteLanguage: 'en',
-  siteLogo: 'android-chrome-512x512.png',
-  siteDescription: 'Example site',
-  siteKeywords: 'personal site, blog',
-  author: 'Example author',
+  title: 'website title',
+  siteUrl: 'base url',
+  logo: 'android-chrome-512x512.png',
+  description: 'website description',
+  keywords: 'keyword 1, keyword 2',
+  author: 'author name',
   aboutDescription: 'about page',
   archiveDescription: 'archive page',
 
@@ -20,10 +18,10 @@ let config = {
 
   // footer
   copyRightYears: '2020–2020',
-  twitter: 'https://twitter.com/',
-  twitterHandle: '@',
-  github: 'https://github.com/',
-  email: 'mailto:example@example.com',
+  twitter: 'twitter profile url',
+  twitterHandle: 'twitter handle starting with @',
+  github: 'github profile url',
+  email: 'email address starting with mailto:',
   feed: 'feed.xml'
 }
 
@@ -34,11 +32,11 @@ if (fs.existsSync(path.resolve('./content/config.js'))) {
 module.exports = {
   siteMetadata: {
     siteUrl: config.siteUrl,
-    title: config.siteTitle,
-    description: config.siteDescription,
-    keywords: 'personal site, blog',
+    title: config.title,
+    description: config.description,
+    keywords: config.keywords,
     canonicalUrl: config.siteUrl,
-    image: config.siteLogo,
+    image: config.logo,
     aboutDescription: config.aboutDescription,
     archiveDescription: config.archiveDescription,
     author: {
@@ -110,28 +108,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-feed`,
       options: {
-        query: `
-          {
-            site {
-              siteMetadata {
-                title
-                description
-                siteUrl
-                site_url: siteUrl
-                author {
-                  name
-                }
-              }
-            }
-          }
-        `,
         feeds: [
           {
-            serialize: ({ query: { site, allMdx } }) => {
+            serialize: ({ query: { allMdx } }) => {
               return allMdx.edges.map(edge => {
                 return Object.assign({}, edge.node.frontmatter, {
                   description: edge.node.html,
-                  url: site.siteMetadata.siteUrl + edge.node.fields.pagePath,
+                  url: config.siteUrl + edge.node.fields.pagePath,
                 })
               })
             },
@@ -157,7 +140,7 @@ module.exports = {
                 }
               }
             `,
-            title: `${config.siteTitle} RSS Feed`,
+            title: `${config.title} RSS Feed`,
             author: config.author,
             output: config.feed
           },
