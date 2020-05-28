@@ -53,10 +53,15 @@ export default () => {
     }
     ul, ol {
       list-style-position: outside;
-      margin-left: 1.7rem;
       li {
         margin-top: 1em;
       }
+    }
+    ul {
+      margin-left: 2rem;
+    }
+    ol {
+      margin-left: 2.2rem;
     }
     small {
       font-size: 80%
@@ -158,6 +163,13 @@ export default () => {
       hr {
         margin-bottom: 25px;
       }
+    }
+    .footnote-backref {
+      visibility: hidden;
+    }
+    .footnote-backref::before { 
+      visibility: visible;
+      content: "↩︎";
     }
     ${bpMaxSM} {
       body {
