@@ -1,7 +1,6 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { Helmet } from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
-import PropTypes from 'prop-types'
 import SchemaOrg from './SchemaOrg'
 
 const SEO = ({ meta = {}, isBlogPost }) => {
@@ -28,7 +27,7 @@ const SEO = ({ meta = {}, isBlogPost }) => {
   const url = `${siteMetadata.canonicalUrl}${pagePath}`
 
   return (
-    <React.Fragment>
+    <Fragment>
       <Helmet>
         {/* General tags */}
         <meta name="description" content={meta.description}/>
@@ -60,18 +59,8 @@ const SEO = ({ meta = {}, isBlogPost }) => {
         author={siteMetadata.author}
         defaultTitle={title}
       />
-    </React.Fragment>
+    </Fragment>
   )
-}
-
-SEO.propTypes = {
-  isBlogPost: PropTypes.bool,
-  postImage: PropTypes.string,
-}
-
-SEO.defaultProps = {
-  isBlogPost: false,
-  postImage: null,
 }
 
 export default SEO
