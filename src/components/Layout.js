@@ -44,7 +44,6 @@ export default ({ children, pageTitle, pageName, pageIndex }) => {
       >
         <Helmet title={siteTitle}>
           <html lang="en" />
-          <noscript>This site runs best with JavaScript enabled.</noscript>
         </Helmet>
         <Header pageName={pageName}/>
         <MDXProvider components={{ code: Code }}>
