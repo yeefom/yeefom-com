@@ -166,10 +166,11 @@ export default () => {
     }
     .footnote-backref {
       visibility: hidden;
-    }
-    .footnote-backref::before { 
-      visibility: visible;
-      content: "↩︎";
+      margin-left: 3px;
+      &::before {
+        visibility: visible;
+        content: "↩︎";        
+      }
     }
     ${bpMaxSM} {
       body {
