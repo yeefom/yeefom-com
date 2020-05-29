@@ -52,7 +52,7 @@ const Footer = () => {
               opacity: 0.7;
             `}
           >
-            {`${author.name} \u00A9 ${footer.copyRightYears}`}
+            {`\u00A9 ${footer.copyRightYears} ${author.name}`}
           </div>
         </div>
       </Container>
