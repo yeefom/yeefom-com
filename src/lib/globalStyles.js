@@ -146,7 +146,7 @@ export default () => {
     }
     .gatsby-resp-image-image {
       background: none !important;
-      box-shadow: 0;
+      box-shadow: none;
     }
     .navigation-links {
       margin-top: 4.3rem;
@@ -221,17 +221,6 @@ export default () => {
           }
         }
       }
-      .dark-link {
-        a {
-          color: ${dark.text};
-          &:active,
-          &:visited,
-          &:hover,
-          &:focus {
-            color: ${dark.text};
-          }
-        }
-      }
       hr {
         border-color: ${dark.blockquote}
       }
@@ -239,25 +228,14 @@ export default () => {
         border-color: ${dark.blockquote};
         color: ${dark.blockquote};
       }
-      input {
-        border-color: ${dark.blockquote};
+      img {
+        filter: brightness(90%);
       }
       header {
         background: ${dark.headerBg};
         a {
           color: ${dark.text};
           border-color: ${dark.text};
-          &:focus {
-            color: ${dark.text};
-          }
-          &:hover {
-            color: ${dark.text};
-          }
-        }
-      }
-      .pagination-link {
-        a {
-          color: ${dark.text};
           &:focus {
             color: ${dark.text};
           }
@@ -276,6 +254,28 @@ export default () => {
             &:hover {
               color: ${dark.text};
             }
+          }
+        }
+      }
+      .dark-link {
+        a {
+          color: ${dark.text};
+          &:active,
+          &:visited,
+          &:hover,
+          &:focus {
+            color: ${dark.text};
+          }
+        }
+      }
+      .pagination-link {
+        a {
+          color: ${dark.text};
+          &:focus {
+            color: ${dark.text};
+          }
+          &:hover {
+            color: ${dark.text};
           }
         }
       }
