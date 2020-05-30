@@ -30,7 +30,6 @@ export default function Post({
           <small className="article-date">
             {fields.date}
           </small>
-          <br />
           <MDXRenderer>{body}</MDXRenderer>
         </article>
         <div

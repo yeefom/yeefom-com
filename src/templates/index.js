@@ -42,7 +42,6 @@ export default function Index({ data: { allMdx, site: { siteMetadata } }, pageCo
               <small className="article-date">
                 {fields.date}
               </small>
-              <br/>
               <MDXRenderer>{body}</MDXRenderer>
             </article>
           );
