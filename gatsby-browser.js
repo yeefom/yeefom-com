@@ -1,19 +1,22 @@
-const { littlefoot } = require('littlefoot')
+import littlefoot from 'littlefoot'
 
 export function onRouteUpdate() {
-  littlefoot({
-    buttonTemplate:
-      `<button
-        aria-controls="fncontent:<% id %>"
-        aria-expanded="false"
-        aria-label="Footnote <% number %>"
-        class="littlefoot-footnote__button"
-        id="<% reference %>"
-        rel="footnote"
-        title="See footnote <% number %>"
-      />
-        <% number %>
-      </button>`,
-    numberResetSelector: 'article'
-  })
+  const isNotIe = window && window.document && !window.document.documentMode
+  if (isNotIe) {
+    littlefoot({
+      buttonTemplate:
+        `<button
+          aria-controls="fncontent:<% id %>"
+          aria-expanded="false"
+          aria-label="Footnote <% number %>"
+          class="littlefoot-footnote__button"
+          id="<% reference %>"
+          rel="footnote"
+          title="See footnote <% number %>"
+        />
+          <% number %>
+        </button>`,
+      numberResetSelector: 'article'
+    })
+  }
 }
