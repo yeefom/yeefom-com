@@ -102,7 +102,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-catch-links`,
       options: {
-        excludePattern: /\.xml$/,
+        excludePattern: /\.(xml|txt)$/,
       },
     },
     {
