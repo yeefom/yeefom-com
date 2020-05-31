@@ -136,7 +136,7 @@ export default () => {
       }
     }
     .article-date {
-      display: inline-block; 
+      display: inline-block;
       margin: 0 0 1.5rem;
     }
     .footer-container {
@@ -146,7 +146,7 @@ export default () => {
     }
     .gatsby-resp-image-image {
       background: none !important;
-      box-shadow: none;
+      box-shadow: none !important;
     }
     .navigation-links {
       margin-top: 4.3rem;
@@ -167,7 +167,7 @@ export default () => {
       margin-left: 3px;
       &::before {
         visibility: visible;
-        content: "↩︎";        
+        content: "↩︎";
       }
     }
     ${bpMaxSM} {
@@ -204,11 +204,11 @@ export default () => {
           color: ${dark.text};
         }
       }
-      h1, 
-      h2, 
-      h3, 
-      h4, 
-      h5, 
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
       h6 {
         color: ${dark.text};
         a {
