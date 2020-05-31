@@ -140,7 +140,7 @@ module.exports = {
                 }
               }
             `,
-            title: `${config.title} RSS Feed`,
+            title: `${config.title}`,
             author: config.author,
             output: config.feed
           },
