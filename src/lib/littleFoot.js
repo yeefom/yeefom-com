@@ -86,6 +86,7 @@ export default () => {
     .littlefoot-footnote__wrapper {
       overflow: hidden;
       position: relative;
+      max-width: 100% !important;
       width: 22em;
       z-index: 14;
     }
