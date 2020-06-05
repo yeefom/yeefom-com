@@ -64,7 +64,7 @@ export default () => {
       margin-left: 2rem;
     }
     small {
-      font-size: 80%
+      font-size: 80%;
     }
     hr {
       margin: 40px 0;
@@ -180,7 +180,7 @@ export default () => {
     }
     ${bpMinLG} {
       html {
-        font-size: 125%;
+        font-size: 120%;
       }
     }
     @media (prefers-color-scheme: dark) {
@@ -215,7 +215,7 @@ export default () => {
         }
       }
       hr {
-        border-color: ${dark.blockquote}
+        border-color: ${dark.blockquote};
       }
       blockquote {
         border-color: ${dark.blockquote};
