@@ -1,5 +1,5 @@
 import { css } from '@emotion/core'
-import { bpMaxSM } from './breakpoints'
+import { bpMaxSM, bpMinLG } from './breakpoints'
 import { light, dark } from './colors'
 
 export default () => {
@@ -171,23 +171,16 @@ export default () => {
       }
     }
     ${bpMaxSM} {
-      body {
-        font-size: 90%;
-      }
-      h1 {
-        font-size: 1.4rem;
-      }
-      h2 {
-        font-size: 1.15rem;
-      },
-      h3 {
-        font-size: 1rem;
+      html {
+        font-size: 100%;
       }
       hr {
         margin: 30px 0;
       }
-      small.article-date {
-        margin-bottom: 1rem;
+    }
+    ${bpMinLG} {
+      html {
+        font-size: 125%;
       }
     }
     @media (prefers-color-scheme: dark) {
