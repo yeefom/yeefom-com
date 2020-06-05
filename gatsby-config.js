@@ -86,6 +86,8 @@ module.exports = {
             resolve: 'gatsby-remark-images',
             options: {
               backgroundColor: 'none',
+              quality: 70,
+              loading: 'auto',
               disableBgImage: true,
               maxWidth: 1035,
             },
