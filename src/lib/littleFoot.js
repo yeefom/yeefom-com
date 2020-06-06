@@ -98,6 +98,7 @@ export default () => {
       padding: .6em 1.4em;
       z-index: 8;
       font-size: 0.8rem;
+      overflow: auto;
       &:focus {
         outline: none;
       }
