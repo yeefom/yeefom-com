@@ -10,7 +10,7 @@ const Container = props => {
   } = props
 
   const maxWidth = 700
-  const maxWidthLg = maxWidth + 100
+  const maxWidthLg = maxWidth + 20
 
   return (
     <div

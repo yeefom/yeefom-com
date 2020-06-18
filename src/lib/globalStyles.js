@@ -180,7 +180,7 @@ export default () => {
     }
     ${bpMinLG} {
       html {
-        font-size: 120%;
+        font-size: 115.5%;
       }
     }
     @media (prefers-color-scheme: dark) {
